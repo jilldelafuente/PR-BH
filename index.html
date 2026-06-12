@@ -64,7 +64,7 @@
   --r-pill:0px;
   --r-tag:0px;
 }
-[data-brand="bh"] *{border-radius:0!important}
+[data-brand="bh"] *:not(.brand-switcher):not(.brand-toggle-track):not(.brand-toggle-knob){border-radius:0!important}
 [data-brand="bh"] .display{font-family:"Playfair Display",serif;font-weight:400;line-height:.94}
 [data-brand="bh"] .head{font-family:"Playfair Display",serif;font-weight:400}
 [data-brand="bh"] .mono-price{font-family:"Playfair Display",serif;font-weight:400}
@@ -72,6 +72,9 @@
 [data-brand="bh"] .home-h1{font-family:"Playfair Display",serif;font-size:clamp(52px,6vw,82px);letter-spacing:-.02em;color:#ffffff}
 [data-brand="bh"] ::selection{background:var(--lime);color:var(--teal)}
 [data-brand="bh"] .lcard-price,[data-brand="bh"] .detail-price-num{font-family:"Playfair Display",serif}
+[data-brand="bh"] .lcard-addr-street{font-family:"Playfair Display",serif;font-weight:400}
+[data-brand="bh"] .lcard-addr-city{font-family:"Open Sans",sans-serif;font-weight:400}
+[data-brand="bh"] .lcard-compare{font-family:"Open Sans",sans-serif}
 [data-brand="bh"] .rail-title{font-family:"Playfair Display",serif;font-weight:400}
 [data-brand="bh"] .detail-title{font-family:"Playfair Display",serif;font-weight:400}
 /* BH nav — Playfair Display 16px, no underline, white */
@@ -105,29 +108,22 @@
 
 /* ── Brand switcher widget ──────────────────────────────────────────────── */
 .brand-switcher{
-  position:fixed;bottom:32px;right:32px;z-index:9999;
-  display:flex;align-items:center;gap:0;
-  background:#fff;border-radius:6px;
-  box-shadow:0 4px 24px rgba(9,26,39,.18);
-  border:1px solid rgba(9,26,39,.10);
-  overflow:hidden;
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:9999;
+  cursor:pointer;border:none;background:none;padding:0;
+  opacity:0.6;transition:opacity .2s;
 }
-.brand-switcher-label{
-  font-family:"Open Sans",sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:#808285;
-  padding:0 12px;white-space:nowrap;
+.brand-switcher:hover{opacity:1}
+.brand-toggle-track{
+  width:56px;height:28px;border-radius:14px;
+  position:relative;transition:background .3s;
+  box-shadow:0 2px 10px rgba(9,26,39,.3);
 }
-.brand-tab{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 16px;font-family:"Open Sans",sans-serif;
-  font-size:12px;font-weight:600;color:#808285;
-  cursor:pointer;border:none;background:none;
-  transition:.18s;white-space:nowrap;border-left:1px solid rgba(9,26,39,.08);
+.brand-toggle-knob{
+  position:absolute;top:3px;width:22px;height:22px;
+  border-radius:50%;background:#fff;
+  transition:left .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 1px 4px rgba(9,26,39,.2);
 }
-.brand-tab:hover{background:#f5f5f3;color:#3A383C}
-.brand-tab.active{background:#091A27;color:#fff}
-.brand-tab.active.is-progress{background:#01444B}
-.brand-tab-logo{height:16px;width:auto;display:block}
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -3299,6 +3295,44 @@ function useBrand(){
 window.useBrand = useBrand;
 
 /* BH logo — uses provided brand image files */
+function BrandToggle({ theme="dark" }){
+  const brand = window.useBrand();
+  function switchTo(b){
+    setBrandGlobal(b);
+  }
+  // expose globally so the separate BrandSwitcher script can reuse
+  function setBrandGlobal(b){
+    document.body.setAttribute('data-brand', b);
+    window.dispatchEvent(new CustomEvent('brandchange', {detail: b}));
+  }
+  const sep = theme==='light' ? 'rgba(255,255,255,.25)' : 'rgba(9,26,39,.12)';
+  return (
+    <div style={{
+      display:'flex',alignItems:'center',
+      background: theme==='light' ? 'rgba(255,255,255,.12)' : 'rgba(9,26,39,.06)',
+      backdropFilter:'blur(4px)',borderRadius:4,overflow:'hidden',
+      border:`1px solid ${sep}`,marginLeft:12,flexShrink:0
+    }}>
+      <button onClick={()=>switchTo('progress')} title="Progress Residential"
+        style={{display:'flex',alignItems:'center',padding:'5px 10px',cursor:'pointer',
+          border:'none',borderRight:`1px solid ${sep}`,
+          background: brand==='progress' ? '#01444B' : 'transparent',
+          transition:'.15s'}}>
+        <img
+          src={brand==='progress' ? window.assetUrl('assets/logo-white.png') : window.assetUrl('assets/logo-teal.png')}
+          alt="Progress" height="16" style={{display:'block',width:'auto',opacity: brand==='progress'?1:0.6}}/>
+      </button>
+      <button onClick={()=>switchTo('bh')} title="BH"
+        style={{display:'flex',alignItems:'center',padding:'5px 10px',cursor:'pointer',
+          border:'none',background: brand==='bh' ? '#091A27' : 'transparent',transition:'.15s'}}>
+        <img
+          src={brand==='bh' ? "progress/images/BHlogo_white.png" : "progress/images/BHlogo_blue.png"}
+          alt="BH" height="16" style={{display:'block',width:'auto',opacity: brand==='bh'?1:0.6}}/>
+      </button>
+    </div>
+  );
+}
+
 function BHLogo({ variant="white", height, width }){
   const src = variant==="white"
     ? "progress/images/BHlogo_white.png"
@@ -3676,9 +3710,28 @@ function ListingCard({ l, ai, fav, onFav, onOpen, selected, onToggle, hovered, o
           </div>
         </div>
         <div className="lcard-stats">
-          <span className="lcard-stat"><BedIcon size={18}/>{l.beds} beds</span>
-          <span className="lcard-stat"><BathIcon size={18}/>{l.baths} baths</span>
-          <span className="lcard-stat"><SqftIcon size={18}/>{fmt(l.sqft)} sqft.</span>
+          {(window.getBrand()==='bh' && l.bedrooms_min != null) ? (()=>{
+            // BH: show apartment type range instead of icon stats
+            const minB = l.bedrooms_min, maxB = l.bedrooms_max || minB;
+            const typeLabel = minB === 0
+              ? (maxB > 0 ? `Studio – ${maxB} Bed` : 'Studio')
+              : minB === maxB
+                ? `${minB} Bed`
+                : `${minB} – ${maxB} Bed`;
+            const sqftMin = l.sqft_min || l.sqft;
+            const sqftMax = l.sqft_max || sqftMin;
+            const sqftLabel = sqftMin === sqftMax
+              ? `${fmt(sqftMin)} sqft`
+              : `${fmt(sqftMin)} – ${fmt(sqftMax)} sqft`;
+            return (<>
+              <span className="lcard-stat">{typeLabel}</span>
+              <span className="lcard-stat">{sqftLabel}</span>
+            </>);
+          })() : (<>
+            <span className="lcard-stat"><BedIcon size={18}/>{l.beds} beds</span>
+            <span className="lcard-stat"><BathIcon size={18}/>{l.baths} baths</span>
+            <span className="lcard-stat"><SqftIcon size={18}/>{fmt(l.sqft)} sqft.</span>
+          </>)}
         </div>
         {ai && (
           <div className="lcard-ai">
@@ -5987,34 +6040,22 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
       document.body.getAttribute('data-brand') || 'progress'
     );
 
-    function switchTo(b){
-      setBrand(b);
-      document.body.setAttribute('data-brand', b);
-      // Force React to re-render by dispatching a custom event
-      window.dispatchEvent(new CustomEvent('brandchange', {detail: b}));
+    function toggle(){
+      const next = brand === 'progress' ? 'bh' : 'progress';
+      setBrand(next);
+      document.body.setAttribute('data-brand', next);
+      window.dispatchEvent(new CustomEvent('brandchange', {detail: next}));
     }
 
+    const isBH = brand === 'bh';
+
     return (
-      <div className="brand-switcher">
-        <span className="brand-switcher-label">Brand</span>
-        <button
-          className={"brand-tab is-progress"+(brand==='progress'?' active':'')}
-          onClick={()=>switchTo('progress')}>
-          <img
-            src={window.assetUrl('assets/logo-teal.png')}
-            alt="Progress Residential"
-            className="brand-tab-logo"/>
-        </button>
-        <button
-          className={"brand-tab"+(brand==='bh'?' active':'')}
-          onClick={()=>switchTo('bh')}>
-          <img
-            src={brand==='bh' ? "progress/images/BHlogo_white.png" : "progress/images/BHlogo_blue.png"}
-            alt="BH"
-            height="18"
-            style={{display:'block',width:'auto'}}/>
-        </button>
-      </div>
+      <button className="brand-switcher" onClick={toggle}
+        title={`Switch to ${isBH ? 'Progress Residential' : 'BH'}`}>
+        <div className="brand-toggle-track" style={{background: isBH ? '#091A27' : '#01444B'}}>
+          <div className="brand-toggle-knob" style={{left: isBH ? 31 : 3}}/>
+        </div>
+      </button>
     );
   }
 
