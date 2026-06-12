@@ -45,6 +45,75 @@
   --rail-w:900px;
 }
 
+/* ── BH brand token overrides ───────────────────────────────────────────── */
+[data-brand="bh"]{
+  --teal:#091A27;
+  --teal-700:#05101A;
+  --navy:#091A27;
+  --lime:#C8A96E;
+  --lime-2:#B8913C;
+  --lime-bg:#F8F4ED;
+  --green:#C8A96E;
+  --green-soft:#D4BC90;
+  --ai-grad:linear-gradient(84deg,rgba(200,169,110,.30) 0%,rgba(184,145,60,.30) 100%);
+  --ai-grad-strong:linear-gradient(84deg,rgba(200,169,110,.85) 0%,rgba(184,145,60,.85) 100%);
+  /* zero out all border radii */
+  --r-btn:0px;
+  --r-card:0px;
+  --r-tile:0px;
+  --r-pill:0px;
+  --r-tag:0px;
+}
+[data-brand="bh"] *{border-radius:0!important}
+[data-brand="bh"] .display{font-family:"Playfair Display",serif;font-weight:400;line-height:.94}
+[data-brand="bh"] .head{font-family:"Playfair Display",serif;font-weight:400}
+[data-brand="bh"] .mono-price{font-family:"Playfair Display",serif;font-weight:400}
+[data-brand="bh"] .btn{font-family:"Playfair Display",serif;font-weight:400;letter-spacing:.04em}
+[data-brand="bh"] .home-h1{font-family:"Playfair Display",serif;font-size:clamp(52px,6vw,82px);letter-spacing:-.02em;color:#ffffff}
+[data-brand="bh"] ::selection{background:var(--lime);color:var(--teal)}
+[data-brand="bh"] .lcard-price,[data-brand="bh"] .detail-price-num{font-family:"Playfair Display",serif}
+[data-brand="bh"] .rail-title{font-family:"Playfair Display",serif;font-weight:400}
+[data-brand="bh"] .detail-title{font-family:"Playfair Display",serif;font-weight:400}
+/* BH nav — Playfair Display 16px, no underline, white */
+[data-brand="bh"] .home-links button{font-family:"Playfair Display",serif;font-size:16px;font-weight:400;letter-spacing:.02em;color:#fff;opacity:1}
+[data-brand="bh"] .home-links button:hover{color:#C8A96E}
+/* BH CTAs */
+[data-brand="bh"] .btn-lime{background:#091A27;color:#fff}
+[data-brand="bh"] .btn-lime:hover{background:#05101A;color:#fff;transform:none}
+[data-brand="bh"] .resident-btn{background:#091A27;color:#fff;font-family:"Playfair Display",serif;font-weight:400}
+[data-brand="bh"] .home-chip{font-family:"Playfair Display",serif;font-size:13px}
+/* BH search bar */
+[data-brand="bh"] .search-glass{border-radius:0!important}
+[data-brand="bh"] .search-card{border-radius:0!important}
+[data-brand="bh"] .ai-go{border-radius:0!important}
+/* BH hero bg — swapped via JS */
+
+/* ── Brand switcher widget ──────────────────────────────────────────────── */
+.brand-switcher{
+  position:fixed;bottom:32px;right:32px;z-index:9999;
+  display:flex;align-items:center;gap:0;
+  background:#fff;border-radius:6px;
+  box-shadow:0 4px 24px rgba(9,26,39,.18);
+  border:1px solid rgba(9,26,39,.10);
+  overflow:hidden;
+}
+.brand-switcher-label{
+  font-family:"Open Sans",sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#808285;
+  padding:0 12px;white-space:nowrap;
+}
+.brand-tab{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 16px;font-family:"Open Sans",sans-serif;
+  font-size:12px;font-weight:600;color:#808285;
+  cursor:pointer;border:none;background:none;
+  transition:.18s;white-space:nowrap;border-left:1px solid rgba(9,26,39,.08);
+}
+.brand-tab:hover{background:#f5f5f3;color:#3A383C}
+.brand-tab.active{background:#091A27;color:#fff}
+.brand-tab.active.is-progress{background:#01444B}
+.brand-tab-logo{height:16px;width:auto;display:block}
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -780,6 +849,658 @@ window.PR.CLUSTERS = [
   {x:35,y:28,label:"48 homes"},{x:68,y:30,label:"31 homes"},{x:24,y:60,label:"22 homes"}
 ];
 
+window.BH = window.BH || {};
+window.BH.LISTINGS = [
+  {
+    "id": "adley-city-springs-0",
+    "title": "6075 Roswell Rd Sandy Springs",
+    "street": "6075 Roswell Rd Sandy Springs",
+    "city": "GA 30328",
+    "name": "Adley City Springs",
+    "price": 1682,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 26,
+      "y": 22
+    },
+    "latlng": [
+      33.749,
+      -84.008
+    ],
+    "img": "images/bh/listing-0000/photo-01.png",
+    "gallery": [
+      "images/bh/listing-0000/photo-01.png",
+      "images/bh/listing-0000/photo-02.png",
+      "images/bh/listing-0000/photo-03.png",
+      "images/bh/listing-0000/photo-04.png",
+      "images/bh/listing-0000/photo-05.png",
+      "images/bh/listing-0000/photo-06.png",
+      "images/bh/listing-0000/photo-07.png",
+      "images/bh/listing-0000/photo-08.png",
+      "images/bh/listing-0000/photo-09.png",
+      "images/bh/listing-0000/photo-10.png"
+    ],
+    "starting": 1682,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Adley City Springs is a modern residential community in GA 30328 offering 1\u20134-bedroom apartments starting at $1,682/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/adley-city-springs/",
+    "price_text": "$1,682/mo"
+  },
+  {
+    "id": "bradley-park-1",
+    "title": "350 Bradley Park Lane Cumming",
+    "street": "350 Bradley Park Lane Cumming",
+    "city": "GA 30040",
+    "name": "Bradley Park",
+    "price": 1513,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 30,
+      "y": 18
+    },
+    "latlng": [
+      34.0188,
+      -84.2156
+    ],
+    "img": "images/bh/listing-0001/photo-05.png",
+    "gallery": [
+      "images/bh/listing-0001/photo-05.png",
+      "images/bh/listing-0001/photo-06.png",
+      "images/bh/listing-0001/photo-07.png",
+      "images/bh/listing-0001/photo-08.png",
+      "images/bh/listing-0001/photo-09.png",
+      "images/bh/listing-0001/photo-10.png",
+      "images/bh/listing-0001/photo-14.jpg",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
+    ],
+    "starting": 1513,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Bradley Park is a modern residential community in GA 30040 offering 1\u20134-bedroom apartments starting at $1,513/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/bradley-park/",
+    "price_text": "$1,513/mo"
+  },
+  {
+    "id": "canyon-springs-apartments-2",
+    "title": "1200 Towne Centre Village Dr Mcdonough",
+    "street": "1200 Towne Centre Village Dr Mcdonough",
+    "city": "GA 30253",
+    "name": "Canyon Springs Apartments",
+    "price": 1271,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 72,
+      "y": 24
+    },
+    "latlng": [
+      33.8933,
+      -84.6116
+    ],
+    "img": "images/bh/listing-0002/photo-05.jpeg",
+    "gallery": [
+      "images/bh/listing-0002/photo-05.jpeg",
+      "images/bh/listing-0002/photo-06.jpg",
+      "images/bh/listing-0002/photo-07.jpg",
+      "images/bh/listing-0002/photo-08.jpg",
+      "images/bh/listing-0002/photo-09.jpg",
+      "images/bh/listing-0002/photo-10.jpg",
+      "images/bh/listing-0002/photo-11.jpg",
+      "images/bh/listing-0002/photo-12.jpg",
+      "images/bh/listing-0002/photo-13.jpg",
+      "images/bh/listing-0002/photo-14.png"
+    ],
+    "starting": 1271,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Canyon Springs Apartments is a modern residential community in GA 30253 offering 1\u20133-bedroom apartments starting at $1,271/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/canyon-springs-apartments/",
+    "price_text": "$1,271/mo"
+  },
+  {
+    "id": "chatteron-springs-3",
+    "title": "4407 Sparrow Circle Atlanta",
+    "street": "4407 Sparrow Circle Atlanta",
+    "city": "GA 30349",
+    "name": "Chatteron Springs",
+    "price": 2335,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 74,
+      "y": 20
+    },
+    "latlng": [
+      33.5564,
+      -84.7632
+    ],
+    "img": "images/bh/listing-0003/photo-01.png",
+    "gallery": [
+      "images/bh/listing-0003/photo-01.png",
+      "images/bh/listing-0003/photo-02.png",
+      "images/bh/listing-0003/photo-03.png",
+      "images/bh/listing-0003/photo-04.png",
+      "images/bh/listing-0003/photo-05.png",
+      "images/bh/listing-0003/photo-06.png",
+      "images/bh/listing-0003/photo-08.jpg",
+      "images/bh/listing-0003/photo-09.jpg",
+      "images/bh/listing-0003/photo-10.jpg",
+      "images/bh/listing-0003/photo-11.png"
+    ],
+    "starting": 2335,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Chatteron Springs is a modern residential community in GA 30349 offering 3\u20135-bedroom apartments starting at $2,335/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/chatteron-springs/",
+    "price_text": "$2,335/mo"
+  },
+  {
+    "id": "grand-oasis-apartment-homes-4",
+    "title": "4000 McGinnis Ferry Rd Suwanee",
+    "street": "4000 McGinnis Ferry Rd Suwanee",
+    "city": "GA 30024",
+    "name": "Grand Oasis Apartment Homes",
+    "price": 1329,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 52,
+      "y": 16
+    },
+    "latlng": [
+      33.5016,
+      -84.5048
+    ],
+    "img": "images/bh/listing-0004/photo-04.jpeg",
+    "gallery": [
+      "images/bh/listing-0004/photo-04.jpeg",
+      "images/bh/listing-0004/photo-05.jpg",
+      "images/bh/listing-0004/photo-06.jpg",
+      "images/bh/listing-0004/photo-07.png",
+      "images/bh/listing-0004/photo-09.png",
+      "images/bh/listing-0004/photo-12.jpg",
+      "images/bh/listing-0004/photo-13.jpg",
+      "images/bh/listing-0004/photo-14.jpg",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg"
+    ],
+    "starting": 1329,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Grand Oasis Apartment Homes is a modern residential community in GA 30024 offering 1\u20134-bedroom apartments starting at $1,329/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/grand-oasis-apartment-homes/",
+    "price_text": "$1,329/mo"
+  },
+  {
+    "id": "heights-of-kennesaw-apartments-5",
+    "title": "1950 Barrett Lakes Blvd Kennesaw",
+    "street": "1950 Barrett Lakes Blvd Kennesaw",
+    "city": "GA 30144",
+    "name": "Heights of Kennesaw Apartments",
+    "price": 1346,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 28,
+      "y": 74
+    },
+    "latlng": [
+      33.8092,
+      -84.1187
+    ],
+    "img": "images/bh/listing-0005/photo-04.png",
+    "gallery": [
+      "images/bh/listing-0005/photo-04.png",
+      "images/bh/listing-0005/photo-05.png",
+      "images/bh/listing-0005/photo-06.png",
+      "images/bh/listing-0005/photo-07.png",
+      "images/bh/listing-0005/photo-08.png",
+      "images/bh/listing-0005/photo-09.png",
+      "images/bh/listing-0005/photo-10.png",
+      "images/bh/listing-0005/photo-11.png",
+      "images/bh/listing-0005/photo-13.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg"
+    ],
+    "starting": 1346,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Heights of Kennesaw Apartments is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,346/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/heights-of-kennesaw-apartments/",
+    "price_text": "$1,346/mo"
+  },
+  {
+    "id": "park-at-kennesaw-apartments-6",
+    "title": "2250 Ellison Lakes Dr Kennesaw",
+    "street": "2250 Ellison Lakes Dr Kennesaw",
+    "city": "GA 30152",
+    "name": "Park At Kennesaw Apartments",
+    "price": 1243,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 22,
+      "y": 46
+    },
+    "latlng": [
+      34.0286,
+      -84.0269
+    ],
+    "img": "images/bh/listing-0006/photo-04.jpeg",
+    "gallery": [
+      "images/bh/listing-0006/photo-04.jpeg",
+      "images/bh/listing-0006/photo-05.jpg",
+      "images/bh/listing-0006/photo-06.jpg",
+      "images/bh/listing-0006/photo-07.jpg",
+      "images/bh/listing-0006/photo-08.jpg",
+      "images/bh/listing-0006/photo-09.jpg",
+      "images/bh/listing-0006/photo-10.jpg",
+      "images/bh/listing-0006/photo-11.png",
+      "images/bh/listing-0006/photo-13.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg"
+    ],
+    "starting": 1243,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park At Kennesaw Apartments is a modern residential community in GA 30152 offering 1\u20133-bedroom apartments starting at $1,243/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-kennesaw-apartments/",
+    "price_text": "$1,243/mo"
+  },
+  {
+    "id": "park-at-chastain-apartments-7",
+    "title": "100 Summer Terrace Ln Atlanta",
+    "street": "100 Summer Terrace Ln Atlanta",
+    "city": "GA 30342",
+    "name": "Park at Chastain Apartments",
+    "price": 1513,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 55,
+      "y": 13
+    },
+    "latlng": [
+      33.8383,
+      -84.3297
+    ],
+    "img": "images/bh/listing-0007/photo-04.jpeg",
+    "gallery": [
+      "images/bh/listing-0007/photo-04.jpeg",
+      "images/bh/listing-0007/photo-05.jpg",
+      "images/bh/listing-0007/photo-06.jpg",
+      "images/bh/listing-0007/photo-07.jpg",
+      "images/bh/listing-0007/photo-08.jpg",
+      "images/bh/listing-0007/photo-09.jpg",
+      "images/bh/listing-0007/photo-10.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
+    ],
+    "starting": 1513,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park at Chastain Apartments is a modern residential community in GA 30342 offering 1\u20133-bedroom apartments starting at $1,513/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-chastain-apartments/",
+    "price_text": "$1,513/mo"
+  },
+  {
+    "id": "park-at-johns-creek-55-active-adult-livi-8",
+    "title": "4345 Alta Dr Suwanee",
+    "street": "4345 Alta Dr Suwanee",
+    "city": "GA 30024",
+    "name": "Park at Johns Creek 55+ Active Adult Living",
+    "price": 1560,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 68,
+      "y": 34
+    },
+    "latlng": [
+      33.5172,
+      -84.6962
+    ],
+    "img": "images/bh/listing-0008/photo-04.jpg",
+    "gallery": [
+      "images/bh/listing-0008/photo-04.jpg",
+      "images/bh/listing-0008/photo-05.jpeg",
+      "images/bh/listing-0008/photo-06.jpeg",
+      "images/bh/listing-0008/photo-07.jpeg",
+      "images/bh/listing-0008/photo-08.png",
+      "images/bh/listing-0008/photo-12.jpg",
+      "images/bh/listing-0008/photo-13.jpg",
+      "images/bh/listing-0008/photo-14.jpg",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg"
+    ],
+    "starting": 1560,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park at Johns Creek 55+ Active Adult Living is a modern residential community in GA 30024 offering 1\u20134-bedroom apartments starting at $1,560/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-johns-creek/",
+    "price_text": "$1,560/mo"
+  },
+  {
+    "id": "park-at-main-9",
+    "title": "2891 Lewis St Kennesaw",
+    "street": "2891 Lewis St Kennesaw",
+    "city": "GA 30144",
+    "name": "Park at Main",
+    "price": 1564,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 42,
+      "y": 38
+    },
+    "latlng": [
+      33.5356,
+      -84.7259
+    ],
+    "img": "images/bh/listing-0009/photo-05.jpeg",
+    "gallery": [
+      "images/bh/listing-0009/photo-05.jpeg",
+      "images/bh/listing-0009/photo-06.png",
+      "images/bh/listing-0009/photo-10.jpg",
+      "images/bh/listing-0009/photo-11.jpg",
+      "images/bh/listing-0009/photo-12.jpg",
+      "images/bh/listing-0009/photo-13.png",
+      "images/bh/listing-0009/photo-14.jpeg",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
+    ],
+    "starting": 1564,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park at Main is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,564/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-main/",
+    "price_text": "$1,564/mo"
+  },
+  {
+    "id": "park-at-princeton-lakes-10",
+    "title": "3871 Redwine Rd Atlanta",
+    "street": "3871 Redwine Rd Atlanta",
+    "city": "GA 30344",
+    "name": "Park at Princeton Lakes",
+    "price": 1296,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 60,
+      "y": 28
+    },
+    "latlng": [
+      33.8666,
+      -84.3863
+    ],
+    "img": "images/bh/listing-0010/photo-05.png",
+    "gallery": [
+      "images/bh/listing-0010/photo-05.png",
+      "images/bh/listing-0010/photo-06.jpg",
+      "images/bh/listing-0010/photo-07.jpg",
+      "images/bh/listing-0010/photo-08.jpg",
+      "images/bh/listing-0010/photo-09.jpg",
+      "images/bh/listing-0010/photo-10.jpg",
+      "images/bh/listing-0010/photo-11.jpg",
+      "images/bh/listing-0010/photo-12.jpg",
+      "images/bh/listing-0010/photo-13.jpg",
+      "images/bh/listing-0010/photo-14.jpg"
+    ],
+    "starting": 1296,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park at Princeton Lakes is a modern residential community in GA 30344 offering 1\u20133-bedroom apartments starting at $1,296/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-princeton-lakes/",
+    "price_text": "$1,296/mo"
+  },
+  {
+    "id": "park-at-the-hill-11",
+    "title": "5385 Peachtree Dunwoody Rd Atlanta",
+    "street": "5385 Peachtree Dunwoody Rd Atlanta",
+    "city": "GA 30342",
+    "name": "Park at The Hill",
+    "price": 1285,
+    "beds": 1,
+    "baths": 1.0,
+    "sqft": 800,
+    "type": "Apartment",
+    "status": "Available Now",
+    "isNew": false,
+    "pos": {
+      "x": 35,
+      "y": 52
+    },
+    "latlng": [
+      34.0253,
+      -84.0486
+    ],
+    "img": "images/bh/listing-0011/photo-05.png",
+    "gallery": [
+      "images/bh/listing-0011/photo-05.png",
+      "images/bh/listing-0011/photo-06.png",
+      "images/bh/listing-0011/photo-07.png",
+      "images/bh/listing-0011/photo-08.png",
+      "images/bh/listing-0011/photo-09.png",
+      "images/bh/listing-0011/photo-10.png",
+      "images/bh/listing-0011/photo-11.png",
+      "images/bh/listing-0011/photo-12.png",
+      "images/bh/listing-0011/photo-13.png",
+      "images/bh/listing-0011/photo-14.png"
+    ],
+    "starting": 1285,
+    "aiWhy": null,
+    "desired": {},
+    "inhome": [
+      "HAPPIER HOME",
+      "HEALTHIER YOU",
+      "SMARTER LIVING",
+      "PREMIUM POOL VIEW",
+      "ADA ACCESSIBLE FEATURES",
+      "DESK INCLUDED",
+      "DOUBLE VANITY IN BATHROOM",
+      "NO BALCONY INCLUDED",
+      "UPGRADED TWO BEDROOMS",
+      "TEN FOOT CEILINGS"
+    ],
+    "community": [],
+    "blurb": "Park at The Hill is a modern residential community in GA 30342 offering 1\u20134-bedroom apartments starting at $1,285/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "sourceUrl": "https://livebh.com/apartments/park-at-the-hill/",
+    "price_text": "$1,285/mo"
+  }
+];
+
 window.PR.LISTINGS = [
   {"id": "43-pool-circle-auburn-ga-30011-0", "title": "43 Pool Circle, Auburn, GA 30011", "street": "43 Pool Circle, Auburn, GA 30011", "city": "Atlanta, GA", "price": 1785, "beds": 3, "baths": 1.5, "sqft": 1571, "type": "Single-Family", "status": "Lease start after 06/29", "isNew": false, "pos": {"x": 26, "y": 22}, "latlng": [33.749, -84.008], "img": "images/listing-0000/photo-00.jpeg", "gallery": ["images/listing-0000/photo-00.jpeg", "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/09-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/11-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/13-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/15-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/18-Misc_20260305011718-lg.jpg"], "starting": 1785, "aiWhy": null, "desired": {}, "inhome": ["3 Beds 1.5 Baths 1571 Sqft.", "4 Beds 2.5 Baths 2406 Sqft.", "3 Beds 2 Baths 1745 Sqft.", "4 Beds 3 Baths 2520 Sqft.", "4 Beds 2 Baths 1626 Sqft.", "3 Beds 2 Baths 1760 Sqft.", "3 Beds 2 Baths 1844 Sqft.", "3 Beds 2.5 Baths 2252 Sqft.", "3 Beds 2.5 Baths 2232 Sqft.", "3 Beds 2 Baths 1102 Sqft."], "community": [], "blurb": "43 Pool Circle, Auburn, GA 30011 — 3 bed, 1.5 bath, 1571 sqft. Lease start after 06/29.", "sourceUrl": "https://rentprogress.com/houses-for-rent/market-atlanta-ga/page-2/rows-20/search-results/"},
   {"id": "367-greenwalk-place-hoschton-ga-30548-1", "title": "367 Greenwalk Place, Hoschton, GA 30548", "street": "367 Greenwalk Place, Hoschton, GA 30548", "city": "Atlanta, GA", "price": 2240, "beds": 4, "baths": 2.5, "sqft": 2406, "type": "Single-Family", "status": "Available Now", "isNew": false, "pos": {"x": 30, "y": 18}, "latlng": [34.0188, -84.2156], "img": "images/listing-0004/photo-00.jpg", "gallery": ["images/listing-0004/photo-00.jpg", "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/09-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/11-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/13-Misc_20260305011718-lg.jpg", "progress/images/interior-photos/15-Misc_20260305011718-lg.jpeg", "progress/images/interior-photos/18-Misc_20260305011718-lg.jpg"], "starting": 2240, "aiWhy": null, "desired": {}, "inhome": ["4 Beds 2.5 Baths 2406 Sqft."], "community": [], "blurb": "367 Greenwalk Place, Hoschton, GA 30548 — 4 bed, 2.5 bath, 2406 sqft. Available Now.", "sourceUrl": "https://rentprogress.com/property-details/367-greenwalk-place/hoschton/ga/30548/916529"},
@@ -940,7 +1661,39 @@ function Icon({name, size=20, sw=2, style, className}){
 }
 
 /* Progress Residential wordmark */
+/* BH square-box logo — inline SVG, no asset needed */
+/* ── Brand utilities ── */
+window.getBrand    = () => document.body.getAttribute('data-brand') || 'progress';
+window.isBH        = () => window.getBrand() === 'bh';
+window.getListings = () => (window.getBrand()==='bh' && window.BH && window.BH.LISTINGS && window.BH.LISTINGS.length)
+  ? window.BH.LISTINGS
+  : window.PR.LISTINGS;
+
+function useBrand(){
+  const [brand, setBrand] = React.useState(window.getBrand());
+  React.useEffect(()=>{
+    const handler = e => setBrand(e.detail || 'progress');
+    window.addEventListener('brandchange', handler);
+    return ()=>window.removeEventListener('brandchange', handler);
+  },[]);
+  return brand;
+}
+window.useBrand = useBrand;
+
+/* BH logo — uses provided brand image files */
+function BHLogo({ variant="white", height, width }){
+  const src = variant==="white"
+    ? "progress/images/BHlogo_white.png"
+    : "progress/images/BHlogo_blue.png";
+  const style = {display:'block',flexShrink:0};
+  if(width)  { style.width = width; style.height = 'auto'; }
+  else       { style.height = height||32; style.width = 'auto'; }
+  return <img src={src} alt="BH" style={style}/>;
+}
+
 function Logo({variant="white", width, height, style}){
+  const brand = document.body.getAttribute('data-brand');
+  if(brand==='bh') return <BHLogo variant={variant} width={width ? 75 : undefined} height={height ? 75 : undefined}/>;
   const src = window.assetUrl(variant==="white" ? "assets/logo-white.png" : "assets/logo-teal.png");
   const s = width ? {width, height:'auto'} : {height: height||32, width:'auto'};
   return React.createElement('img',{src, alt:"Progress Residential", style:{...s, display:'block', ...style}});
@@ -1130,10 +1883,11 @@ window.LeafletMap = LeafletMap;
 
 /* Home — hero + AI natural-language search */
 function Home({ onSearch, onOpenMap, onOpenDetail }){
+  const brand = window.useBrand();
   const [q, setQ] = React.useState("");
   const [listening, setListening] = React.useState(false);
   const chips = ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
-  const featured = window.PR.LISTINGS.find(l=>l.id==="hopewell")||window.PR.LISTINGS[0];
+  const featured = window.getListings()[0]||window.PR.LISTINGS[0];
 
   const submit = (text)=>{ const v=(text??q).trim(); if(!v) return; onSearch(v); };
 
@@ -1147,23 +1901,26 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
 
   return (
     <div className="home">
-      <div className="home-bg" style={{backgroundImage:`url(${window.assetUrl("assets/hero.jpg")})`}} />
+      <div className="home-bg" style={{backgroundImage: (window.getBrand()==='bh')
+        ? `url(progress/images/bhbg.jpg)`
+        : `url(${window.assetUrl("assets/hero.jpg")})`}} />
       <div className="home-scrim" />
 
       <header className="home-nav">
         <Logo variant="white" width={145} />
         <nav className="home-links">
           <button onClick={onOpenMap}>Find a Home</button>
-          <button>How It Works</button>
-          <button>Our Story</button>
+          {brand==='bh'
+            ? <><button>BH Lifestyle</button><button>Our Story</button><button>BH Portfolio</button></>
+            : <><button>How It Works</button><button>Our Story</button></>}
         </nav>
-        <button className="btn btn-lime resident-btn">Current Resident</button>
+        <button className="btn btn-lime resident-btn">Current Resident{brand==='bh'?'s':''}</button>
       </header>
 
       <div className="home-center">
         <div className="ai-eyebrow">
           <span className="live-dot" />
-          <span>Progress&nbsp;AI Search</span>
+          <span>{brand==='bh'?'BH':'Progress'}&nbsp;AI Search</span>
         </div>
         <div className={"search-card"+(listening?" is-listening":"")}>
           <input
@@ -1190,7 +1947,11 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
       <div className="home-foot">
         <div className="home-foot-left">
           <LocationPicker/>
-          <h1 className="display home-h1">Home is waiting.<br/>Let&rsquo;s find it.</h1>
+          <h1 className="display home-h1">
+            {(window.getBrand()==='bh')
+              ? <>A place to<br/>actually thrive.</>
+              : <>Home is waiting.<br/>Let&rsquo;s find it.</>}
+          </h1>
         </div>
 
         <div className="featured-wrap">
@@ -1923,7 +2684,7 @@ function Toast({ msg, onDone }){
 }
 
 function App(){
-  const L = window.PR.LISTINGS;
+  const L = window.getListings();
   const [screen, setScreen] = useState("home");
   const [detailId, setDetailId] = useState(null);
   const [query, setQuery] = useState("");
@@ -2154,6 +2915,7 @@ function LocationPicker(){
 }
 
 function HomeMobile(props){
+  const brand = window.useBrand();
   const [navOpen, setNavOpen] = React.useState(false);
   // We'll render the original Home but intercept via CSS + overlay
   return (
@@ -2182,9 +2944,10 @@ function HomeMobile(props){
 }
 
 function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
+  const brand = window.useBrand();
   const [q, setQ] = React.useState("");
   const [listening, setListening] = React.useState(false);
-  const featured = window.PR.LISTINGS.find(l=>l.id==="hopewell")||window.PR.LISTINGS[0];
+  const featured = window.getListings()[0]||window.PR.LISTINGS[0];
   const submit = (text)=>{ const v=(text??q).trim(); if(!v) return; onSearch(v); };
   const examples = [
     "Describe what matters to you in a home.",
@@ -2352,7 +3115,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
   const resultListings = React.useMemo(() => {
     if (!q || q.length < 2) return [];
     const lower = q.toLowerCase();
-    const L = window.PR.LISTINGS;
+    const L = window.getListings();
     const scored = L.map(l => {
       let score = 0;
       const text = (l.title + l.city + l.blurb + l.inhome.join(" ") + l.community.join(" ")).toLowerCase();
@@ -2378,17 +3141,20 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
 
   return (
     <div className="home">
-      <div className="home-bg" style={{backgroundImage:`url(${window.assetUrl("assets/hero.jpg")})`}} />
+      <div className="home-bg" style={{backgroundImage: (window.getBrand()==='bh')
+        ? `url(progress/images/bhbg.jpg)`
+        : `url(${window.assetUrl("assets/hero.jpg")})`}} />
       <div className="home-scrim" />
       <header className="home-nav">
         <Logo variant="white" width={145} />
         <nav className="home-links">
           <button onClick={onOpenMap}>Find a Home</button>
-          <button>How It Works</button>
-          <button>Our Story</button>
+          {brand==='bh'
+            ? <><button>BH Lifestyle</button><button>Our Story</button><button>BH Portfolio</button></>
+            : <><button>How It Works</button><button>Our Story</button></>}
         </nav>
         <button className="hamburger" onClick={onOpenNav} aria-label="Open menu"><Icon name="menu" size={22}/></button>
-        <button className="btn btn-lime resident-btn">Current Resident</button>
+        <button className="btn btn-lime resident-btn">Current Resident{brand==='bh'?'s':''}</button>
       </header>
       <div className="home-center">
         <div className={"search-glass"+(isExpanded?" expanded":"")}>
@@ -2489,7 +3255,11 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
       <div className="home-foot">
         <div className="home-foot-left">
           <LocationPicker/>
-          <h1 className="display home-h1">Home is waiting.<br/>Let&rsquo;s find it.</h1>
+          <h1 className="display home-h1">
+            {(window.getBrand()==='bh')
+              ? <>A place to<br/>actually thrive.</>
+              : <>Home is waiting.<br/>Let&rsquo;s find it.</>}
+          </h1>
         </div>
         <div className="featured-wrap">
           <div className="featured-copy">
@@ -3332,7 +4102,7 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
   }
 
   function App(){
-    const L = window.PR.LISTINGS;
+    const L = window.getListings();
     const [screen, setScreen] = useState("home");
     const [detailId, setDetailId] = useState(null);
     const [query, setQuery] = useState("");
@@ -3413,6 +4183,52 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
   }
 
   ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+})();
+</script>
+
+<!-- Brand Switcher -->
+<script type="text/babel">
+(function(){
+  function BrandSwitcher(){
+    const [brand, setBrand] = React.useState(
+      document.body.getAttribute('data-brand') || 'progress'
+    );
+
+    function switchTo(b){
+      setBrand(b);
+      document.body.setAttribute('data-brand', b);
+      // Force React to re-render by dispatching a custom event
+      window.dispatchEvent(new CustomEvent('brandchange', {detail: b}));
+    }
+
+    return (
+      <div className="brand-switcher">
+        <span className="brand-switcher-label">Brand</span>
+        <button
+          className={"brand-tab is-progress"+(brand==='progress'?' active':'')}
+          onClick={()=>switchTo('progress')}>
+          <img
+            src={window.assetUrl('assets/logo-teal.png')}
+            alt="Progress Residential"
+            className="brand-tab-logo"/>
+        </button>
+        <button
+          className={"brand-tab"+(brand==='bh'?' active':'')}
+          onClick={()=>switchTo('bh')}>
+          <img
+            src={brand==='bh' ? "progress/images/BHlogo_white.png" : "progress/images/BHlogo_blue.png"}
+            alt="BH"
+            height="18"
+            style={{display:'block',width:'auto'}}/>
+        </button>
+      </div>
+    );
+  }
+
+  const switcherRoot = document.createElement('div');
+  switcherRoot.id = 'brand-switcher-root';
+  document.body.appendChild(switcherRoot);
+  ReactDOM.createRoot(switcherRoot).render(<BrandSwitcher/>);
 })();
 </script>
 </body>
