@@ -1379,7 +1379,7 @@ function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBac
 
           <div className="rail-grid">
             {listings.map(l=>(
-              <ListingCard key={l.id} l={l} ai={!!ai}
+              <ListingCard key={l.id} l={l} ai={false}
                 fav={favs.includes(l.id)} onFav={onFav}
                 onOpen={onOpenDetail}
                 selected={compareIds.includes(l.id)} onToggle={onToggleCompare}
@@ -2955,7 +2955,7 @@ function MapScreenMobile(props){
           <div className="rail-grid">
             {props.listings.filter(l=>l.status!=='Leased').map(l=>(
               <div key={l.id} ref={el=>cardRefs.current[l.id]=el}>
-                <ListingCard l={l} ai={!!props.ai}
+                <ListingCard l={l} ai={false}
                   fav={props.favs.includes(l.id)} onFav={props.onFav}
                   onOpen={props.onOpenDetail}
                   selected={props.compareIds.includes(l.id)} onToggle={props.onToggleCompare}
