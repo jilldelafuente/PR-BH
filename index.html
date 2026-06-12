@@ -326,6 +326,21 @@ img{display:block}
 .home-pin:hover .pin-price,.home-pin.active .pin-price{background-color:var(--lime);color:var(--teal);transform:scale(1.12)}
 .home-pin.selected{z-index:8}
 .home-pin.selected .pin-price{background-color:var(--lime);color:var(--teal);outline:2px solid var(--teal);outline-offset:1px}
+.pin-preview{position:absolute;z-index:20;background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-lg);width:240px;transform:translate(-50%,-110%);pointer-events:auto;overflow:hidden;animation:fadeUp .15s ease}
+.pin-preview::after{content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:14px;height:14px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%);box-shadow:2px 2px 4px rgba(0,0,0,.08)}
+.pin-preview-img{width:100%;height:120px;object-fit:cover;display:block}
+.pin-preview-body{padding:10px 12px 12px}
+.pin-preview-price{font-family:"Raleway";font-weight:700;font-size:17px;color:var(--ink)}
+.pin-preview-price span{font-size:12px;font-weight:400;color:var(--gray);font-family:"Open Sans"}
+.pin-preview-addr{font-size:12px;color:var(--ink);font-weight:600;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pin-preview-city{font-size:11px;color:var(--gray);margin-top:1px}
+.pin-preview-stats{display:flex;gap:10px;margin-top:8px;font-size:11px;color:var(--gray)}
+.pin-preview-stats span{display:flex;align-items:center;gap:3px}
+.pin-preview-footer{display:flex;gap:6px;margin-top:10px}
+.pin-preview-footer button{flex:1;font-family:"Raleway";font-weight:700;font-size:12px;padding:8px 0;border-radius:6px;transition:var(--tr)}
+.pin-preview-view{background:var(--teal);color:#fff}
+.pin-preview-view:hover{background:var(--teal-700)}
+.pin-preview-close{background:var(--surface);color:var(--gray);font-size:14px;flex:0 0 32px}
 
 .map-rail{width:var(--rail-w);flex-shrink:0;border-left:1px solid var(--line);padding:22px 24px 0;background:#fff}
 .rail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -1098,7 +1113,7 @@ function LeafletMap({ listings, hovered, selected, selectedPin, onHover, onClick
       if(!isLeased){
         m.on('mouseover',()=>onHover(l.id))
          .on('mouseout',()=>onHover(null))
-         .on('click',()=>onClickPin(l.id));
+         .on('click',(e)=>onClickPin(l.id, e.originalEvent));
       }
       markersRef.current[l.id] = m;
     });
@@ -1198,6 +1213,33 @@ window.Home = Home;
 
 /* Map / search-results screen */
 function fmt(n){ return n.toLocaleString('en-US'); }
+
+function PinPreview({ listing, pinPos, onOpen, onClose }){
+  if(!listing) return null;
+  const street = (listing.street||listing.title||'').split(',')[0].trim();
+  const city   = (listing.street||listing.title||'').split(',').slice(1).join(',').trim()||listing.city;
+  return (
+    <div className="pin-preview"
+      style={{left: pinPos.x, top: pinPos.y}}
+      onClick={e=>e.stopPropagation()}>
+      <img className="pin-preview-img" src={listing.img} alt={street}
+        onError={e=>{e.target.style.background='var(--surface)';e.target.removeAttribute('src');}}/>
+      <div className="pin-preview-body">
+        <div className="pin-preview-price">${listing.price.toLocaleString()}<span>/mo</span></div>
+        <div className="pin-preview-addr">{street}</div>
+        <div className="pin-preview-city">{city}</div>
+        <div className="pin-preview-stats">
+          <span><BedIcon size={13}/>{listing.beds} bd</span>
+          <span><BathIcon size={13}/>{listing.baths} ba</span>
+          <span><SqftIcon size={13}/>{listing.sqft.toLocaleString()} sqft</span>
+        </div>
+        <div className="pin-preview-footer">
+          <button className="pin-preview-view" onClick={()=>{onClose();onOpen(listing.id);}}>View Home</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function HomePin({ listing, active, selected, onHover, onClick }){
   return (
@@ -2780,6 +2822,8 @@ function MapScreenMobile(props){
   const [mobileView, setMobileView] = React.useState("split");
   const [hovered, setHovered] = React.useState(null);
   const [selectedPin, setSelectedPin] = React.useState(null);
+  const [pinPos, setPinPos] = React.useState({x:0,y:0});
+  const mapPaneRef = React.useRef(null);
   const [railOpen, setRailOpen] = React.useState(true);
   const [drawMode, setDrawMode] = React.useState(false);
   const [drawDone, setDrawDone] = React.useState(false);
@@ -2794,10 +2838,18 @@ function MapScreenMobile(props){
     !railOpen ? "rail-collapsed" : "",
   ].filter(Boolean).join(" ");
 
-  function handlePinClick(id){
+  function handlePinClick(id, nativeEvent){
     setSelectedPin(id);
     setHovered(id);
     setMobileView("split");
+    // Calculate click position relative to the map pane
+    if(nativeEvent && mapPaneRef.current){
+      const rect = mapPaneRef.current.getBoundingClientRect();
+      setPinPos({
+        x: nativeEvent.clientX - rect.left,
+        y: nativeEvent.clientY - rect.top,
+      });
+    }
     if(railOpen){
       setTimeout(()=>{
         const el = cardRefs.current[id];
@@ -2878,7 +2930,7 @@ function MapScreenMobile(props){
       )}
 
       <div className="map-body" style={{position:'relative'}}>
-        <div className="map-pane">
+        <div className="map-pane" ref={mapPaneRef} onClick={()=>setSelectedPin(null)}>
           <LeafletMap
             listings={props.listings}
             hovered={hovered}
@@ -2890,6 +2942,18 @@ function MapScreenMobile(props){
             onDrawComplete={()=>{ setDrawMode(false); setDrawDone(true); }}
             onClearDraw={()=>{ setDrawDone(false); if(window._clearMapDraw) window._clearMapDraw(); }}
           />
+
+          {/* Pin preview popup */}
+          {selectedPin && (()=>{
+            const pl = props.listings.find(l=>l.id===selectedPin);
+            return pl ? (
+              <PinPreview
+                listing={pl}
+                pinPos={pinPos}
+                onOpen={props.onOpenDetail}
+                onClose={()=>setSelectedPin(null)}/>
+            ) : null;
+          })()}
 
           {/* Draw controls */}
           <div className="map-float-top">
@@ -3135,6 +3199,9 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
               </div>
             </div>
 
+            {/* AI — What makes this home right for you */}
+            <AiWhySection l={l} query={query}/>
+
             {/* Feature highlights — right below address */}
             <div className="detail-highlights">
               <div className="eyebrow">Highlights</div>
@@ -3171,9 +3238,6 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
               <div className="detail-cost-row"><span className="detail-cost-key">Valet waste service</span><span className="detail-cost-val">$25.00</span></div>
               <div className="detail-cost-note">Base rent reflects the lowest available 12-month lease price. Additional optional add-ons and one-time move-in fees may apply. Pricing subject to change.</div>
             </div>
-
-            {/* AI — What makes this home right for you */}
-            <AiWhySection l={l} query={query}/>
 
             {/* About */}
             <div className="detail-about">
