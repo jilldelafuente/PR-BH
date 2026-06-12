@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Python scraper outputs — not needed for the published site
+rentprogress_atlanta.csv
+rentprogress_atlanta.json
+debug_page_*.html
+debug_search.html
+__pycache__/
+*.pyc
+
+# Scraper scripts — not part of the published site
+scrape_rentprogress.py
+scrape_photos.py
+inject_data.py
+download_interiors.py
+
+# Detail page scrape folders (not used in the published prototype)
+images/detail-*/
+
+# Unsplash interiors download (reverted, not used)
+images/interiors/
+
+# Backup
+index.html.bak
+
+# Claude settings
+.claude/
