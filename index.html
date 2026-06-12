@@ -2686,7 +2686,7 @@ function SavedDrawer({ listings, favs, onFav, onOpenDetail, onClose }){
 }
 
 /* ---- Recommended For You ---- */
-function RecommendedSection({ listings, query, favs, onFav, onOpen }){
+function RecommendedSection({ listings, query, favs, onFav, onOpen, compareIds, onToggleCompare }){
   // Score listings based on query keywords to pick 3 that aren't the top results
   const available = listings.filter(l => l.status !== 'Leased');
   const lower = (query||'').toLowerCase();
@@ -2766,7 +2766,8 @@ function RecommendedSection({ listings, query, favs, onFav, onOpen }){
             <ListingCard key={l.id} l={withReason} ai={true} recommended={true} recAngle={angle}
               fav={favs&&favs.includes(l.id)} onFav={onFav}
               onOpen={onOpen}
-              selected={false} onToggle={()=>{}}
+              selected={compareIds&&compareIds.includes(l.id)}
+              onToggle={onToggleCompare||(() => {})}
               hovered={false} onHover={()=>{}}/>
           );
         })}
@@ -2942,7 +2943,9 @@ function MapScreenMobile(props){
             query={props.query}
             favs={props.favs}
             onFav={props.onFav}
-            onOpen={props.onOpenDetail}/>
+            onOpen={props.onOpenDetail}
+            compareIds={props.compareIds}
+            onToggleCompare={props.onToggleCompare}/>
 
           <div className="rail-sort">
             <span>{props.ai?"Sorted for your search":"All results"}</span>
