@@ -50,10 +50,10 @@
   --teal:#091A27;
   --teal-700:#05101A;
   --navy:#091A27;
-  --lime:#C8A96E;
+  --lime:#84CBA1;
   --lime-2:#B8913C;
   --lime-bg:#F8F4ED;
-  --green:#C8A96E;
+  --green:#84CBA1;
   --green-soft:#D4BC90;
   --ai-grad:linear-gradient(84deg,rgba(200,169,110,.30) 0%,rgba(184,145,60,.30) 100%);
   --ai-grad-strong:linear-gradient(84deg,rgba(200,169,110,.85) 0%,rgba(184,145,60,.85) 100%);
@@ -76,7 +76,7 @@
 [data-brand="bh"] .detail-title{font-family:"Playfair Display",serif;font-weight:400}
 /* BH nav — Playfair Display 16px, no underline, white */
 [data-brand="bh"] .home-links button{font-family:"Playfair Display",serif;font-size:16px;font-weight:400;letter-spacing:.02em;color:#fff;opacity:1}
-[data-brand="bh"] .home-links button:hover{color:#C8A96E}
+[data-brand="bh"] .home-links button:hover{color:#84CBA1}
 /* BH CTAs */
 [data-brand="bh"] .btn-lime{background:#091A27;color:#fff}
 [data-brand="bh"] .btn-lime:hover{background:#05101A;color:#fff;transform:none}
@@ -87,6 +87,21 @@
 [data-brand="bh"] .search-card{border-radius:0!important}
 [data-brand="bh"] .ai-go{border-radius:0!important}
 /* BH hero bg — swapped via JS */
+/* Hide Progress-specific detail sections when BH brand is active */
+[data-brand="bh"] .detail-cost,
+[data-brand="bh"] .detail-about,
+[data-brand="bh"] .detail-policy,
+[data-brand="bh"] .detail-qual-callout,
+[data-brand="bh"] .detail-similar,
+[data-brand="bh"] .detail-cta { display:none !important; }
+/* BH detail: extend scroll area so sticky chat doesn't overlap */
+[data-brand="bh"] .detail-content-scroll { padding-bottom:140px }
+/* BH: remove double-rule (eyebrow already provides top divider) */
+[data-brand="bh"] .detail-highlights-grid { border-top:none; border-bottom:none }
+[data-brand="bh"] .detail-highlight:nth-last-child(1),
+[data-brand="bh"] .detail-highlight:nth-last-child(2) { border-bottom:none }
+/* BH: tighten unit type label since eyebrow handles section heading */
+[data-brand="bh"] .bh-plans-title { display:none }
 
 /* ── Brand switcher widget ──────────────────────────────────────────────── */
 .brand-switcher{
@@ -683,6 +698,39 @@ img{display:block}
 .detail-similar-price{font-family:"Raleway";font-weight:700;font-size:17px;color:var(--ink)}
 .detail-similar-addr{font-size:12px;color:var(--gray);margin-top:3px;line-height:1.35}
 .detail-similar-stats{font-size:12px;color:var(--ink);margin-top:5px}
+/* ── BH unit-type layout ─────────── */
+.bh-stats-bar{display:flex;gap:0;margin-top:20px;max-width:680px;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.bh-stat{flex:1;padding:14px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.bh-stat:last-child{border-right:none}
+.bh-stat-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray)}
+.bh-stat-val{font-family:"Playfair Display",serif;font-size:15px;font-weight:400;color:var(--ink)}
+.bh-stat-sub{font-size:11px;color:var(--teal);font-weight:600;cursor:pointer;text-decoration:underline;background:none;border:none;padding:0;font-family:inherit}
+.bh-plans{margin-top:28px;max-width:680px}
+.bh-plans-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:16px}
+.bh-tabs{display:flex;gap:0;border:1px solid var(--line);border-radius:2px;overflow:hidden;width:fit-content;margin-bottom:20px;flex-wrap:wrap}
+.bh-tab{padding:9px 18px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;border:none;background:none;white-space:nowrap;transition:var(--tr);border-right:1px solid var(--line)}
+.bh-tab:last-child{border-right:none}
+.bh-tab:hover{background:var(--surface);color:var(--ink)}
+.bh-tab.active{background:var(--teal);color:#fff}
+.bh-unit-list{display:flex;flex-direction:column;gap:12px}
+.bh-unit{border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:var(--tr)}
+.bh-unit:hover{box-shadow:var(--sh);border-color:transparent}
+.bh-unit-head{display:flex;align-items:stretch}
+.bh-unit-fp{width:160px;flex-shrink:0;background:#f8f8f6;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);overflow:hidden;min-height:200px}
+.bh-unit-fp img{width:100%;height:100%;object-fit:contain;padding:8px}
+.bh-unit-info{flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.bh-unit-label{font-family:"Playfair Display",serif;font-size:16px;color:var(--ink)}
+.bh-unit-price{font-family:"Playfair Display",serif;font-size:20px;color:var(--ink)}
+.bh-unit-price span{font-size:12px;font-family:"Open Sans";color:var(--gray)}
+.bh-unit-meta{font-size:12px;color:var(--gray);display:flex;gap:14px;flex-wrap:wrap}
+.bh-unit-avail{font-size:12px;font-weight:700;color:var(--teal);margin-top:2px}
+.bh-unit-links{display:flex;gap:12px;margin-top:6px}
+.bh-unit-link{font-size:12px;font-weight:600;color:var(--teal);cursor:pointer;background:none;border:none;padding:0;font-family:inherit;text-decoration:underline}
+.bh-amenities{margin-top:28px;max-width:680px}
+.bh-amenities-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.bh-amenities-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 24px}
+.bh-amenity{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink)}
+.bh-amenity-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
 .detail-qual-callout{margin-top:32px;max-width:680px;background:#E8F3F4;border-radius:var(--r-card);overflow:hidden;display:flex;align-items:center}
 .detail-qual-callout-left{flex:1;padding:32px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 .detail-qual-callout-title{font-size:28px;line-height:1.15;color:var(--ink);margin:0}
@@ -860,7 +908,7 @@ window.BH.LISTINGS = [
     "price": 1682,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 634,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -875,6 +923,16 @@ window.BH.LISTINGS = [
     "img": "images/bh/listing-0000/photo-01.png",
     "gallery": [
       "images/bh/listing-0000/photo-01.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/09-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/11-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/13-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/15-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/18-Misc_20260305011718-lg.jpg"
+    ],
+    "floorplans": [
       "images/bh/listing-0000/photo-02.png",
       "images/bh/listing-0000/photo-03.png",
       "images/bh/listing-0000/photo-04.png",
@@ -883,7 +941,11 @@ window.BH.LISTINGS = [
       "images/bh/listing-0000/photo-07.png",
       "images/bh/listing-0000/photo-08.png",
       "images/bh/listing-0000/photo-09.png",
-      "images/bh/listing-0000/photo-10.png"
+      "images/bh/listing-0000/photo-10.png",
+      "images/bh/listing-0000/photo-11.png",
+      "images/bh/listing-0000/photo-12.png",
+      "images/bh/listing-0000/photo-13.png",
+      "images/bh/listing-0000/photo-14.png"
     ],
     "starting": 1682,
     "aiWhy": null,
@@ -901,9 +963,264 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Adley City Springs is a modern residential community in GA 30328 offering 1\u20134-bedroom apartments starting at $1,682/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Adley City Springs is a modern residential community in GA 30328 offering 1\u20132-bedroom apartments starting at $1,682/mo. Featuring 634\u20131,396 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/adley-city-springs/",
-    "price_text": "$1,682/mo"
+    "price_text": "$1,682/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 708,
+        "price_min": 1862,
+        "price_max": 2085,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 708 sqft Indigo  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1058,
+        "price_min": 2500,
+        "price_max": 2900,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1058 sqft Verde  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1090,
+        "price_min": 2484,
+        "price_max": 2782,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1090 sqft Jade  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1151,
+        "price_min": 2788,
+        "price_max": 3118,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1151 sqft Heather  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 720,
+        "price_min": 1909,
+        "price_max": 2092,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 720 - 747 sqft Denim  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1020,
+        "price_min": 2154,
+        "price_max": 2468,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 1020 sqft Emerald  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1047,
+        "price_min": 2483,
+        "price_max": 2758,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1047 sqft Viridian  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1233,
+        "price_min": 3405,
+        "price_max": 3780,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1233 sqft Amethyst  2D(1).png"
+      },
+      {
+        "label": "Studio",
+        "beds": 0,
+        "baths": 1.0,
+        "sqft": 634,
+        "price_min": 1682,
+        "price_max": 1867,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 0x1 634 sqft Cobalt 2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.5,
+        "sqft": 985,
+        "price_min": 2235,
+        "price_max": 2413,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 985 sqft Sapphire  2D(1).png"
+      },
+      {
+        "label": "Studio",
+        "beds": 0,
+        "baths": 1.0,
+        "sqft": 650,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 0x1 650 sqft Slate  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 698,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 698 sqft Agean  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 707,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 707 sqft Azure  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 758,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 758 sqft Lapis  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 904,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-14.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 904 sqft Cerulean  2D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 995,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-15.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 995 sqft Cyan  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1111,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-16.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1111 sqft Mint  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1112,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-17.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1112 sqft Hazel  2D(2).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1246,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-18.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1246 sqft Lilac  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1342,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-19.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1342 sqft Iris  2D(1).png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1396,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-20.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1396 sqft Wisteria  2D(1).png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "bradley-park-1",
@@ -914,7 +1231,7 @@ window.BH.LISTINGS = [
     "price": 1513,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 943,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -929,15 +1246,21 @@ window.BH.LISTINGS = [
     "img": "images/bh/listing-0001/photo-05.png",
     "gallery": [
       "images/bh/listing-0001/photo-05.png",
-      "images/bh/listing-0001/photo-06.png",
-      "images/bh/listing-0001/photo-07.png",
-      "images/bh/listing-0001/photo-08.png",
-      "images/bh/listing-0001/photo-09.png",
       "images/bh/listing-0001/photo-10.png",
       "images/bh/listing-0001/photo-14.jpg",
       "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
       "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
-      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/09-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/11-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/13-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/15-Misc_20260305011718-lg.jpeg"
+    ],
+    "floorplans": [
+      "images/bh/listing-0001/photo-06.png",
+      "images/bh/listing-0001/photo-07.png",
+      "images/bh/listing-0001/photo-08.png",
+      "images/bh/listing-0001/photo-09.png"
     ],
     "starting": 1513,
     "aiWhy": null,
@@ -955,9 +1278,77 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Bradley Park is a modern residential community in GA 30040 offering 1\u20134-bedroom apartments starting at $1,513/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Bradley Park is a modern residential community in GA 30040 offering 1\u20133-bedroom apartments starting at $1,513/mo. Featuring 943\u20131,508 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/bradley-park/",
-    "price_text": "$1,513/mo"
+    "price_text": "$1,513/mo",
+    "unit_types": [
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1341,
+        "price_min": 1968,
+        "price_max": 2189,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 2x2 1341 sqft The Devin 2D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 943,
+        "price_min": 1513,
+        "price_max": 1922,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 1x1 943 sqft The Avenue 2D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1241,
+        "price_min": 1865,
+        "price_max": 2132,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 2x2 1241 sqft The Bradley 2D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1508,
+        "price_min": 2144,
+        "price_max": 2398,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 3x2 1508 sqft The Estate 2D.png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "canyon-springs-apartments-2",
@@ -968,7 +1359,7 @@ window.BH.LISTINGS = [
     "price": 1271,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 684,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -993,6 +1384,7 @@ window.BH.LISTINGS = [
       "images/bh/listing-0002/photo-13.jpg",
       "images/bh/listing-0002/photo-14.png"
     ],
+    "floorplans": [],
     "starting": 1271,
     "aiWhy": null,
     "desired": {},
@@ -1009,9 +1401,121 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Canyon Springs Apartments is a modern residential community in GA 30253 offering 1\u20133-bedroom apartments starting at $1,271/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Canyon Springs Apartments is a modern residential community in GA 30253 offering 1\u20133-bedroom apartments starting at $1,271/mo. Featuring 684\u20131,509 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/canyon-springs-apartments/",
-    "price_text": "$1,271/mo"
+    "price_text": "$1,271/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 985,
+        "price_min": 1556,
+        "price_max": 2095,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A3Cottonwood985CanyonSprings.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1149,
+        "price_min": 1744,
+        "price_max": 2361,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B11149CanyonSprings.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 815,
+        "price_min": 1558,
+        "price_max": 2017,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A2Cedar815CanyonSprings.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1294,
+        "price_min": 1810,
+        "price_max": 2403,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B21294CanyonSprings.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 684,
+        "price_min": 1271,
+        "price_max": 1665,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A1Birch684CanyonSprings.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1325,
+        "price_min": 1805,
+        "price_max": 2128,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B31325CanyonSprings.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1509,
+        "price_min": 2168,
+        "price_max": 2579,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/C11509CanyonSprings.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1079,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-07.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A4Elm1079CanyonSprings.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "chatteron-springs-3",
@@ -1022,7 +1526,7 @@ window.BH.LISTINGS = [
     "price": 2335,
     "beds": 3,
     "baths": 2.5,
-    "sqft": 800,
+    "sqft": 1749,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1037,15 +1541,22 @@ window.BH.LISTINGS = [
     "img": "images/bh/listing-0003/photo-01.png",
     "gallery": [
       "images/bh/listing-0003/photo-01.png",
-      "images/bh/listing-0003/photo-02.png",
-      "images/bh/listing-0003/photo-03.png",
-      "images/bh/listing-0003/photo-04.png",
-      "images/bh/listing-0003/photo-05.png",
       "images/bh/listing-0003/photo-06.png",
       "images/bh/listing-0003/photo-08.jpg",
       "images/bh/listing-0003/photo-09.jpg",
       "images/bh/listing-0003/photo-10.jpg",
-      "images/bh/listing-0003/photo-11.png"
+      "images/bh/listing-0003/photo-11.png",
+      "images/bh/listing-0003/photo-12.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
+    ],
+    "floorplans": [
+      "images/bh/listing-0003/photo-02.png",
+      "images/bh/listing-0003/photo-03.png",
+      "images/bh/listing-0003/photo-04.png",
+      "images/bh/listing-0003/photo-05.png",
+      "images/bh/listing-0003/photo-13.jpg"
     ],
     "starting": 2335,
     "aiWhy": null,
@@ -1063,9 +1574,77 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Chatteron Springs is a modern residential community in GA 30349 offering 3\u20135-bedroom apartments starting at $2,335/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Chatteron Springs is a modern residential community in GA 30349 offering 3\u20135-bedroom apartments starting at $2,335/mo. Featuring 1,749\u20132,361 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/chatteron-springs/",
-    "price_text": "$2,335/mo"
+    "price_text": "$2,335/mo",
+    "unit_types": [
+      {
+        "label": "4\u00d72",
+        "beds": 4,
+        "baths": 2.5,
+        "sqft": 1927,
+        "price_min": 2430,
+        "price_max": 2454,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 4x2 and a half bath 1927 sqft Aisle 2D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1749,
+        "price_min": 2335,
+        "price_max": 2568,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 3x2 and a half bath 1749 sqft Darwin 2D.png"
+      },
+      {
+        "label": "5\u00d73",
+        "beds": 5,
+        "baths": 3.0,
+        "sqft": 2361,
+        "price_min": 2700,
+        "price_max": 2997,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 5x3 2361 sqft Robie 2D.png"
+      },
+      {
+        "label": "4\u00d72",
+        "beds": 4,
+        "baths": 2.5,
+        "sqft": 2174,
+        "price_min": 2528,
+        "price_max": 2553,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 4x2 and a half bath 2174 sqft Elston 2D.png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "grand-oasis-apartment-homes-4",
@@ -1076,7 +1655,7 @@ window.BH.LISTINGS = [
     "price": 1329,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 750,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1101,6 +1680,7 @@ window.BH.LISTINGS = [
       "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
       "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg"
     ],
+    "floorplans": [],
     "starting": 1329,
     "aiWhy": null,
     "desired": {},
@@ -1117,9 +1697,110 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Grand Oasis Apartment Homes is a modern residential community in GA 30024 offering 1\u20134-bedroom apartments starting at $1,329/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Grand Oasis Apartment Homes is a modern residential community in GA 30024 offering 1\u20133-bedroom apartments starting at $1,329/mo. Featuring 750\u20131,549 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/grand-oasis-apartment-homes/",
-    "price_text": "$1,329/mo"
+    "price_text": "$1,329/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 881,
+        "price_min": 1355,
+        "price_max": 1825,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Palm A2 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1229,
+        "price_min": 1551,
+        "price_max": 2046,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Cancun Traditional B1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1363,
+        "price_min": 1749,
+        "price_max": 2127,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Cancun B2 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1548,
+        "price_min": 1796,
+        "price_max": 2265,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Viva Oasis C1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 750,
+        "price_min": 1329,
+        "price_max": 1549,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Palm Traditional A1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1549,
+        "price_min": 2301,
+        "price_max": 2674,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence-at-Grand-Oasis-Cancun-B3.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1121,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence-at-Grand-Oasis-Palm-A3.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "heights-of-kennesaw-apartments-5",
@@ -1130,7 +1811,7 @@ window.BH.LISTINGS = [
     "price": 1346,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 696,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1145,15 +1826,24 @@ window.BH.LISTINGS = [
     "img": "images/bh/listing-0005/photo-04.png",
     "gallery": [
       "images/bh/listing-0005/photo-04.png",
+      "images/bh/listing-0005/photo-11.png",
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/09-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/11-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/13-Misc_20260305011718-lg.jpg",
+      "progress/images/interior-photos/15-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/18-Misc_20260305011718-lg.jpg"
+    ],
+    "floorplans": [
       "images/bh/listing-0005/photo-05.png",
       "images/bh/listing-0005/photo-06.png",
       "images/bh/listing-0005/photo-07.png",
       "images/bh/listing-0005/photo-08.png",
       "images/bh/listing-0005/photo-09.png",
       "images/bh/listing-0005/photo-10.png",
-      "images/bh/listing-0005/photo-11.png",
-      "images/bh/listing-0005/photo-13.png",
-      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg"
+      "images/bh/listing-0005/photo-13.png"
     ],
     "starting": 1346,
     "aiWhy": null,
@@ -1171,9 +1861,77 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Heights of Kennesaw Apartments is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,346/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Heights of Kennesaw Apartments is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,346/mo. Featuring 696\u20131,384 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/heights-of-kennesaw-apartments/",
-    "price_text": "$1,346/mo"
+    "price_text": "$1,346/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 696,
+        "price_min": 1355,
+        "price_max": 1521,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 1x1 696 sqft Tara 2D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1140,
+        "price_min": 1795,
+        "price_max": 2051,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 2x2 1140 sqft Twelve Oaks 2D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1384,
+        "price_min": 1952,
+        "price_max": 2247,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 3x2 1384 sqft Jefferson 2D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 843,
+        "price_min": 1346,
+        "price_max": 1793,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 1x1 843 sqft Monticello 2D.png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-kennesaw-apartments-6",
@@ -1184,7 +1942,7 @@ window.BH.LISTINGS = [
     "price": 1243,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 750,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1206,8 +1964,11 @@ window.BH.LISTINGS = [
       "images/bh/listing-0006/photo-09.jpg",
       "images/bh/listing-0006/photo-10.jpg",
       "images/bh/listing-0006/photo-11.png",
-      "images/bh/listing-0006/photo-13.png",
-      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg"
+      "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
+      "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg"
+    ],
+    "floorplans": [
+      "images/bh/listing-0006/photo-13.png"
     ],
     "starting": 1243,
     "aiWhy": null,
@@ -1225,9 +1986,99 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park At Kennesaw Apartments is a modern residential community in GA 30152 offering 1\u20133-bedroom apartments starting at $1,243/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park At Kennesaw Apartments is a modern residential community in GA 30152 offering 1\u20133-bedroom apartments starting at $1,243/mo. Featuring 750\u20131,435 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-kennesaw-apartments/",
-    "price_text": "$1,243/mo"
+    "price_text": "$1,243/mo",
+    "unit_types": [
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1149,
+        "price_min": 1516,
+        "price_max": 1707,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Cedar.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 750,
+        "price_min": 1243,
+        "price_max": 1454,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Alder.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 888,
+        "price_min": 1473,
+        "price_max": 1594,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/THe Birch End.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1222,
+        "price_min": 1540,
+        "price_max": 1736,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Dogwood.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 865,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Birch.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1435,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Elderberry.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-chastain-apartments-7",
@@ -1238,7 +2089,7 @@ window.BH.LISTINGS = [
     "price": 1513,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 756,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1263,6 +2114,7 @@ window.BH.LISTINGS = [
       "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
       "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
     ],
+    "floorplans": [],
     "starting": 1513,
     "aiWhy": null,
     "desired": {},
@@ -1279,9 +2131,99 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park at Chastain Apartments is a modern residential community in GA 30342 offering 1\u20133-bedroom apartments starting at $1,513/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park at Chastain Apartments is a modern residential community in GA 30342 offering 1\u20133-bedroom apartments starting at $1,513/mo. Featuring 756\u20131,675 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-chastain-apartments/",
-    "price_text": "$1,513/mo"
+    "price_text": "$1,513/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 895,
+        "price_min": 1513,
+        "price_max": 1821,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/RiverBirch_895sqft.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1252,
+        "price_min": 2116,
+        "price_max": 2327,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Oak_1252sqft.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 756,
+        "price_min": 1564,
+        "price_max": 1715,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Maple_756sqft.jpg"
+      },
+      {
+        "label": "2\u00d71",
+        "beds": 2,
+        "baths": 1.0,
+        "sqft": 1116,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Dogwood_1116sqft.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1410,
+        "price_min": 2351,
+        "price_max": 2586,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Cedar_1410sqft.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1675,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Magolia_TH_1675sqft.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-johns-creek-55-active-adult-livi-8",
@@ -1292,7 +2234,7 @@ window.BH.LISTINGS = [
     "price": 1560,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 724,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1317,6 +2259,7 @@ window.BH.LISTINGS = [
       "progress/images/interior-photos/04-Misc_20260305011718-lg.jpeg",
       "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg"
     ],
+    "floorplans": [],
     "starting": 1560,
     "aiWhy": null,
     "desired": {},
@@ -1333,9 +2276,154 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park at Johns Creek 55+ Active Adult Living is a modern residential community in GA 30024 offering 1\u20134-bedroom apartments starting at $1,560/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park at Johns Creek 55+ Active Adult Living is a modern residential community in GA 30024 offering 1\u20133-bedroom apartments starting at $1,560/mo. Featuring 724\u20131,280 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-johns-creek/",
-    "price_text": "$1,560/mo"
+    "price_text": "$1,560/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 822,
+        "price_min": 1715,
+        "price_max": 1715,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Dogwood - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 724,
+        "price_min": 1560,
+        "price_max": 1560,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - Beech - The Beech - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 771,
+        "price_min": 1870,
+        "price_max": 1870,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A1_New.jpeg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1055,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Maple - Maple - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1061,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Maple - Maple - 3D Floor Plan(1).jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1065,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-08.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Poplar - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1126,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-09.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Spruce - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1135,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-11.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC- The Douglas - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1200,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-12.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Sycamore - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1267,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-13.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B2 - New.jpeg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1280,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-14.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Ficus - Level 1 - 3D Floor Plan.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-main-9",
@@ -1346,7 +2434,7 @@ window.BH.LISTINGS = [
     "price": 1564,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 670,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1371,6 +2459,7 @@ window.BH.LISTINGS = [
       "progress/images/interior-photos/06-Misc_20260305011718-lg.jpg",
       "progress/images/interior-photos/07-Misc_20260305011718-lg.jpg"
     ],
+    "floorplans": [],
     "starting": 1564,
     "aiWhy": null,
     "desired": {},
@@ -1387,9 +2476,187 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park at Main is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,564/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park at Main is a modern residential community in GA 30144 offering 1\u20133-bedroom apartments starting at $1,564/mo. Featuring 670\u20131,755 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-main/",
-    "price_text": "$1,564/mo"
+    "price_text": "$1,564/mo",
+    "unit_types": [
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 930,
+        "price_min": 1564,
+        "price_max": 1857,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Springhill -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1030,
+        "price_min": 1687,
+        "price_max": 1887,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Lynwood - 1 Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1148,
+        "price_min": 1914,
+        "price_max": 2146,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-2 Crestfield -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 754,
+        "price_min": 1653,
+        "price_max": 1801,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Meadowlark - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.5,
+        "sqft": 784,
+        "price_min": 1638,
+        "price_max": 1797,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 half Broadview - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 855,
+        "price_min": 1568,
+        "price_max": 1673,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Oakmore - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3\u00d73",
+        "beds": 3,
+        "baths": 3.0,
+        "sqft": 1502,
+        "price_min": 2507,
+        "price_max": 2732,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-3 Windsong -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 670,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Parkline -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 738,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Riverstone -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1080,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Brookhaven -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1112,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2half Rosemont -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1201,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Greentree -Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1271,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Laketree - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1755,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-2half Creekside - Floor - 3D Floor Plan web.png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-princeton-lakes-10",
@@ -1400,7 +2667,7 @@ window.BH.LISTINGS = [
     "price": 1296,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 643,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1425,6 +2692,7 @@ window.BH.LISTINGS = [
       "images/bh/listing-0010/photo-13.jpg",
       "images/bh/listing-0010/photo-14.jpg"
     ],
+    "floorplans": [],
     "starting": 1296,
     "aiWhy": null,
     "desired": {},
@@ -1441,9 +2709,143 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park at Princeton Lakes is a modern residential community in GA 30344 offering 1\u20133-bedroom apartments starting at $1,296/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park at Princeton Lakes is a modern residential community in GA 30344 offering 1\u20133-bedroom apartments starting at $1,296/mo. Featuring 643\u20131,377 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-princeton-lakes/",
-    "price_text": "$1,296/mo"
+    "price_text": "$1,296/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 643,
+        "price_min": 1312,
+        "price_max": 1751,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Piedmont.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 805,
+        "price_min": 1296,
+        "price_max": 1804,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Windsor.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 856,
+        "price_min": 1392,
+        "price_max": 1817,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Highland Sunroom.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1170,
+        "price_min": 1652,
+        "price_max": 2161,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Juniper.jpg"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1268,
+        "price_min": 1681,
+        "price_max": 1996,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Juniper Sunroom.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 727,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Piedmont Sunroom.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 751,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Highland.jpg"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 943,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-07.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Habersham.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1277,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-08.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Ashford.jpg"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1377,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-09.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Ashford Sunroom.jpg"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   },
   {
     "id": "park-at-the-hill-11",
@@ -1454,7 +2856,7 @@ window.BH.LISTINGS = [
     "price": 1285,
     "beds": 1,
     "baths": 1.0,
-    "sqft": 800,
+    "sqft": 650,
     "type": "Apartment",
     "status": "Available Now",
     "isNew": false,
@@ -1479,6 +2881,7 @@ window.BH.LISTINGS = [
       "images/bh/listing-0011/photo-13.png",
       "images/bh/listing-0011/photo-14.png"
     ],
+    "floorplans": [],
     "starting": 1285,
     "aiWhy": null,
     "desired": {},
@@ -1495,9 +2898,224 @@ window.BH.LISTINGS = [
       "TEN FOOT CEILINGS"
     ],
     "community": [],
-    "blurb": "Park at The Hill is a modern residential community in GA 30342 offering 1\u20134-bedroom apartments starting at $1,285/mo. Featuring 800 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
+    "blurb": "Park at The Hill is a modern residential community in GA 30342 offering 1\u20133-bedroom apartments starting at $1,285/mo. Featuring 650\u20132,360 sq ft of thoughtfully designed living space, residents enjoy premium amenities and a convenient Atlanta location. Flexible lease terms available.",
     "sourceUrl": "https://livebh.com/apartments/park-at-the-hill/",
-    "price_text": "$1,285/mo"
+    "price_text": "$1,285/mo",
+    "unit_types": [
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 650,
+        "price_min": 1285,
+        "price_max": 1449,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 650 sqft Maverick 3D(1).png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 680,
+        "price_min": 1339,
+        "price_max": 1522,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 680 sqft Fisher 3D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1620,
+        "price_min": 2305,
+        "price_max": 2463,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1620 sqft Carter 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 900,
+        "price_min": 1560,
+        "price_max": 1669,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 900 sqft Everest 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 975,
+        "price_min": 1552,
+        "price_max": 1660,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 975 sqft Tanner 3D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1200,
+        "price_min": 1861,
+        "price_max": 2045,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 1200 sqft Piper 3D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1335,
+        "price_min": 1841,
+        "price_max": 2043,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 1335 sqft Mason 3D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1450,
+        "price_min": 2249,
+        "price_max": 2455,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 1450 sqft Page 3D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1800,
+        "price_min": 2301,
+        "price_max": 2459,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1800 sqft Parker 3D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1840,
+        "price_min": 2523,
+        "price_max": 2696,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 and a half 1840 sqft Thatcher 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 925,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 925 sqft Cliff 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 930,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 930 sqft Sawyer - Garage 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 960,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 960 sqft Clark 3D.png"
+      },
+      {
+        "label": "1\u00d71",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1100,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 1100 sqft Taylor 3D.png"
+      },
+      {
+        "label": "2\u00d72",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1570,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-14.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1570 sqft Hunter 3D.png"
+      },
+      {
+        "label": "3\u00d72",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1765,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-15.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 and a half 1765 sqft Cooper 3D.png"
+      },
+      {
+        "label": "3\u00d73",
+        "beds": 3,
+        "baths": 3.5,
+        "sqft": 2360,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-16.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x3 and a half 2360 sqft Devin 3D.png"
+      }
+    ],
+    "amenities": [
+      {
+        "label": "Swimming Pool",
+        "icon": "car"
+      },
+      {
+        "label": "Pet Friendly",
+        "icon": "dog"
+      },
+      {
+        "label": "Covered Parking",
+        "icon": "car"
+      },
+      {
+        "label": "Private Balcony/Patio",
+        "icon": "home"
+      },
+      {
+        "label": "Smart Home Tech",
+        "icon": "sparkles"
+      },
+      {
+        "label": "High Ceilings",
+        "icon": "arrow"
+      }
+    ]
   }
 ];
 
@@ -1901,7 +3519,7 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
 
   return (
     <div className="home">
-      <div className="home-bg" style={{backgroundImage: (window.getBrand()==='bh')
+      <div className="home-bg" style={{backgroundImage: (brand==='bh')
         ? `url(progress/images/bhbg.jpg)`
         : `url(${window.assetUrl("assets/hero.jpg")})`}} />
       <div className="home-scrim" />
@@ -1948,7 +3566,7 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
         <div className="home-foot-left">
           <LocationPicker/>
           <h1 className="display home-h1">
-            {(window.getBrand()==='bh')
+            {(brand==='bh')
               ? <>A place to<br/>actually thrive.</>
               : <>Home is waiting.<br/>Let&rsquo;s find it.</>}
           </h1>
@@ -2389,6 +4007,101 @@ const AMENITIES = [
   {ic:"gym", label:"fitness center"},
 ];
 
+function BHDetailUnits({ l }){
+  const units = l.unit_types || [];
+  if(!units.length) return null;
+
+  // Build tab categories
+  const bedCounts = [...new Set(units.map(u => u.beds))].sort();
+  const tabs = ['All', ...bedCounts.map(b => b===0 ? 'Studio' : `${b} Bedroom${b>1?'s':''}`)];
+  const [activeTab, setActiveTab] = React.useState('All');
+
+  const filtered = activeTab==='All' ? units :
+    activeTab==='Studio' ? units.filter(u=>u.beds===0) :
+    units.filter(u=>u.beds===parseInt(activeTab));
+
+  // Stats bar values
+  const prices = units.filter(u=>u.price_min>0);
+  const rentMin = prices.length ? Math.min(...prices.map(u=>u.price_min)) : l.price;
+  const rentMax = prices.length ? Math.max(...prices.map(u=>u.price_max)) : l.price;
+  const sqfts = units.filter(u=>u.sqft>0);
+  const sqftMin = sqfts.length ? Math.min(...sqfts.map(u=>u.sqft)) : l.sqft;
+  const sqftMax = sqfts.length ? Math.max(...sqfts.map(u=>u.sqft)) : l.sqft;
+  const beds = [...new Set(units.filter(u=>u.beds>0).map(u=>u.beds))].sort();
+  const baths = [...new Set(units.filter(u=>u.baths>0).map(u=>u.baths))].sort();
+
+  return (<>
+    {/* Pricing & Floor Plans — stats bar inside */}
+    <div className="bh-plans">
+      <div className="eyebrow" style={{display:'block',paddingBottom:14,borderBottom:'1px solid rgba(0,0,0,.12)',marginBottom:16}}>Pricing &amp; Floor Plans</div>
+
+      {/* Stats bar — inside the section with background */}
+      <div className="bh-stats-bar" style={{background:'var(--surface)',borderRadius:'var(--r-card)',marginBottom:20}}>
+        <div className="bh-stat">
+          <span className="bh-stat-label">Monthly Rent</span>
+          <span className="bh-stat-val">${rentMin.toLocaleString()} – ${rentMax.toLocaleString()}</span>
+          <button className="bh-stat-sub">View Fees &amp; Policies</button>
+        </div>
+        <div className="bh-stat">
+          <span className="bh-stat-label">Bedrooms</span>
+          <span className="bh-stat-val">{beds.length ? `${beds[0]} – ${beds[beds.length-1]} bd` : `${l.beds} bd`}</span>
+        </div>
+        <div className="bh-stat">
+          <span className="bh-stat-label">Bathrooms</span>
+          <span className="bh-stat-val">{baths.length ? `${baths[0]} – ${baths[baths.length-1]} ba` : `${l.baths} ba`}</span>
+        </div>
+        <div className="bh-stat">
+          <span className="bh-stat-label">Square Feet</span>
+          <span className="bh-stat-val">{sqftMin !== sqftMax ? `${sqftMin.toLocaleString()} – ${sqftMax.toLocaleString()} sq ft` : `${sqftMin.toLocaleString()} sq ft`}</span>
+        </div>
+      </div>
+      <div className="bh-tabs">
+        {tabs.map(t=>(
+          <button key={t} className={"bh-tab"+(activeTab===t?' active':'')} onClick={()=>setActiveTab(t)}>{t}</button>
+        ))}
+      </div>
+      <div className="bh-unit-list">
+        {filtered.map((ut,i)=>(
+          <div key={i} className="bh-unit">
+            <div className="bh-unit-head">
+              <div className="bh-unit-fp">
+                {ut.fp_image
+                  ? <img src={ut.fp_image} alt={`${ut.label} floor plan`}/>
+                  : <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 21V9"/></svg>}
+              </div>
+              <div className="bh-unit-info">
+                <div className="bh-unit-label">{ut.label}{ut.sqft ? ` — ${ut.sqft.toLocaleString()} Sq Ft` : ''}</div>
+                <div className="bh-unit-price">
+                  {ut.price_min > 0
+                    ? (ut.price_min===ut.price_max
+                        ? `$${ut.price_min.toLocaleString()}`
+                        : `$${ut.price_min.toLocaleString()} – $${ut.price_max.toLocaleString()}`)
+                    : 'Call for pricing'}
+                  {ut.price_min > 0 && <span> plus fees</span>}
+                </div>
+                <div className="bh-unit-meta">
+                  <span>{ut.beds > 0 ? `${ut.beds} Bed` : 'Studio'}</span>
+                  <span>{ut.baths} Bath</span>
+                  {ut.sqft > 0 && <span>{ut.sqft.toLocaleString()} Sq Ft</span>}
+                </div>
+                {ut.available && ut.available!=='0' && (
+                  <div className="bh-unit-avail">{ut.available} Available Units</div>
+                )}
+                <div className="bh-unit-links">
+                  <button className="bh-unit-link">Floor Plan Details</button>
+                  <span style={{color:'var(--line)'}}>•</span>
+                  <button className="bh-unit-link">Tour Floor Plan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </>);
+}
+
 function AiWhySection({ l, query }){
   const [points, setPoints] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -2684,6 +4397,7 @@ function Toast({ msg, onDone }){
 }
 
 function App(){
+  const brand = window.useBrand();  // re-renders on brand switch
   const L = window.getListings();
   const [screen, setScreen] = useState("home");
   const [detailId, setDetailId] = useState(null);
@@ -2695,6 +4409,14 @@ function App(){
   const [aiCompare, setAiCompare] = useState({});
   const [aiCompareLoading, setAiCompareLoading] = useState(false);
   const [favs, setFavs] = useState([]);
+  // On brand switch: clear detail/compare state and go to map (or home)
+  useEffect(()=>{
+    setDetailId(null);
+    setShowCompare(false);
+    setCompareIds([]);
+    setAi(null);
+    setScreen(function(s){ return s==='home' ? 'home' : 'map'; });
+  },[brand]);
   const [toast, setToast] = useState(null);
 
   const interpret = useCallback(async (q)=>{
@@ -2751,12 +4473,14 @@ For EACH home, write one short, specific "why this home works" sentence (max 18 
 
   const detail = detailId && L.find(l=>l.id===detailId);
   const compareHomes = compareIds.map(id=>L.find(l=>l.id===id)).filter(Boolean);
+  // If screen is 'detail' but detail lookup fails (e.g. after brand switch), show map immediately
+  const activeScreen = (screen==='detail' && !detail) ? 'map' : screen;
 
   return (
     <>
-      {screen==="home" && <Home onSearch={onSearch} onOpenMap={onOpenMap} onOpenDetail={onOpenDetail}/>}
+      {activeScreen==="home" && <Home onSearch={onSearch} onOpenMap={onOpenMap} onOpenDetail={onOpenDetail}/>}
 
-      {screen==="map" && (
+      {activeScreen==="map" && (
         <MapScreen
           listings={L} market={window.PR.MARKET}
           query={query} ai={ai} aiLoading={aiLoading}
@@ -2766,13 +4490,13 @@ For EACH home, write one short, specific "why this home works" sentence (max 18 
           favs={favs} onFav={onFav}/>
       )}
 
-      {screen==="map" && showCompare && compareHomes.length>=2 && (
+      {activeScreen==="map" && showCompare && compareHomes.length>=2 && (
         <Compare homes={compareHomes} aiLines={aiCompare} aiLoading={aiCompareLoading}
           query={query} onClose={()=>setShowCompare(false)} onApply={onApply}
           favs={favs} onFav={onFav} onOpenDetail={onOpenDetail}/>
       )}
 
-      {screen==="detail" && detail && (
+      {activeScreen==="detail" && detail && (
         <Detail l={detail} query={query}
           onClose={onOpenMap} onBack={onOpenMap}
           fav={favs.includes(detail.id)} onFav={onFav} onApply={onApply}/>
@@ -3141,7 +4865,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
 
   return (
     <div className="home">
-      <div className="home-bg" style={{backgroundImage: (window.getBrand()==='bh')
+      <div className="home-bg" style={{backgroundImage: (brand==='bh')
         ? `url(progress/images/bhbg.jpg)`
         : `url(${window.assetUrl("assets/hero.jpg")})`}} />
       <div className="home-scrim" />
@@ -3256,7 +4980,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
         <div className="home-foot-left">
           <LocationPicker/>
           <h1 className="display home-h1">
-            {(window.getBrand()==='bh')
+            {(brand==='bh')
               ? <>A place to<br/>actually thrive.</>
               : <>Home is waiting.<br/>Let&rsquo;s find it.</>}
           </h1>
@@ -3829,6 +5553,7 @@ function MapScreenMobile(props){
    ============================================================ */
 const _OrigDetail = window.Detail;
 function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allListings }){
+  const brand = window.useBrand();
   const [tab, setTab] = React.useState("Photos");
   const [showTour, setShowTour] = React.useState(false);
   const mediaTabs = ["Photos","Floorplans","3D Tour"];
@@ -3893,52 +5618,44 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
           <div className="detail-media scroll">
             {tab==="Photos" && l.gallery.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"/>))}
             {tab==="Floorplans" && (
-              <div style={{padding:'28px 8px'}}>
-                <div style={{fontFamily:'Raleway',fontWeight:700,fontSize:15,color:'var(--ink)',marginBottom:18}}>Floor Plan — {l.beds} Bed / {l.baths} Bath</div>
-                <svg viewBox="0 0 520 420" width="100%" style={{background:'#fafaf8',borderRadius:10,border:'1px solid var(--line)'}}>
-                  {/* Outer walls */}
-                  <rect x="20" y="20" width="480" height="380" fill="none" stroke="#3A383C" strokeWidth="3"/>
-                  {/* Living Room */}
-                  <rect x="20" y="20" width="200" height="160" fill="#F3F8E6" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="120" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Living Room</text>
-                  <text x="120" y="112" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">18′ × 14′</text>
-                  {/* Kitchen */}
-                  <rect x="220" y="20" width="160" height="160" fill="#FFF8F0" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="300" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Kitchen</text>
-                  <text x="300" y="112" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">14′ × 13′</text>
-                  {/* Garage */}
-                  <rect x="380" y="20" width="120" height="160" fill="#F0F0EE" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="440" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Garage</text>
-                  <text x="440" y="112" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">20′ × 22′</text>
-                  {/* Primary Bed */}
-                  <rect x="20" y="180" width="200" height="140" fill="#E6F0FB" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="120" y="246" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Primary Bedroom</text>
-                  <text x="120" y="263" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">16′ × 14′</text>
-                  {/* Bed 2 */}
-                  <rect x="220" y="180" width="140" height="110" fill="#E6F0FB" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="290" y="231" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Bedroom 2</text>
-                  <text x="290" y="248" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">12′ × 11′</text>
-                  {/* Bath */}
-                  <rect x="360" y="180" width="140" height="110" fill="#EAF6F6" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="430" y="231" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Bathroom</text>
-                  <text x="430" y="248" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">10′ × 9′</text>
-                  {/* Hallway / Laundry */}
-                  <rect x="220" y="290" width="280" height="110" fill="#F5F5F3" stroke="#3A383C" strokeWidth="1.5"/>
-                  <text x="360" y="342" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Flex / Laundry</text>
-                  <text x="360" y="359" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">24′ × 10′</text>
-                  {/* Patio */}
-                  <rect x="20" y="320" width="200" height="80" fill="#EEF5E8" stroke="#3A383C" strokeWidth="1.5" strokeDasharray="6,3"/>
-                  <text x="120" y="357" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Patio</text>
-                  {/* Door marks */}
-                  <path d="M 110 180 Q 130 160 150 180" fill="none" stroke="#3A383C" strokeWidth="1"/>
-                  <path d="M 220 110 Q 220 130 240 130" fill="none" stroke="#3A383C" strokeWidth="1"/>
-                  {/* Compass */}
-                  <circle cx="490" cy="390" r="16" fill="#fff" stroke="var(--line)" strokeWidth="1"/>
-                  <text x="490" y="386" textAnchor="middle" fontSize="9" fill="var(--teal)" fontFamily="Raleway" fontWeight="700">N</text>
-                  <path d="M490 393 L487 400 L490 398 L493 400Z" fill="var(--teal)"/>
-                </svg>
-                <div style={{fontSize:12,color:'var(--gray)',marginTop:12}}>Approximate layout — not to scale. Actual dimensions may vary.</div>
-              </div>
+              (l.floorplans && l.floorplans.length > 0)
+              ? <div style={{padding:'16px 8px',display:'flex',flexDirection:'column',gap:16}}>
+                  <div style={{fontFamily:'Playfair Display, serif',fontWeight:400,fontSize:15,color:'var(--ink)'}}>
+                    Floor Plans — {l.name||l.title}
+                  </div>
+                  {l.floorplans.map((src,i)=>(
+                    <img key={i} src={src} alt={`Floor plan ${i+1}`}
+                      className="detail-photo"
+                      style={{background:'#fff',objectFit:'contain',borderRadius:4}}/>
+                  ))}
+                </div>
+              : <div style={{padding:'28px 8px'}}>
+                  <div style={{fontFamily:'Raleway',fontWeight:700,fontSize:15,color:'var(--ink)',marginBottom:18}}>Floor Plan — {l.beds} Bed / {l.baths} Bath</div>
+                  <svg viewBox="0 0 520 420" width="100%" style={{background:'#fafaf8',borderRadius:10,border:'1px solid var(--line)'}}>
+                    <rect x="20" y="20" width="480" height="380" fill="none" stroke="#3A383C" strokeWidth="3"/>
+                    <rect x="20" y="20" width="200" height="160" fill="#F3F8E6" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="120" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Living Room</text>
+                    <text x="120" y="112" textAnchor="middle" fontSize="10" fill="#808285" fontFamily="Open Sans">18′ × 14′</text>
+                    <rect x="220" y="20" width="160" height="160" fill="#FFF8F0" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="300" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Kitchen</text>
+                    <rect x="380" y="20" width="120" height="160" fill="#F0F0EE" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="440" y="95" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Garage</text>
+                    <rect x="20" y="180" width="200" height="140" fill="#E6F0FB" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="120" y="246" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Primary Bedroom</text>
+                    <rect x="220" y="180" width="140" height="110" fill="#E6F0FB" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="290" y="231" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Bedroom 2</text>
+                    <rect x="360" y="180" width="140" height="110" fill="#EAF6F6" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="430" y="231" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Bathroom</text>
+                    <rect x="220" y="290" width="280" height="110" fill="#F5F5F3" stroke="#3A383C" strokeWidth="1.5"/>
+                    <text x="360" y="342" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Flex / Laundry</text>
+                    <rect x="20" y="320" width="200" height="80" fill="#EEF5E8" stroke="#3A383C" strokeWidth="1.5" strokeDasharray="6,3"/>
+                    <text x="120" y="357" textAnchor="middle" fontSize="11" fill="#3A383C" fontFamily="Open Sans">Patio</text>
+                    <circle cx="490" cy="390" r="16" fill="#fff" stroke="var(--line)" strokeWidth="1"/>
+                    <text x="490" y="386" textAnchor="middle" fontSize="9" fill="var(--teal)" fontFamily="Raleway" fontWeight="700">N</text>
+                    <path d="M490 393 L487 400 L490 398 L493 400Z" fill="var(--teal)"/>
+                  </svg>
+                  <div style={{fontSize:12,color:'var(--gray)',marginTop:12}}>Approximate layout — not to scale.</div>
+                </div>
             )}
             {tab==="3D Tour" && (
               <div style={{position:'relative',width:'100%',aspectRatio:'16/9',background:'#1a2733',borderRadius:10,overflow:'hidden',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:16}}>
@@ -3969,21 +5686,86 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
               </div>
             </div>
 
-            {/* AI — What makes this home right for you */}
-            <AiWhySection l={l} query={query}/>
+            {(brand==='bh' && l.unit_types && l.unit_types.length > 0) ? (<>
 
-            {/* Feature highlights — right below address */}
-            <div className="detail-highlights">
-              <div className="eyebrow">Highlights</div>
-              <div className="detail-highlights-grid">
-                {highlights.map(h=>(
-                  <div key={h.label} className="detail-highlight">
-                    <div className="detail-highlight-ic"><Icon name={h.icon} size={18} sw={1.8}/></div>
-                    {h.label}
+              {/* 1. AI insight */}
+              <AiWhySection l={l} query={query}/>
+
+              {/* 2. Highlights */}
+              {l.amenities && l.amenities.length > 0 && (
+                <div style={{marginTop:28,maxWidth:680}}>
+                  <div className="eyebrow" style={{display:'block',paddingBottom:14,borderBottom:'1px solid rgba(0,0,0,.12)',marginBottom:16}}>Highlights</div>
+                  <div className="detail-highlights-grid">
+                    {l.amenities.map((a,i)=>(
+                      <div key={i} className="detail-highlight">
+                        <div className="detail-highlight-ic"><Icon name={a.icon||'check'} size={18} sw={1.8}/></div>
+                        {a.label||a}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+              )}
+
+              {/* 3. CTAs */}
+              <div className="detail-cta" style={{marginTop:28}}>
+                <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
+                <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
+                <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
+                  <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
+                </button>
               </div>
-            </div>
+
+              {/* 4. Pricing & Floor Plans */}
+              <BHDetailUnits l={l}/>
+
+              {/* 5. About this property */}
+              <div style={{marginTop:28,maxWidth:680}}>
+                <div className="eyebrow about-h">About This Property</div>
+                <p style={{fontSize:14,lineHeight:1.85,color:'var(--ink)',marginTop:12}}>
+                  {l.name} is a modern residential community in {(l.city_state||l.city||'').split(',')[0]} offering
+                  apartment homes from {l.unit_types && l.unit_types.filter(u=>u.beds>0).length
+                    ? `${Math.min(...l.unit_types.filter(u=>u.beds>0).map(u=>u.beds))}–${Math.max(...l.unit_types.filter(u=>u.beds>0).map(u=>u.beds))}`
+                    : l.beds} bedrooms, starting at ${l.price.toLocaleString()}/mo.
+                  {' '}Residents enjoy thoughtfully designed floor plans with premium finishes, open layouts, and in-unit amenities built for everyday living.
+                  {' '}The community features on-site maintenance, flexible lease terms, and a welcoming atmosphere that makes it easy to feel at home.
+                  {' '}Conveniently located in the Atlanta metro with easy access to dining, shopping, and major commuter routes.
+                </p>
+              </div>
+
+              {/* 6. Similar places */}
+              {similar.length>0 && (
+                <div style={{marginTop:28}} className="detail-similar">
+                  <div className="eyebrow" style={{display:'block',paddingBottom:14,borderBottom:'1px solid rgba(0,0,0,.12)',marginBottom:16}}>Similar Places</div>
+                  <div className="detail-similar-scroll">
+                    {similar.map(s=>(
+                      <div key={s.id} className="detail-similar-card">
+                        <img src={s.img} alt={s.name||s.title}/>
+                        <div className="detail-similar-body">
+                          <div className="detail-similar-status">{s.status==='Available'||s.status==='Available Now'?'Available Now':s.status}</div>
+                          <div className="detail-similar-price">${s.price.toLocaleString()}<span style={{fontSize:12,fontWeight:400,color:'var(--gray)',fontFamily:'Open Sans'}}>/mo</span></div>
+                          <div className="detail-similar-addr">{s.name||s.street}</div>
+                          <div className="detail-similar-stats">{s.beds}{s.bedrooms_max&&s.bedrooms_max!==s.beds?`–${s.bedrooms_max}`:''} bd · {s.baths} ba</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+            </>) : (<>
+              <AiWhySection l={l} query={query}/>
+              <div className="detail-highlights">
+                <div className="eyebrow">Highlights</div>
+                <div className="detail-highlights-grid">
+                  {highlights.map(h=>(
+                    <div key={h.label} className="detail-highlight">
+                      <div className="detail-highlight-ic"><Icon name={h.icon} size={18} sw={1.8}/></div>
+                      {h.label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>)}
 
             <div className="detail-cta">
               <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
@@ -4102,6 +5884,7 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
   }
 
   function App(){
+    const brand = window.useBrand();  // re-renders on brand switch
     const L = window.getListings();
     const [screen, setScreen] = useState("home");
     const [detailId, setDetailId] = useState(null);
@@ -4113,6 +5896,14 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
     const [aiCompare, setAiCompare] = useState({});
     const [aiCompareLoading, setAiCompareLoading] = useState(false);
     const [favs, setFavs] = useState([]);
+    // On brand switch: clear detail/compare state and go to map (or home)
+    useEffect(()=>{
+      setDetailId(null);
+      setShowCompare(false);
+      setCompareIds([]);
+      setAi(null);
+      setScreen(function(s){ return s==='home' ? 'home' : 'map'; });
+    },[brand]);
     const [toast, setToast] = useState(null);
 
     const interpret = useCallback(async (q)=>{
@@ -4154,11 +5945,13 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
     const onApply = useCallback((l)=>{ setToast(`Application started for ${l.title}`); },[]);
     const detail = detailId && L.find(l=>l.id===detailId);
     const compareHomes = compareIds.map(id=>L.find(l=>l.id===id)).filter(Boolean);
+    // If screen is 'detail' but detail lookup fails (e.g. after brand switch), show map immediately
+    const activeScreen = (screen==='detail' && !detail) ? 'map' : screen;
 
     return (
       <>
-        {screen==="home" && <HomeMobile onSearch={onSearch} onOpenMap={onOpenMap} onOpenDetail={onOpenDetail}/>}
-        {screen==="map" && (
+        {activeScreen==="home" && <HomeMobile onSearch={onSearch} onOpenMap={onOpenMap} onOpenDetail={onOpenDetail}/>}
+        {activeScreen==="map" && (
           <MapScreenMobile
             listings={L} market={window.PR.MARKET}
             query={query} ai={ai} aiLoading={aiLoading}
@@ -4167,12 +5960,12 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
             onLaunchCompare={launchCompare}
             favs={favs} onFav={onFav}/>
         )}
-        {screen==="map" && showCompare && compareHomes.length>=2 && (
+        {activeScreen==="map" && showCompare && compareHomes.length>=2 && (
           <Compare homes={compareHomes} aiLines={aiCompare} aiLoading={aiCompareLoading}
             query={query} onClose={()=>setShowCompare(false)} onApply={onApply}
             favs={favs} onFav={onFav} onOpenDetail={onOpenDetail}/>
         )}
-        {screen==="detail" && detail && (
+        {activeScreen==="detail" && detail && (
           <DetailWithTour l={detail} query={query}
             onClose={onOpenMap} onBack={onOpenMap}
             fav={favs.includes(detail.id)} onFav={onFav} onApply={onApply} allListings={L}/>

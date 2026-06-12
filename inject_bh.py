@@ -6,8 +6,69 @@ Run after scrape_bh.py:
     python3 inject_bh.py
 """
 
-import json, re, os
+import json, re, os, statistics
 from pathlib import Path
+
+BH_AMENITY_MAP = [
+    (r"pool|swimming",           "car",       "Swimming Pool"),
+    (r"fitness|gym|workout",     "layers",    "Fitness Center"),
+    (r"clubhouse|club house",    "home",      "Clubhouse"),
+    (r"pet|dog|cat",             "dog",       "Pet Friendly"),
+    (r"garage|parking|covered",  "car",       "Covered Parking"),
+    (r"washer|dryer|laundry",    "layers",    "In-Unit Laundry"),
+    (r"stainless|appliance",     "check",     "Stainless Appliances"),
+    (r"granite|quartz|countertop","check",    "Granite Countertops"),
+    (r"hardwood|vinyl|flooring", "ruler",     "Hard Surface Floors"),
+    (r"balcony|patio|terrace",   "home",      "Private Balcony/Patio"),
+    (r"smart|thermostat|tech",   "sparkles",  "Smart Home Tech"),
+    (r"air conditioning|a/c|central air","ac","Central A/C"),
+    (r"walk.in closet|wic",      "layers",    "Walk-In Closet"),
+    (r"elevator",                "layers",    "Elevator Access"),
+    (r"24.hour|emergency|maintenance","check","24/7 Maintenance"),
+    (r"dishwasher",              "check",     "Dishwasher"),
+    (r"ceiling fan",             "layers",    "Ceiling Fans"),
+    (r"fireplace",               "home",      "Fireplace"),
+    (r"high.ceiling|nine.foot|ten.foot|9.foot|10.foot|vaulted","arrow","High Ceilings"),
+    (r"storage|extra storage",   "layers",    "Extra Storage"),
+]
+
+def _derive_amenities(raw):
+    """Extract real amenities from unit type features + page text."""
+    import re as _re
+    # Collect all text: unit type descriptions + raw amenities
+    texts = []
+    for ut in raw.get("unit_types", []):
+        texts.append(str(ut))
+    for a in raw.get("amenities", []):
+        texts.append(a.lower())
+    combined = " ".join(texts).lower()
+
+    found = []
+    seen_labels = set()
+    for pattern, icon, label in BH_AMENITY_MAP:
+        if _re.search(pattern, combined, _re.I) and label not in seen_labels:
+            found.append({"label": label, "icon": icon})
+            seen_labels.add(label)
+
+    # Always add standard apartment amenities if we found very few
+    if len(found) < 4:
+        for _, icon, label in BH_AMENITY_MAP[:8]:
+            if label not in seen_labels:
+                found.append({"label": label, "icon": icon})
+                seen_labels.add(label)
+                if len(found) >= 9: break
+
+    return found[:12]
+
+def is_floorplan(path):
+    """Detect floor plan images by low pixel variance (black lines on white)."""
+    try:
+        from PIL import Image
+        img = Image.open(path).convert('RGB')
+        r_vals = [p[0] for p in list(img.getdata())[::20]]
+        return statistics.stdev(r_vals) < 30
+    except:
+        return False
 
 JSON_FILE  = Path("bh_atlanta.json")
 HTML_FILE  = Path("index.html")
@@ -43,17 +104,21 @@ def convert(raw, idx):
     pos     = MAP_POS[idx % len(MAP_POS)]
     amenities = raw.get("amenities") or []
 
+    # Split downloaded images into real photos vs floor plans
+    all_imgs = [p for p in (raw.get("local_images") or []) if os.path.exists(p)]
     exterior = raw.get("local_image") or ""
-    gallery  = [p for p in (raw.get("local_images") or []) if os.path.exists(p)]
-    if not gallery and exterior and os.path.exists(exterior):
-        gallery = [exterior]
+    if not all_imgs and exterior and os.path.exists(exterior):
+        all_imgs = [exterior]
 
-    # Append shared interior photos
+    photos     = [p for p in all_imgs if not is_floorplan(p)]
+    floorplans = [p for p in all_imgs if is_floorplan(p)]
+
+    # Append shared interior photos to the real photos gallery
     interior_photos = sorted(
         str(p) for p in INTERIORS.glob("*")
         if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
     ) if INTERIORS.exists() else []
-    gallery = gallery + interior_photos
+    gallery = photos + interior_photos
 
     price_str = f"${price:,}/mo" if price else raw.get("price_text", "Contact for pricing")
     beds_label = f"{beds}–{raw.get('bedrooms_max', beds)}" if raw.get("bedrooms_max", beds) != beds else str(beds)
@@ -82,16 +147,19 @@ def convert(raw, idx):
         "isNew":    False,
         "pos":      pos,
         "latlng":   latlng(idx),
-        "img":      gallery[0] if gallery else "",
-        "gallery":  gallery[:10],
+        "img":       gallery[0] if gallery else "",
+        "gallery":   gallery[:10],
+        "floorplans": floorplans,
         "starting": price,
         "aiWhy":    None,
         "desired":  {},
         "inhome":   amenities[:10],
         "community": [],
         "blurb":    blurb,
-        "sourceUrl": raw.get("url", ""),
+        "sourceUrl":  raw.get("url", ""),
         "price_text": price_str,
+        "unit_types": raw.get("unit_types", []),
+        "amenities":  _derive_amenities(raw),
     }
 
 def main():
@@ -120,9 +188,10 @@ def main():
 
     # Replace existing BH block or insert before the first <script type="text/babel">
     if "window.BH.LISTINGS" in html:
+        _block = js_block  # capture for lambda
         html = re.sub(
             r"window\.BH\s*=.*?window\.BH\.LISTINGS\s*=\s*\[.*?\];",
-            js_block,
+            lambda m: _block,
             html,
             count=1,
             flags=re.DOTALL

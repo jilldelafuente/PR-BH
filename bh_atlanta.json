@@ -4,10 +4,10 @@
     "name": "Adley City Springs",
     "address": "6075 Roswell Rd Sandy Springs, GA 30328",
     "city_state": "GA 30328",
-    "price_text": "Starting at $1,682 plus fees",
+    "price_text": "$1,682 – $3,780/mo",
     "price": 1682,
     "bedrooms_min": 1,
-    "bedrooms_max": 4,
+    "bedrooms_max": 2,
     "bathrooms_min": 1.0,
     "bathrooms_max": 2.0,
     "amenities": [
@@ -42,17 +42,253 @@
       "images/bh/listing-0000/photo-13.png",
       "images/bh/listing-0000/photo-14.png"
     ],
-    "card_text": "Adley City Springs 6075 Roswell Rd Sandy Springs, GA 30328 Studio - 2 Bed"
+    "card_text": "Adley City Springs 6075 Roswell Rd Sandy Springs, GA 30328 Studio - 2 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 708,
+        "price_min": 1862,
+        "price_max": 2085,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 708 sqft Indigo  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1058,
+        "price_min": 2500,
+        "price_max": 2900,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1058 sqft Verde  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1090,
+        "price_min": 2484,
+        "price_max": 2782,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1090 sqft Jade  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1151,
+        "price_min": 2788,
+        "price_max": 3118,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1151 sqft Heather  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 720,
+        "price_min": 1909,
+        "price_max": 2092,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 720 - 747 sqft Denim  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1020,
+        "price_min": 2154,
+        "price_max": 2468,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 1020 sqft Emerald  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1047,
+        "price_min": 2483,
+        "price_max": 2758,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1047 sqft Viridian  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1233,
+        "price_min": 3405,
+        "price_max": 3780,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1233 sqft Amethyst  2D(1).png"
+      },
+      {
+        "label": "Studio",
+        "beds": 0,
+        "baths": 1.0,
+        "sqft": 634,
+        "price_min": 1682,
+        "price_max": 1867,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 0x1 634 sqft Cobalt 2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.5,
+        "sqft": 985,
+        "price_min": 2235,
+        "price_max": 2413,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 985 sqft Sapphire  2D(1).png"
+      },
+      {
+        "label": "Studio",
+        "beds": 0,
+        "baths": 1.0,
+        "sqft": 650,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 0x1 650 sqft Slate  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 698,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 698 sqft Agean  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 707,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 707 sqft Azure  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 758,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 758 sqft Lapis  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 904,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-14.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 904 sqft Cerulean  2D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 995,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-15.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 1x1 995 sqft Cyan  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1111,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-16.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1111 sqft Mint  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1112,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-17.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1112 sqft Hazel  2D(2).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1246,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-18.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1246 sqft Lilac  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1342,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-19.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1342 sqft Iris  2D(1).png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1396,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0000/fp-20.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Adley City Springs 2x2 1396 sqft Wisteria  2D(1).png"
+      }
+    ],
+    "price_max": 3780,
+    "sqft_min": 634,
+    "sqft_max": 1396
   },
   {
     "url": "https://livebh.com/apartments/bradley-park/",
     "name": "Bradley Park",
     "address": "350 Bradley Park Lane Cumming, GA 30040",
     "city_state": "GA 30040",
-    "price_text": "Starting at $1,513 plus fees",
+    "price_text": "$1,513 – $2,398/mo",
     "price": 1513,
     "bedrooms_min": 1,
-    "bedrooms_max": 4,
+    "bedrooms_max": 3,
     "bathrooms_min": 1.0,
     "bathrooms_max": 2.0,
     "amenities": [
@@ -80,14 +316,63 @@
       "images/bh/listing-0001/photo-10.png",
       "images/bh/listing-0001/photo-14.jpg"
     ],
-    "card_text": "Bradley Park 350 Bradley Park Lane Cumming, GA 30040 1 Bed - 3 Bed"
+    "card_text": "Bradley Park 350 Bradley Park Lane Cumming, GA 30040 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1341,
+        "price_min": 1968,
+        "price_max": 2189,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 2x2 1341 sqft The Devin 2D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 943,
+        "price_min": 1513,
+        "price_max": 1922,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 1x1 943 sqft The Avenue 2D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1241,
+        "price_min": 1865,
+        "price_max": 2132,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 2x2 1241 sqft The Bradley 2D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1508,
+        "price_min": 2144,
+        "price_max": 2398,
+        "available": "0",
+        "fp_image": "images/bh/listing-0001/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Bradley Park 3x2 1508 sqft The Estate 2D.png"
+      }
+    ],
+    "price_max": 2398,
+    "sqft_min": 943,
+    "sqft_max": 1508
   },
   {
     "url": "https://livebh.com/apartments/canyon-springs-apartments/",
     "name": "Canyon Springs Apartments",
     "address": "1200 Towne Centre Village Dr Mcdonough, GA 30253",
     "city_state": "GA 30253",
-    "price_text": "Starting at $1,271 plus fees",
+    "price_text": "$1,271 – $2,579/mo",
     "price": 1271,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -121,14 +406,107 @@
       "images/bh/listing-0002/photo-13.jpg",
       "images/bh/listing-0002/photo-14.png"
     ],
-    "card_text": "Canyon Springs Apartments 1200 Towne Centre Village Dr Mcdonough, GA 30253 1 Bed - 3 Bed"
+    "card_text": "Canyon Springs Apartments 1200 Towne Centre Village Dr Mcdonough, GA 30253 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 985,
+        "price_min": 1556,
+        "price_max": 2095,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A3Cottonwood985CanyonSprings.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1149,
+        "price_min": 1744,
+        "price_max": 2361,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B11149CanyonSprings.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 815,
+        "price_min": 1558,
+        "price_max": 2017,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A2Cedar815CanyonSprings.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1294,
+        "price_min": 1810,
+        "price_max": 2403,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B21294CanyonSprings.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 684,
+        "price_min": 1271,
+        "price_max": 1665,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A1Birch684CanyonSprings.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1325,
+        "price_min": 1805,
+        "price_max": 2128,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B31325CanyonSprings.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1509,
+        "price_min": 2168,
+        "price_max": 2579,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/C11509CanyonSprings.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1079,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0002/fp-07.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A4Elm1079CanyonSprings.jpg"
+      }
+    ],
+    "price_max": 2579,
+    "sqft_min": 684,
+    "sqft_max": 1509
   },
   {
     "url": "https://livebh.com/apartments/chatteron-springs/",
     "name": "Chatteron Springs",
     "address": "4407 Sparrow Circle Atlanta, GA 30349",
     "city_state": "GA 30349",
-    "price_text": "Starting at $2,335 plus fees",
+    "price_text": "$2,335 – $2,997/mo",
     "price": 2335,
     "bedrooms_min": 3,
     "bedrooms_max": 5,
@@ -164,17 +542,66 @@
       "images/bh/listing-0003/photo-12.png",
       "images/bh/listing-0003/photo-13.jpg"
     ],
-    "card_text": "Chatteron Springs 4407 Sparrow Circle Atlanta, GA 30349 3 Bed - 5 Bed"
+    "card_text": "Chatteron Springs 4407 Sparrow Circle Atlanta, GA 30349 3 Bed - 5 Bed",
+    "unit_types": [
+      {
+        "label": "4×2",
+        "beds": 4,
+        "baths": 2.5,
+        "sqft": 1927,
+        "price_min": 2430,
+        "price_max": 2454,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 4x2 and a half bath 1927 sqft Aisle 2D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1749,
+        "price_min": 2335,
+        "price_max": 2568,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 3x2 and a half bath 1749 sqft Darwin 2D.png"
+      },
+      {
+        "label": "5×3",
+        "beds": 5,
+        "baths": 3.0,
+        "sqft": 2361,
+        "price_min": 2700,
+        "price_max": 2997,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 5x3 2361 sqft Robie 2D.png"
+      },
+      {
+        "label": "4×2",
+        "beds": 4,
+        "baths": 2.5,
+        "sqft": 2174,
+        "price_min": 2528,
+        "price_max": 2553,
+        "available": "0",
+        "fp_image": "images/bh/listing-0003/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Chatteron Springs 4x2 and a half bath 2174 sqft Elston 2D.png"
+      }
+    ],
+    "price_max": 2997,
+    "sqft_min": 1749,
+    "sqft_max": 2361
   },
   {
     "url": "https://livebh.com/apartments/grand-oasis-apartment-homes/",
     "name": "Grand Oasis Apartment Homes",
     "address": "4000 McGinnis Ferry Rd Suwanee, GA 30024",
     "city_state": "GA 30024",
-    "price_text": "Starting at $1,329 plus fees",
+    "price_text": "$1,329 – $2,674/mo",
     "price": 1329,
     "bedrooms_min": 1,
-    "bedrooms_max": 4,
+    "bedrooms_max": 3,
     "bathrooms_min": 1.0,
     "bathrooms_max": 2.0,
     "amenities": [
@@ -203,14 +630,96 @@
       "images/bh/listing-0004/photo-13.jpg",
       "images/bh/listing-0004/photo-14.jpg"
     ],
-    "card_text": "Grand Oasis Apartment Homes 4000 McGinnis Ferry Rd Suwanee, GA 30024 1 Bed - 3 Bed"
+    "card_text": "Grand Oasis Apartment Homes 4000 McGinnis Ferry Rd Suwanee, GA 30024 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 881,
+        "price_min": 1355,
+        "price_max": 1825,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Palm A2 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1229,
+        "price_min": 1551,
+        "price_max": 2046,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Cancun Traditional B1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1363,
+        "price_min": 1749,
+        "price_max": 2127,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Cancun B2 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1548,
+        "price_min": 1796,
+        "price_max": 2265,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Viva Oasis C1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 750,
+        "price_min": 1329,
+        "price_max": 1549,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence at Grand Oasis Palm Traditional A1 - Level 1 - 3D Floor Plan (1).jpeg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1549,
+        "price_min": 2301,
+        "price_max": 2674,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence-at-Grand-Oasis-Cancun-B3.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1121,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0004/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Residence-at-Grand-Oasis-Palm-A3.jpg"
+      }
+    ],
+    "price_max": 2674,
+    "sqft_min": 750,
+    "sqft_max": 1549
   },
   {
     "url": "https://livebh.com/apartments/heights-of-kennesaw-apartments/",
     "name": "Heights of Kennesaw Apartments",
     "address": "1950 Barrett Lakes Blvd Kennesaw, GA 30144",
     "city_state": "GA 30144",
-    "price_text": "Starting at $1,346 plus fees",
+    "price_text": "$1,346 – $2,247/mo",
     "price": 1346,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -243,14 +752,63 @@
       "images/bh/listing-0005/photo-11.png",
       "images/bh/listing-0005/photo-13.png"
     ],
-    "card_text": "Heights of Kennesaw Apartments 1950 Barrett Lakes Blvd Kennesaw, GA 30144 1 Bed - 3 Bed"
+    "card_text": "Heights of Kennesaw Apartments 1950 Barrett Lakes Blvd Kennesaw, GA 30144 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 696,
+        "price_min": 1355,
+        "price_max": 1521,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 1x1 696 sqft Tara 2D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1140,
+        "price_min": 1795,
+        "price_max": 2051,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 2x2 1140 sqft Twelve Oaks 2D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1384,
+        "price_min": 1952,
+        "price_max": 2247,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 3x2 1384 sqft Jefferson 2D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 843,
+        "price_min": 1346,
+        "price_max": 1793,
+        "available": "0",
+        "fp_image": "images/bh/listing-0005/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Heights of Kennesaw 1x1 843 sqft Monticello 2D.png"
+      }
+    ],
+    "price_max": 2247,
+    "sqft_min": 696,
+    "sqft_max": 1384
   },
   {
     "url": "https://livebh.com/apartments/park-at-kennesaw-apartments/",
     "name": "Park At Kennesaw Apartments",
     "address": "2250 Ellison Lakes Dr Kennesaw, GA 30152",
     "city_state": "GA 30152",
-    "price_text": "Starting at $1,243 plus fees",
+    "price_text": "$1,243 – $1,736/mo",
     "price": 1243,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -283,14 +841,85 @@
       "images/bh/listing-0006/photo-11.png",
       "images/bh/listing-0006/photo-13.png"
     ],
-    "card_text": "Park At Kennesaw Apartments 2250 Ellison Lakes Dr Kennesaw, GA 30152 1 Bed - 3 Bed"
+    "card_text": "Park At Kennesaw Apartments 2250 Ellison Lakes Dr Kennesaw, GA 30152 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1149,
+        "price_min": 1516,
+        "price_max": 1707,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Cedar.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 750,
+        "price_min": 1243,
+        "price_max": 1454,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Alder.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 888,
+        "price_min": 1473,
+        "price_max": 1594,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/THe Birch End.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1222,
+        "price_min": 1540,
+        "price_max": 1736,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Dogwood.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 865,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Birch.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1435,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0006/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/The Elderberry.jpg"
+      }
+    ],
+    "price_max": 1736,
+    "sqft_min": 750,
+    "sqft_max": 1435
   },
   {
     "url": "https://livebh.com/apartments/park-at-chastain-apartments/",
     "name": "Park at Chastain Apartments",
     "address": "100 Summer Terrace Ln Atlanta, GA 30342",
     "city_state": "GA 30342",
-    "price_text": "Starting at $1,513 plus fees",
+    "price_text": "$1,513 – $2,586/mo",
     "price": 1513,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -321,17 +950,88 @@
       "images/bh/listing-0007/photo-09.jpg",
       "images/bh/listing-0007/photo-10.png"
     ],
-    "card_text": "Park at Chastain Apartments 100 Summer Terrace Ln Atlanta, GA 30342 1 Bed - 3 Bed"
+    "card_text": "Park at Chastain Apartments 100 Summer Terrace Ln Atlanta, GA 30342 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 895,
+        "price_min": 1513,
+        "price_max": 1821,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/RiverBirch_895sqft.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1252,
+        "price_min": 2116,
+        "price_max": 2327,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Oak_1252sqft.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 756,
+        "price_min": 1564,
+        "price_max": 1715,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Maple_756sqft.jpg"
+      },
+      {
+        "label": "2×1",
+        "beds": 2,
+        "baths": 1.0,
+        "sqft": 1116,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Dogwood_1116sqft.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1410,
+        "price_min": 2351,
+        "price_max": 2586,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Cedar_1410sqft.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1675,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0007/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Magolia_TH_1675sqft.jpg"
+      }
+    ],
+    "price_max": 2586,
+    "sqft_min": 756,
+    "sqft_max": 1675
   },
   {
     "url": "https://livebh.com/apartments/park-at-johns-creek/",
     "name": "Park at Johns Creek 55+ Active Adult Living",
     "address": "4345 Alta Dr Suwanee, GA 30024",
     "city_state": "GA 30024",
-    "price_text": "Starting at $1,560 plus fees",
+    "price_text": "$1,560 – $1,870/mo",
     "price": 1560,
     "bedrooms_min": 1,
-    "bedrooms_max": 4,
+    "bedrooms_max": 3,
     "bathrooms_min": 1.0,
     "bathrooms_max": 2.0,
     "amenities": [
@@ -360,14 +1060,140 @@
       "images/bh/listing-0008/photo-13.jpg",
       "images/bh/listing-0008/photo-14.jpg"
     ],
-    "card_text": "Park at Johns Creek 55+ Active Adult Living 4345 Alta Dr Suwanee, GA 30024 1 Bed - 3 Bed"
+    "card_text": "Park at Johns Creek 55+ Active Adult Living 4345 Alta Dr Suwanee, GA 30024 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 822,
+        "price_min": 1715,
+        "price_max": 1715,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Dogwood - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 724,
+        "price_min": 1560,
+        "price_max": 1560,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - Beech - The Beech - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 771,
+        "price_min": 1870,
+        "price_max": 1870,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/A1_New.jpeg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1055,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Maple - Maple - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1061,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Maple - Maple - 3D Floor Plan(1).jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1065,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-08.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Poplar - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1126,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-09.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Spruce - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1135,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-11.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC- The Douglas - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1200,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-12.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Sycamore - Level 1 - 3D Floor Plan.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1267,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-13.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/B2 - New.jpeg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1280,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0008/fp-14.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at JC - The Ficus - Level 1 - 3D Floor Plan.jpg"
+      }
+    ],
+    "price_max": 1870,
+    "sqft_min": 724,
+    "sqft_max": 1280
   },
   {
     "url": "https://livebh.com/apartments/park-at-main/",
     "name": "Park at Main",
     "address": "2891 Lewis St Kennesaw, GA 30144",
     "city_state": "GA 30144",
-    "price_text": "Starting at $1,564 plus fees",
+    "price_text": "$1,564 – $2,732/mo",
     "price": 1564,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -398,14 +1224,173 @@
       "images/bh/listing-0009/photo-13.png",
       "images/bh/listing-0009/photo-14.jpeg"
     ],
-    "card_text": "Park at Main 2891 Lewis St Kennesaw, GA 30144 1 Bed - 3 Bed"
+    "card_text": "Park at Main 2891 Lewis St Kennesaw, GA 30144 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 930,
+        "price_min": 1564,
+        "price_max": 1857,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Springhill -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1030,
+        "price_min": 1687,
+        "price_max": 1887,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Lynwood - 1 Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1148,
+        "price_min": 1914,
+        "price_max": 2146,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-2 Crestfield -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 754,
+        "price_min": 1653,
+        "price_max": 1801,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Meadowlark - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.5,
+        "sqft": 784,
+        "price_min": 1638,
+        "price_max": 1797,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 half Broadview - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 855,
+        "price_min": 1568,
+        "price_max": 1673,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Oakmore - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3×3",
+        "beds": 3,
+        "baths": 3.0,
+        "sqft": 1502,
+        "price_min": 2507,
+        "price_max": 2732,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-3 Windsong -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 670,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Parkline -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 738,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 1-1 Riverstone -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1080,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Brookhaven -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1112,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2half Rosemont -  Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1201,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Greentree -Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1271,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 2-2 Laketree - Floor - 3D Floor Plan web.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1755,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0009/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at Main 3-2half Creekside - Floor - 3D Floor Plan web.png"
+      }
+    ],
+    "price_max": 2732,
+    "sqft_min": 670,
+    "sqft_max": 1755
   },
   {
     "url": "https://livebh.com/apartments/park-at-princeton-lakes/",
     "name": "Park at Princeton Lakes",
     "address": "3871 Redwine Rd Atlanta, GA 30344",
     "city_state": "GA 30344",
-    "price_text": "Starting at $1,296 plus fees",
+    "price_text": "$1,296 – $2,161/mo",
     "price": 1296,
     "bedrooms_min": 1,
     "bedrooms_max": 3,
@@ -439,17 +1424,132 @@
       "images/bh/listing-0010/photo-13.jpg",
       "images/bh/listing-0010/photo-14.jpg"
     ],
-    "card_text": "Park at Princeton Lakes 3871 Redwine Rd Atlanta, GA 30344 1 Bed - 3 Bed"
+    "card_text": "Park at Princeton Lakes 3871 Redwine Rd Atlanta, GA 30344 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 643,
+        "price_min": 1312,
+        "price_max": 1751,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-00.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Piedmont.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 805,
+        "price_min": 1296,
+        "price_max": 1804,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-01.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Windsor.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 856,
+        "price_min": 1392,
+        "price_max": 1817,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-02.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Highland Sunroom.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1170,
+        "price_min": 1652,
+        "price_max": 2161,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-03.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Juniper.jpg"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1268,
+        "price_min": 1681,
+        "price_max": 1996,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-04.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Juniper Sunroom.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 727,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-05.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Piedmont Sunroom.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 751,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-06.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Highland.jpg"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 943,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-07.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Habersham.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1277,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-08.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Ashford.jpg"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1377,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0010/fp-09.jpg",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Ansley-at-Princeton-Lakes_The-Ashford Sunroom.jpg"
+      }
+    ],
+    "price_max": 2161,
+    "sqft_min": 643,
+    "sqft_max": 1377
   },
   {
     "url": "https://livebh.com/apartments/park-at-the-hill/",
     "name": "Park at The Hill",
     "address": "5385 Peachtree Dunwoody Rd Atlanta, GA 30342",
     "city_state": "GA 30342",
-    "price_text": "Starting at $1,285 plus fees",
+    "price_text": "$1,285 – $2,696/mo",
     "price": 1285,
     "bedrooms_min": 1,
-    "bedrooms_max": 4,
+    "bedrooms_max": 3,
     "bathrooms_min": 1.0,
     "bathrooms_max": 3.5,
     "amenities": [
@@ -480,6 +1580,198 @@
       "images/bh/listing-0011/photo-13.png",
       "images/bh/listing-0011/photo-14.png"
     ],
-    "card_text": "Park at The Hill 5385 Peachtree Dunwoody Rd Atlanta, GA 30342 1 Bed - 3 Bed"
+    "card_text": "Park at The Hill 5385 Peachtree Dunwoody Rd Atlanta, GA 30342 1 Bed - 3 Bed",
+    "unit_types": [
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 650,
+        "price_min": 1285,
+        "price_max": 1449,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-00.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 650 sqft Maverick 3D(1).png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 680,
+        "price_min": 1339,
+        "price_max": 1522,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-01.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 680 sqft Fisher 3D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1620,
+        "price_min": 2305,
+        "price_max": 2463,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-02.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1620 sqft Carter 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 900,
+        "price_min": 1560,
+        "price_max": 1669,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-03.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 900 sqft Everest 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 975,
+        "price_min": 1552,
+        "price_max": 1660,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-04.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 975 sqft Tanner 3D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1200,
+        "price_min": 1861,
+        "price_max": 2045,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-05.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 1200 sqft Piper 3D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.0,
+        "sqft": 1335,
+        "price_min": 1841,
+        "price_max": 2043,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-06.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 1335 sqft Mason 3D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.0,
+        "sqft": 1450,
+        "price_min": 2249,
+        "price_max": 2455,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-07.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 1450 sqft Page 3D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1800,
+        "price_min": 2301,
+        "price_max": 2459,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-08.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1800 sqft Parker 3D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1840,
+        "price_min": 2523,
+        "price_max": 2696,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-09.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 and a half 1840 sqft Thatcher 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 925,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-10.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 925 sqft Cliff 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 930,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-11.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 930 sqft Sawyer - Garage 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 960,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-12.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 960 sqft Clark 3D.png"
+      },
+      {
+        "label": "1×1",
+        "beds": 1,
+        "baths": 1.0,
+        "sqft": 1100,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-13.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 1x1 1100 sqft Taylor 3D.png"
+      },
+      {
+        "label": "2×2",
+        "beds": 2,
+        "baths": 2.5,
+        "sqft": 1570,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-14.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 2x2 and a half 1570 sqft Hunter 3D.png"
+      },
+      {
+        "label": "3×2",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1765,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-15.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x2 and a half 1765 sqft Cooper 3D.png"
+      },
+      {
+        "label": "3×3",
+        "beds": 3,
+        "baths": 3.5,
+        "sqft": 2360,
+        "price_min": 0,
+        "price_max": 0,
+        "available": "0",
+        "fp_image": "images/bh/listing-0011/fp-16.png",
+        "fp_image_url": "https://cdngeneralcf.rentcafe.com/dmslivecafe/2/3013/Park at The Hill 3x3 and a half 2360 sqft Devin 3D.png"
+      }
+    ],
+    "price_max": 2696,
+    "sqft_min": 650,
+    "sqft_max": 2360
   }
 ]
