@@ -54,7 +54,7 @@
   --lime-2:#B8913C;
   --lime-bg:#F8F4ED;
   --green:#84CBA1;
-  --green-soft:#D4BC90;
+  --green-soft:#f4f4f3;
   --ai-grad:linear-gradient(84deg,rgba(200,169,110,.30) 0%,rgba(184,145,60,.30) 100%);
   --ai-grad-strong:linear-gradient(84deg,rgba(200,169,110,.85) 0%,rgba(184,145,60,.85) 100%);
   /* zero out all border radii */
@@ -89,14 +89,15 @@
 [data-brand="bh"] .search-glass{border-radius:0!important}
 [data-brand="bh"] .search-card{border-radius:0!important}
 [data-brand="bh"] .ai-go{border-radius:0!important}
+[data-brand="bh"] .ai-go svg{display:none}
+[data-brand="bh"] .ai-go::after{content:'';display:block;width:18px;height:18px;background:url('progress/icons/ai search white.svg') center/contain no-repeat}
+[data-brand="bh"] .resident-btn{background:#84CBA1!important;color:#091a27!important}
 /* BH hero bg — swapped via JS */
 /* Hide Progress-specific detail sections when BH brand is active */
 [data-brand="bh"] .detail-cost,
 [data-brand="bh"] .detail-about,
 [data-brand="bh"] .detail-policy,
-[data-brand="bh"] .detail-qual-callout,
-[data-brand="bh"] .detail-similar,
-[data-brand="bh"] .detail-cta { display:none !important; }
+[data-brand="bh"] .detail-qual-callout { display:none !important; }
 /* BH detail: extend scroll area so sticky chat doesn't overlap */
 [data-brand="bh"] .detail-content-scroll { padding-bottom:140px }
 /* BH: remove double-rule (eyebrow already provides top divider) */
@@ -107,6 +108,74 @@
 [data-brand="bh"] .bh-plans-title { display:none }
 
 /* ── Brand switcher widget ──────────────────────────────────────────────── */
+/* ── Persona switcher ─────────────────────────────────────── */
+.persona-switcher{
+  position:fixed;bottom:28px;left:24px;z-index:9999;
+  display:flex;align-items:center;background:rgba(9,26,39,0.85);backdrop-filter:blur(8px);
+  border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 2px 12px rgba(9,26,39,.25);opacity:0.65;transition:opacity .2s;
+}
+.persona-switcher:hover{opacity:1}
+.persona-tab{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:7px 12px;cursor:pointer;border:none;background:none;color:rgba(255,255,255,.5);
+  font-family:"Open Sans",sans-serif;font-size:10px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;transition:.18s;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;
+}
+.persona-tab:last-child{border-right:none}
+.persona-tab:hover{color:rgba(255,255,255,.85)}
+.persona-tab.active{color:#fff;background:rgba(255,255,255,.1)}
+.persona-tab-icon{font-size:14px;line-height:1}
+/* Persona banner */
+.persona-banner{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--r-card);margin-bottom:0;font-size:13.5px;line-height:1.5}
+.persona-banner-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.persona-banner-text strong{display:block;font-weight:700;font-size:14px;margin-bottom:2px}
+.persona-banner.returning{background:linear-gradient(89.04deg,rgba(139,205,161,0.35) 0%,rgba(218,225,76,0.35) 100%);border:0.5px solid rgba(255,255,255,.8)}
+.persona-banner.returning .persona-banner-icon{background:rgba(1,68,75,.12);color:var(--teal)}
+.persona-banner.renter{background:linear-gradient(89.04deg,rgba(1,68,75,.12) 0%,rgba(1,68,75,.06) 100%);border:1px solid rgba(1,68,75,.2)}
+.persona-banner.renter .persona-banner-icon{background:var(--teal);color:#fff}
+/* Expanded persona modules */
+.persona-module{max-width:680px;margin-top:24px}
+/* Returning: shortlist compare rail */
+.shortlist-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.persona-module-head{font-family:"Open Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);display:block;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.12);margin-bottom:16px}
+[data-brand="bh"] .persona-module-head{font-family:"Playfair Display",serif;font-size:20px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink);padding-bottom:0;border-bottom:none;margin-bottom:18px}
+.shortlist-cards{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.shortlist-cards::-webkit-scrollbar{display:none}
+.shortlist-card{flex:0 0 160px;border:1.5px solid var(--line);border-radius:var(--r-card);overflow:hidden;cursor:pointer;transition:var(--tr);position:relative}
+.shortlist-card:hover{box-shadow:var(--sh);border-color:var(--teal)}
+.shortlist-card.current{border-color:var(--teal);background:var(--lime-bg)}
+.shortlist-card-img{width:100%;height:90px;object-fit:cover;display:block}
+.shortlist-card-body{padding:8px 10px}
+.shortlist-card-addr{font-size:11px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shortlist-card-price{font-family:"Raleway",sans-serif;font-weight:700;font-size:13px;color:var(--teal);margin-top:2px}
+.shortlist-card-stat{font-size:10px;color:var(--gray);margin-top:1px}
+.shortlist-card-badge{position:absolute;top:6px;left:6px;background:var(--teal);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:.04em}
+/* AI comparison insight */
+.persona-compare-insight{background:var(--ai-grad);border:0.5px solid rgba(255,255,255,.8);border-radius:var(--r-card);padding:14px 16px;margin-top:14px;font-size:13.5px;color:var(--navy);line-height:1.6;display:flex;gap:10px;align-items:flex-start}
+/* Renter: timeline + pre-approval */
+.renter-preapproval{background:#091A27;border-radius:var(--r-card);padding:20px 22px;color:#fff;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.renter-badge{display:flex;flex-direction:column;gap:2px;flex:1}
+.renter-badge-title{font-family:"Raleway",sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.renter-badge-sub{font-size:12px;opacity:.8}
+.renter-steps{margin-top:20px;display:flex;flex-direction:column;gap:0}
+.renter-step{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.renter-step:last-child{border-bottom:none}
+.renter-step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.renter-step-num.done{background:var(--teal);color:#fff}
+.renter-step-num.active{background:var(--lime);color:var(--teal)}
+.renter-step-num.todo{background:var(--surface);color:var(--gray);border:1.5px solid var(--line)}
+.renter-step-label{font-size:14px;font-weight:600;color:var(--ink)}
+.renter-step-sub{font-size:12px;color:var(--gray);margin-top:2px}
+.renter-perks{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.renter-perk{background:var(--lime-bg);border:1px solid rgba(128,188,0,.15);border-radius:var(--r-tile);padding:10px 12px;font-size:12.5px;color:var(--ink);display:flex;align-items:flex-start;gap:8px}
+.renter-perk-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px}
+/* New: how it works */
+.new-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+.new-step{background:var(--surface);border-radius:var(--r-card);padding:14px;display:flex;flex-direction:column;gap:6px}
+.new-step-num{width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.new-step-title{font-size:13px;font-weight:700;color:var(--ink)}
+.new-step-desc{font-size:12px;color:var(--gray);line-height:1.5}
 .brand-switcher{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:9999;
   cursor:pointer;border:none;background:none;padding:0;
@@ -199,11 +268,12 @@ img{display:block}
 .loc-suggestion svg{color:var(--gray);flex-shrink:0}
 .hamburger{display:none;width:42px;height:42px;align-items:center;justify-content:center;color:#fff;border-radius:var(--r-tile);margin-left:auto}
 
-.home-center{position:absolute;z-index:3;left:50%;top:38%;transform:translate(-50%,-50%);width:min(760px,90vw);text-align:left}
+.home-center{position:absolute;z-index:4;left:50%;top:38%;transform:translate(-50%,-50%);width:min(760px,90vw);text-align:left}
 .ai-eyebrow{display:none}
 
 .search-glass{background:rgba(0,0,0,.18);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);border-radius:14px;border:1px solid rgba(255,255,255,.15);padding:25px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 32px rgba(0,0,0,.22);transition:border-color .2s}
 .search-glass.expanded{border-color:rgba(255,255,255,.3)}
+.search-expanded-backdrop{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,.35);pointer-events:none;animation:fadeIn .2s ease}
 
 /* results panel */
 .search-results{border-top:1px solid rgba(255,255,255,.12);padding-top:14px;display:flex;flex-direction:column;gap:2px;animation:fadeUp .18s ease}
@@ -255,7 +325,7 @@ img{display:block}
 /* chip active (added to field) */
 .home-chip.active{background:rgba(230,232,125,.22);border-color:rgba(230,232,125,.8);color:var(--lime)}
 
-.home-foot{position:absolute;z-index:3;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;padding:0 58px 54px;gap:24px}
+.home-foot{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;padding:0 58px 54px;gap:24px}
 .loc-pill{display:inline-flex;align-items:center;gap:7px;color:#fff;font-size:13.5px;letter-spacing:-.01em;background:rgba(243,248,230,.18);backdrop-filter:blur(4px);padding:9px 16px;border-radius:var(--r-pill);margin-bottom:18px}
 .home-h1{font-size:clamp(46px,5.6vw,74px);color:var(--lime);margin:0;letter-spacing:-.01em}
 
@@ -436,6 +506,14 @@ img{display:block}
 .rail-ai-note{font-size:13.5px;color:var(--teal-700);line-height:1.55;margin:10px 0 0}
 .rail-ai-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .ai-chip{background:rgba(255,255,255,.7);color:var(--teal);font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:var(--r-pill)}
+/* Enhance your search filter tags */
+.enhance-section{margin-top:16px;padding:14px 16px;background:var(--surface);border-radius:var(--r-card);border:1px solid var(--line)}
+.enhance-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.enhance-tags{display:flex;flex-wrap:wrap;gap:7px}
+.enhance-tag{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:var(--r-pill);font-size:12px;font-weight:600;color:var(--teal);background:#fff;border:1.5px solid var(--line);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.enhance-tag:hover{border-color:var(--teal);background:var(--lime-bg)}
+.enhance-tag.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+.enhance-tag svg{flex-shrink:0}
 
 .rail-sort{display:flex;align-items:center;justify-content:space-between;margin:36px 0 14px;font-size:13px;color:var(--gray);padding-top:28px;border-top:1px solid var(--line)}
 .sort-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--teal)}
@@ -504,11 +582,21 @@ img{display:block}
 .rec-divider::before,.rec-divider::after{content:"";flex:1;height:1px;background:var(--line)}
 .rec-divider span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-2);white-space:nowrap}
 
-.compare-tray{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:22px;background:var(--navy);color:#fff;border-radius:var(--r-pill);padding:12px 14px 12px 22px;box-shadow:var(--sh-lg);z-index:30;animation:fadeUp .25s;white-space:nowrap}
-.compare-tray-info{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600}
-.compare-tray-info .cnt{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;background:var(--lime);color:var(--teal);border-radius:var(--r-pill);font-size:13px;font-weight:700}
-.compare-tray-actions{display:flex;align-items:center;gap:14px}
-.tray-clear{color:rgba(255,255,255,.7);font-size:13px;font-weight:600}
+.compare-tray{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;background:var(--navy);color:#fff;border-radius:14px;padding:10px 16px 10px 12px;box-shadow:var(--sh-lg);z-index:30;animation:fadeUp .25s;white-space:nowrap}
+.tray-slots{display:flex;align-items:center;gap:6px}
+.tray-slot{width:48px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;position:relative;transition:var(--tr)}
+.tray-slot-filled{border:2px solid var(--lime)}
+.tray-slot-filled img{width:100%;height:100%;object-fit:cover;display:block}
+.tray-slot-empty{border:2px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.tray-slot-empty svg{opacity:.35}
+.tray-slot-remove{position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:rgba(9,26,39,.7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;border:none;line-height:1;opacity:0;transition:var(--tr)}
+.tray-slot:hover .tray-slot-remove{opacity:1}
+.tray-divider{width:1px;height:36px;background:rgba(255,255,255,.15);flex-shrink:0}
+.tray-meta{display:flex;flex-direction:column;gap:2px}
+.tray-label{font-size:12px;font-weight:700;color:#fff;line-height:1.2}
+.tray-hint{font-size:11px;color:rgba(255,255,255,.5);line-height:1.2}
+.compare-tray-actions{display:flex;align-items:center;gap:10px;margin-left:4px}
+.tray-clear{color:rgba(255,255,255,.55);font-size:12px;font-weight:600}
 .tray-clear:hover{color:#fff}
 
 /* ---- COMPARE OVERLAY ---- */
@@ -562,8 +650,8 @@ img{display:block}
 .cmp-panel{position:relative;width:calc(100% - 80px);max-width:1400px;height:100%;background:#fff;display:flex;flex-direction:column;box-shadow:var(--sh-lg);animation:slideIn .28s cubic-bezier(.4,0,.2,1)}
 .cmp-bar{display:flex;align-items:center;gap:16px;padding:18px 32px;border-bottom:1px solid var(--line);flex-shrink:0;background:#fff}
 .cmp-bar-title{font-size:20px;margin:0;letter-spacing:-.01em}
-.cmp-body{flex:1;overflow-y:auto;min-height:0}.cmp-cols{display:grid;grid-template-columns:1fr 1fr;min-height:0}
-.cmp-col{padding:28px 32px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.cmp-body{flex:1;overflow-y:auto;min-height:0}.cmp-cols{display:grid;grid-template-columns:repeat(var(--cmp-cols,2),1fr);min-height:0}
+.cmp-col{padding:28px 24px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column}
 .cmp-col:last-child{border-right:none}
 .cmp-gallery{display:grid;grid-template-columns:338fr 166fr;grid-template-rows:338px;gap:14px;height:338px;flex-shrink:0;overflow:hidden}
 .cmp-main{position:relative;border-radius:10px;overflow:hidden}
@@ -577,8 +665,8 @@ img{display:block}
 .cmp-fav{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--gray);border-radius:50%;transition:var(--tr);margin-top:2px}
 .cmp-fav:hover{color:var(--teal)}
 .cmp-fav.on{color:var(--teal)}
-.cmp-why{margin-top:16px}
-.cmp-why-text{font-size:14px;color:var(--navy);line-height:1.55;margin:10px 0 0}
+.cmp-why{margin-top:16px;background:linear-gradient(89.04deg,rgba(139,205,161,0.4) 47.74%,rgba(218,225,76,0.4) 99.17%);border:0.5px solid rgba(255,255,255,0.8);border-radius:10px;padding:12px 14px}
+.cmp-why-text{font-size:14px;color:var(--navy);line-height:1.55;margin:8px 0 0}
 .cmp-price-row{margin-top:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
 .cmp-price-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
 .cmp-price-main{font-family:"Raleway";font-weight:700;font-size:36px;color:var(--ink);line-height:1;margin-top:6px}
@@ -602,7 +690,11 @@ img{display:block}
 .cmp-feat-check{width:20px;height:20px;border-radius:50%;background:rgba(128,188,0,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green)}
 .cmp-feat.off .cmp-feat-check{background:var(--surface);color:var(--gray-2)}
 .cmp-feat.off{color:var(--gray-2)}
-.cmp-col-actions{display:none}.cmp-footer{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);flex-shrink:0;background:#fff}.cmp-footer-col{padding:16px 32px;border-right:1px solid var(--line)}.cmp-footer-col:last-child{border-right:none}
+.cmp-cols[style*="--cmp-cols:3"] .cmp-col{padding:20px 18px 20px}
+.cmp-cols[style*="--cmp-cols:3"] .cmp-title{font-size:20px}
+.cmp-cols[style*="--cmp-cols:3"] .cmp-price-main{font-size:22px}
+.cmp-cols[style*="--cmp-cols:3"] .cmp-gallery{height:240px}
+.cmp-col-actions{display:none}.cmp-footer{display:grid;grid-template-columns:repeat(var(--cmp-cols,2),1fr);border-top:1px solid var(--line);flex-shrink:0;background:#fff}.cmp-footer-col{padding:16px 24px;border-right:1px solid var(--line)}.cmp-footer-col:last-child{border-right:none}
 .cmp-apply{width:100%;height:52px;font-size:15px;letter-spacing:.01em}
 .cmp-details-link{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:10px;font-family:"Raleway";font-weight:700;font-size:13px;color:var(--teal);padding:6px;transition:var(--tr)}
 .cmp-details-link:hover{gap:10px}
@@ -707,7 +799,7 @@ img{display:block}
 .bh-tab{padding:9px 18px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;border:none;background:none;white-space:nowrap;transition:var(--tr);border-right:1px solid var(--line)}
 .bh-tab:last-child{border-right:none}
 .bh-tab:hover{background:var(--surface);color:var(--ink)}
-.bh-tab.active{background:var(--teal);color:#fff}
+.bh-tab.active{background:#84cba1;color:#091A27}
 .bh-unit-list{display:flex;flex-direction:column;gap:12px}
 .bh-unit{border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:var(--tr)}
 .bh-unit:hover{box-shadow:var(--sh);border-color:transparent}
@@ -772,6 +864,7 @@ img{display:block}
 .pchat-collapsed .pchat-prompt span{color:var(--teal)}
 .ai-why{margin-top:32px;max-width:680px}
 .ai-why-box{background:var(--ai-grad);border:0.5px solid rgba(255,255,255,0.8);border-radius:10px;padding:20px 22px;margin-top:14px}
+[data-brand="bh"] .ai-why-box{background:linear-gradient(84deg,rgba(139,205,161,.35) 0%,rgba(218,225,76,.35) 100%);border:0.5px solid rgba(255,255,255,0.8)}
 .ai-why-header{display:flex;align-items:center;gap:9px;margin-bottom:14px}
 .ai-why-header span{font-family:"Raleway",sans-serif;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal)}
 .ai-why-points{display:flex;flex-direction:column;gap:10px}
@@ -3283,6 +3376,23 @@ window.getListings = () => (window.getBrand()==='bh' && window.BH && window.BH.L
   ? window.BH.LISTINGS
   : window.PR.LISTINGS;
 
+// User persona state: 'new' | 'returning' | 'renter'
+window.getUserPersona = () => document.body.getAttribute('data-persona') || 'new';
+window.setUserPersona = (p) => {
+  document.body.setAttribute('data-persona', p);
+  window.dispatchEvent(new CustomEvent('personachange', {detail: p}));
+};
+function usePersona(){
+  const [persona, setPersona] = React.useState(window.getUserPersona());
+  React.useEffect(()=>{
+    const h = e => setPersona(e.detail || 'new');
+    window.addEventListener('personachange', h);
+    return ()=>window.removeEventListener('personachange', h);
+  },[]);
+  return persona;
+}
+window.usePersona = usePersona;
+
 function useBrand(){
   const [brand, setBrand] = React.useState(window.getBrand());
   React.useEffect(()=>{
@@ -3538,7 +3648,9 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
   const brand = window.useBrand();
   const [q, setQ] = React.useState("");
   const [listening, setListening] = React.useState(false);
-  const chips = ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
+  const chips = brand==='bh'
+    ? ["Studio apartments","Pet-friendly","Pool & fitness","Available now"]
+    : ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
   const featured = window.getListings()[0]||window.PR.LISTINGS[0];
 
   const submit = (text)=>{ const v=(text??q).trim(); if(!v) return; onSearch(v); };
@@ -3569,6 +3681,7 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
         <button className="btn btn-lime resident-btn">Current Resident{brand==='bh'?'s':''}</button>
       </header>
 
+      {isExpanded && <div className="search-expanded-backdrop" onClick={()=>setFocused(false)}/>}
       <div className="home-center">
         <div className="ai-eyebrow">
           <span className="live-dot" />
@@ -3750,10 +3863,144 @@ function ListingCard({ l, ai, fav, onFav, onOpen, selected, onToggle, hovered, o
   );
 }
 
+// Shared filter tag definitions used by both MapScreen instances
+const ENHANCE_FILTERS = [
+  // Reliable data-backed filters
+  {id:'avail',    label:'Available now',   score: l=>/available now/i.test(l.status||'') ? 10 : 0,   hard: true},
+  {id:'3bed',     label:'3+ bedrooms',     score: l=>(l.beds||l.bedrooms_min||0)>=3 ? 10 : 0,         hard: true},
+  {id:'under2k',  label:'Under $2,000',    score: l=>l.price < 2000 ? 10 : 0,                          hard: true},
+  {id:'studio',   label:'Studio',          score: l=>(l.beds===0||l.bedrooms_min===0) ? 10 : 0,        hard: true},
+  {id:'new',      label:'New listings',    score: l=>l.isNew ? 10 : 0,                                  hard: true},
+  // Soft score filters — boost matching listings to top, no hard exclusion
+  {id:'yard',     label:'Private yard',    score: l=>{
+    const t=[(l.inhome||[]).join(' '),l.blurb||''].join(' ').toLowerCase();
+    return /yard|patio|outdoor|backyard|deck/.test(t)?8:0;
+  }},
+  {id:'pet',      label:'Pet-friendly',    score: l=>{
+    const t=[(l.inhome||[]),(l.community||[]),(l.amenities||[]).map(a=>a.label||a)].flat().join(' ').toLowerCase()+' '+(l.blurb||'').toLowerCase();
+    return /pet|dog|no breed/.test(t)?8:0;
+  }},
+  {id:'garage',   label:'Garage',          score: l=>{
+    const t=[(l.inhome||[]).join(' '),l.blurb||''].join(' ').toLowerCase();
+    return /garage/.test(t)?8:0;
+  }},
+  {id:'pool',     label:'Pool',            score: l=>{
+    const t=[(l.inhome||[]),(l.community||[]),(l.amenities||[]).map(a=>a.label||a)].flat().join(' ').toLowerCase();
+    return /pool|swim/.test(t)?8:0;
+  }},
+  {id:'smart',    label:'Smart home',      score: l=>{
+    const t=[(l.inhome||[]).join(' '),l.blurb||''].join(' ').toLowerCase();
+    return /smart/.test(t)?8:0;
+  }},
+  {id:'walk',     label:'Walkable',        score: l=>{
+    const t=[(l.inhome||[]),(l.community||[])].flat().join(' ').toLowerCase()+' '+(l.city||'').toLowerCase();
+    return /walk|marta|transit/.test(t)||/decatur|midtown|sandy spring/.test(t)?8:0;
+  }},
+  {id:'fitness',  label:'Fitness center',  score: l=>{
+    const t=[(l.amenities||[]).map(a=>a.label||a),(l.community||[])].flat().join(' ').toLowerCase();
+    return /fitness|gym|workout/.test(t)?8:0;
+  }},
+  {id:'laundry',  label:'In-unit laundry', score: l=>{
+    const t=[(l.inhome||[]).join(' '),l.blurb||''].join(' ').toLowerCase();
+    return /laundry|washer|dryer/.test(t)?8:0;
+  }},
+];
+
+function getEnhanceTags(query) {
+  if (!query) return [];
+  const q = query.toLowerCase();
+
+  // Detect what the user ALREADY asked for — exclude these from suggestions
+  const alreadyMentioned = new Set();
+  if (/yard|fenc|outdoor|garden|backyard/.test(q)) alreadyMentioned.add('yard');
+  if (/pet|dog|cat|animal/.test(q)) alreadyMentioned.add('pet');
+  if (/garage|2.car|attached/.test(q)) alreadyMentioned.add('garage');
+  if (/pool|swim/.test(q)) alreadyMentioned.add('pool');
+  if (/smart|tech/.test(q)) alreadyMentioned.add('smart');
+  if (/walk|transit|marta/.test(q)) alreadyMentioned.add('walk');
+  if (/studio/.test(q)) alreadyMentioned.add('studio');
+  if (/3.bed|three.bed/.test(q)) alreadyMentioned.add('3bed');
+  if (/under.*\$?2.?000|under.*2k|\$?1[,.]?[0-9]/.test(q)) alreadyMentioned.add('under2k');
+  if (/avail|now|move.in/.test(q)) alreadyMentioned.add('avail');
+  if (/fitness|gym/.test(q)) alreadyMentioned.add('fitness');
+  if (/laundry|washer/.test(q)) alreadyMentioned.add('laundry');
+  if (/new listing/.test(q)) alreadyMentioned.add('new');
+
+  // Build COMPLEMENTARY suggestions based on the search intent
+  const candidates = [];
+
+  if (/yard|fenc|outdoor/.test(q)) {
+    // Searching for yard → suggest related outdoor + size extras
+    candidates.push('garage','3bed','pet','avail','walk');
+  } else if (/pet|dog|cat/.test(q)) {
+    // Pet search → suggest spaces that work for pets
+    candidates.push('yard','garage','3bed','avail','walk');
+  } else if (/school|kid|famil/.test(q)) {
+    // Family search → suggest practical additions
+    candidates.push('yard','garage','3bed','pet','laundry');
+  } else if (/walk|marta|transit|commut/.test(q)) {
+    // Commuter → suggest lifestyle add-ons
+    candidates.push('pet','pool','fitness','avail','laundry');
+  } else if (/pool|gym|fitness|amenity/.test(q)) {
+    // Amenity search → suggest other amenities + availability
+    candidates.push('pet','walk','laundry','smart','avail');
+  } else if (/studio|1.bed/.test(q)) {
+    // Small apartment → suggest practical filters
+    candidates.push('walk','fitness','pet','avail','laundry');
+  } else if (/3.bed|4.bed|large|space/.test(q)) {
+    // Spacious → suggest yard, garage, pet
+    candidates.push('yard','garage','pet','laundry','avail');
+  } else if (/under|budget|afford|cheap/.test(q)) {
+    // Budget → suggest value adds
+    candidates.push('avail','pet','yard','laundry','new');
+  } else if (/smart|modern|tech/.test(q)) {
+    // Tech → suggest modern living features
+    candidates.push('laundry','garage','avail','walk','pool');
+  } else {
+    // Generic — suggest a balanced set
+    candidates.push('yard','pet','garage','pool','avail','walk','3bed','laundry');
+  }
+
+  // Filter out already-mentioned items, deduplicate, map to filter objects
+  return [...new Set(candidates)]
+    .filter(id => !alreadyMentioned.has(id))
+    .slice(0, 6)
+    .map(id => ENHANCE_FILTERS.find(f=>f.id===id))
+    .filter(Boolean);
+}
+
 function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBack, compareIds, onToggleCompare, onLaunchCompare, favs, onFav }){
   const [hovered, setHovered] = React.useState(null);
   const [sort, setSort] = React.useState("Best match");
+  const [activeFilters, setActiveFilters] = React.useState([]);
   const filters = ["For rent","Price","Bedrooms","Baths","Property type"];
+
+  // Reset active filters when query changes
+  React.useEffect(()=>{ setActiveFilters([]); },[query]);
+
+  const enhanceTags = React.useMemo(()=>getEnhanceTags(query),[query]);
+
+  const toggleFilter = (id) => setActiveFilters(prev =>
+    prev.includes(id) ? prev.filter(x=>x!==id) : [...prev, id]
+  );
+
+  const filteredListings = React.useMemo(()=>{
+    if (!activeFilters.length) return listings;
+    const active = ENHANCE_FILTERS.filter(f=>activeFilters.includes(f.id));
+    const hard = active.filter(f=>f.hard);
+    const soft = active.filter(f=>!f.hard);
+    // Hard filters exclude non-matching; soft filters sort matching to top
+    let base = hard.length ? listings.filter(l=>hard.every(f=>f.score(l)>0)) : [...listings];
+    if (!base.length) base = [...listings]; // fallback: never show empty
+    if (soft.length) {
+      base = [...base].sort((a,b)=>{
+        const sa = soft.reduce((s,f)=>s+f.score(a),0);
+        const sb = soft.reduce((s,f)=>s+f.score(b),0);
+        return sb - sa;
+      });
+    }
+    return base;
+  },[listings, activeFilters]);
 
   return (
     <div className="map-screen">
@@ -3846,13 +4093,38 @@ function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBac
             </div>
           )}
 
+          {/* Enhance your search filter tags */}
+          {enhanceTags.length > 0 && (
+            <div className="enhance-section">
+              <div className="enhance-label">
+                <AiIcon size={12} color="var(--teal)"/>
+                Enhance your search
+                {activeFilters.length > 0 && (
+                  <button onClick={()=>setActiveFilters([])}
+                    style={{marginLeft:'auto',fontSize:10,color:'var(--gray)',fontWeight:600,background:'none',border:'none',cursor:'pointer',padding:0}}>
+                    Clear all
+                  </button>
+                )}
+              </div>
+              <div className="enhance-tags">
+                {enhanceTags.map(f=>(
+                  <button key={f.id}
+                    className={"enhance-tag"+(activeFilters.includes(f.id)?' active':'')}
+                    onClick={()=>toggleFilter(f.id)}>
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="rail-sort">
-            <span>{ai? "Sorted for your search" : "Sort"}</span>
+            <span>{ai? `Sorted for your search${activeFilters.length?' · '+filteredListings.length+' homes':''}` : "Sort"}</span>
             <button className="sort-btn">{sort}<Icon name="chevdown" size={15}/></button>
           </div>
 
           <div className="rail-grid">
-            {listings.map(l=>(
+            {filteredListings.map(l=>(
               <ListingCard key={l.id} l={l} ai={false}
                 fav={favs.includes(l.id)} onFav={onFav}
                 onOpen={onOpenDetail}
@@ -3865,18 +4137,44 @@ function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBac
       </div>
 
       {/* compare tray */}
-      {compareIds.length>0 && (
-        <div className="compare-tray">
-          <div className="compare-tray-info">
-            <span className="cnt">{compareIds.length}</span>
-            {compareIds.length===1 ? "1 home selected — pick one more to compare" : compareIds.length+" homes selected"}
+      {compareIds.length>0 && (()=>{
+        const selectedHomes = compareIds.map(id=>listings.find(l=>l.id===id)).filter(Boolean);
+        const hint = compareIds.length===1 ? "Add up to 2 more to compare"
+          : compareIds.length===2 ? "Add 1 more or compare now"
+          : "Ready to compare";
+        return (
+          <div className="compare-tray">
+            {/* 3 fixed slots */}
+            <div className="tray-slots">
+              {[0,1,2].map(i=>{
+                const home = selectedHomes[i];
+                return home ? (
+                  <div key={i} className="tray-slot tray-slot-filled">
+                    <img src={home.img} alt={home.title||home.name}
+                      onError={e=>{ e.target.style.background='rgba(255,255,255,.15)'; e.target.style.display='none'; }}/>
+                    <button className="tray-slot-remove" onClick={e=>{e.stopPropagation();onToggleCompare(home.id);}}>✕</button>
+                  </div>
+                ) : (
+                  <div key={i} className="tray-slot tray-slot-empty">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/>
+                    </svg>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="tray-divider"/>
+            <div className="tray-meta">
+              <div className="tray-label">Compare homes ({compareIds.length}/3)</div>
+              <div className="tray-hint">{hint}</div>
+            </div>
+            <div className="compare-tray-actions">
+              {compareIds.length>=2 && <button className="btn btn-primary" style={{padding:'10px 18px',fontSize:13}} onClick={onLaunchCompare}>Compare</button>}
+              <button className="tray-clear" onClick={()=>compareIds.forEach(onToggleCompare)}>Clear</button>
+            </div>
           </div>
-          <div className="compare-tray-actions">
-            {compareIds.length>=2 && <button className="btn btn-primary" onClick={onLaunchCompare}>Compare {compareIds.length} homes</button>}
-            <button className="tray-clear" onClick={()=>compareIds.forEach(onToggleCompare)}>Clear</button>
-          </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
@@ -3887,7 +4185,7 @@ window.ListingCard = ListingCard;
 
 
 /* Compare overlay — launched from the map */
-function CompareColumn({ l, aiLine, aiLoading, fav, onFav, onApply, onOpenDetail }){
+function CompareColumn({ l, aiLine, aiLoading, fav, onFav, onApply, onOpenDetail, index=0, allHomes=[] }){
   const features = ["Garage","2 Story","Smart Home","Hard Surface Flooring","Stainless Steel Appliances","Near Parks","Near Retail","Porch","Long Term Lease","Pet-Friendly"];
   const pricePsf = (l.price / l.sqft).toFixed(2);
   const hasGarage = !!l.desired["Garage"];
@@ -3897,16 +4195,24 @@ function CompareColumn({ l, aiLine, aiLoading, fav, onFav, onApply, onOpenDetail
   return (
     <div className="cmp-col">
       {/* Gallery */}
-      <div className="cmp-gallery">
-        <div className="cmp-main">
-          <img src={l.gallery[0]} alt={l.title}/>
-          <span className={"tag cmp-badge "+(l.isNew?"tag-new":"tag-white")}>{l.status}</span>
-        </div>
-        <div className="cmp-thumbs">
-          <img src={l.gallery[1]||l.gallery[0]} alt=""/>
-          <img src={l.gallery[2]||l.gallery[0]} alt=""/>
-        </div>
-      </div>
+      {(()=>{
+        const BH_INTERIORS = ["progress/images/interior-photos/bh/Bedroom-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Living-Room-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg"];
+        const gallery = window.isBH()
+          ? [...(l.gallery||[]).filter(s=>!s.includes('interior-photos')), ...BH_INTERIORS].filter(Boolean)
+          : (l.gallery||[]);
+        return (
+          <div className="cmp-gallery">
+            <div className="cmp-main">
+              <img src={gallery[0]||l.img} alt={l.title}/>
+              <span className={"tag cmp-badge "+(l.isNew?"tag-new":"tag-white")}>{l.status}</span>
+            </div>
+            <div className="cmp-thumbs">
+              <img src={gallery[1]||gallery[0]||l.img} alt=""/>
+              <img src={gallery[2]||gallery[0]||l.img} alt=""/>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Header */}
       <div className="cmp-head">
@@ -3921,13 +4227,33 @@ function CompareColumn({ l, aiLine, aiLoading, fav, onFav, onApply, onOpenDetail
 
       {/* AI match */}
       {(()=>{
-        const fallbackWhy = aiLine || l.aiWhy || (
-          l.sqft >= 2200
-            ? `At ${l.sqft.toLocaleString()} sqft, this is one of the most spacious options at this price — great for families or anyone who needs room to grow.`
-            : l.price === Math.min(l.price)
-            ? `Best value in this comparison at $${l.price.toLocaleString()}/mo — ${l.sqft.toLocaleString()} sqft in a well-connected Atlanta neighborhood.`
-            : `${l.beds}-bed layout with ${l.baths} baths starting at $${l.price.toLocaleString()}/mo — strong value for the ${(l.street||'').split(',').slice(1).join(',').trim()||'Atlanta metro'} area.`
-        );
+        // Each column gets a distinct angle — price, space, location, availability, value, features
+        const city = (l.street||l.name||'').split(',').slice(1,2).join('').trim() || 'the Atlanta metro';
+        const pricePsfLocal = l.sqft > 0 ? (l.price/l.sqft).toFixed(2) : null;
+        const allPrices = allHomes.map(h=>h.price).filter(Boolean);
+        const cheapest = allPrices.length && l.price === Math.min(...allPrices);
+        const biggest = allHomes.length && l.sqft === Math.max(...allHomes.map(h=>h.sqft||0));
+        const status = (l.status||'').toLowerCase();
+        const isAvail = /available now/i.test(status);
+
+        const ANGLES = [
+          // Angle 0 — Value lens
+          cheapest
+            ? `The most affordable option in this comparison at $${l.price.toLocaleString()}/mo — ${pricePsfLocal ? `$${pricePsfLocal}/sqft` : `${l.sqft.toLocaleString()} sqft`}, making it an excellent entry point.`
+            : `At $${l.price.toLocaleString()}/mo${pricePsfLocal?` ($${pricePsfLocal}/sqft)`:''},  this home offers competitive pricing for ${city} with ${l.beds} bedrooms and ${l.baths} baths.`,
+          // Angle 1 — Space lens
+          biggest
+            ? `The most spacious option here — ${l.sqft.toLocaleString()} sqft gives you generous room for a home office, guests, or growing into the space over time.`
+            : `With ${l.sqft.toLocaleString()} sqft across ${l.beds} bedrooms and ${l.baths} baths, the layout balances everyday comfort with enough room to spread out.`,
+          // Angle 2 — Location & availability lens
+          isAvail
+            ? `Available now in ${city} — if your timeline is tight, this home lets you move in without waiting. Flexible lease terms give you room to plan ahead.`
+            : `Located in ${city}, this home ${status.includes('lease start') ? status : 'offers flexible availability'} — worth factoring into your move-in timeline if you're comparing options.`,
+          // Angle 3 — Feature & lifestyle lens (reuse 0 mod 3 for 4th+ homes)
+          `A ${l.beds}-bed, ${l.baths}-bath home starting at $${l.price.toLocaleString()}/mo in ${city}. The floor plan prioritizes ${l.beds >= 3 ? 'flexibility for families or roommates' : 'an efficient, low-maintenance lifestyle'}.`,
+        ];
+
+        const fallbackWhy = aiLine || l.aiWhy || ANGLES[index % ANGLES.length];
         return (
           <div className="cmp-why">
             <span className="tag tag-ai"><AiIcon size={13} color="var(--teal)"/>Why this home works</span>
@@ -4025,16 +4351,16 @@ function Compare({ homes, aiLines, aiLoading, query, onClose, onApply, favs, onF
           </div>
         </div>
         <div className="cmp-body scroll">
-          <div className="cmp-cols">
-            {homes.map(l=>(
-              <CompareColumn key={l.id} l={l}
+          <div className="cmp-cols" style={{'--cmp-cols':homes.length}}>
+            {homes.map((l,i)=>(
+              <CompareColumn key={l.id} l={l} index={i} allHomes={homes}
                 aiLine={aiLines[l.id]} aiLoading={aiLoading}
                 fav={favs.includes(l.id)} onFav={onFav}
                 onApply={onApply} onOpenDetail={onOpenDetail}/>
             ))}
           </div>
         </div>
-        <div className="cmp-footer">
+        <div className="cmp-footer" style={{'--cmp-cols':homes.length}}>
           {homes.map(l=>(
             <div key={l.id} className="cmp-footer-col">
               <button className="btn btn-primary cmp-apply" onClick={()=>onApply(l)}>Apply Now — {l.title.split(" ").slice(0,3).join(" ")}</button>
@@ -4059,6 +4385,176 @@ const AMENITIES = [
   {ic:"dog", label:"dog park"},
   {ic:"gym", label:"fitness center"},
 ];
+
+function PersonaModule({ l, persona, allListings, onOpenDetail, onToggleCompare, compareIds, onLaunchCompare }){
+  const savedHomes = React.useMemo(()=>{
+    if (!allListings) return [];
+    // Simulate 3 saved homes — pick homes close in price to current
+    return allListings
+      .filter(h => h.id !== l.id && Math.abs(h.price - l.price) < 600)
+      .slice(0, 3);
+  },[l, allListings]);
+
+  if (persona === 'new') return (
+    <div className="persona-module">
+      <div className="persona-module-head">
+        First time renting? Here's how it works
+      </div>
+      <div className="new-steps">
+        {[
+          {n:1, title:'Apply online', desc:'Complete your application in under 10 minutes. $50 non-refundable fee.'},
+          {n:2, title:'Get approved', desc:'Income and background check. Most decisions within 24–48 hours.'},
+          {n:3, title:'Sign & move in', desc:'Sign your lease digitally and schedule your move-in date.'},
+        ].map(s=>(
+          <div key={s.n} className="new-step">
+            <div className="new-step-num">{s.n}</div>
+            <div className="new-step-title">{s.title}</div>
+            <div className="new-step-desc">{s.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{marginTop:14,padding:'12px 14px',background:'var(--surface)',borderRadius:'var(--r-card)',fontSize:13,color:'var(--gray)',lineHeight:1.6}}>
+        12, 15, or 18-month lease terms available. Application fee: $50 non-refundable.
+      </div>
+    </div>
+  );
+
+  if (persona === 'returning') return (
+    <div className="persona-module">
+      <div className="shortlist-header">
+        <div>
+          <div className="persona-module-head" style={{marginBottom:0}}>Your saved homes</div>
+          <div style={{fontSize:12,color:'var(--gray)',marginTop:2}}>Compare this home against your shortlist</div>
+        </div>
+        <button style={{fontSize:12,fontWeight:600,color:'var(--teal)',background:'none',border:'none',cursor:'pointer'}}>
+          View all →
+        </button>
+      </div>
+      <div className="shortlist-cards">
+        <div className="shortlist-card current">
+          <img className="shortlist-card-img" src={l.img} alt={l.title}
+            onError={e=>{e.target.style.background='var(--surface)';e.target.style.display='none';}}/>
+          <div className="shortlist-card-badge">Viewing</div>
+          <div className="shortlist-card-body">
+            <div className="shortlist-card-addr">{(l.street||l.title||'').split(',')[0].trim()}</div>
+            <div className="shortlist-card-price">${l.price.toLocaleString()}/mo</div>
+            <div className="shortlist-card-stat">{l.beds} bd · {l.sqft.toLocaleString()} sqft</div>
+          </div>
+        </div>
+        {savedHomes.map(h=>{
+          const isInCompare = compareIds && compareIds.includes(h.id);
+          return (
+            <div key={h.id} className="shortlist-card" onClick={()=>onOpenDetail && onOpenDetail(h.id)}>
+              <img className="shortlist-card-img" src={h.img} alt={h.title}
+                onError={e=>{e.target.style.background='var(--surface)';e.target.style.display='none';}}/>
+              <div className="shortlist-card-body">
+                <div className="shortlist-card-addr">{(h.street||h.title||'').split(',')[0].trim()}</div>
+                <div className="shortlist-card-price">${h.price.toLocaleString()}/mo</div>
+                <div className="shortlist-card-stat">{h.beds} bd · {h.sqft.toLocaleString()} sqft</div>
+                {onToggleCompare && (
+                  <button
+                    onClick={e=>{e.stopPropagation();onToggleCompare(h.id);}}
+                    style={{marginTop:6,fontSize:11,fontWeight:600,padding:'4px 8px',borderRadius:4,border:'1px solid var(--teal)',background:isInCompare?'var(--teal)':'none',color:isInCompare?'#fff':'var(--teal)',cursor:'pointer',transition:'.15s'}}>
+                    {isInCompare ? '✓ In Compare' : '+ Compare'}
+                  </button>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {compareIds && compareIds.length >= 2 && onLaunchCompare && (
+        <button
+          onClick={onLaunchCompare}
+          style={{marginTop:14,width:'100%',padding:'11px 16px',background:'var(--teal)',color:'#fff',border:'none',borderRadius:'var(--r-card)',fontFamily:'Raleway',fontWeight:700,fontSize:13,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:8}}>
+          <Icon name="expand" size={14}/>
+          Compare {compareIds.length} homes side by side
+        </button>
+      )}
+    </div>
+  );
+
+  if (persona === 'renter') return (
+    <div className="persona-module">
+      <div className="renter-preapproval">
+        <div className="renter-badge">
+          <div className="renter-badge-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Pre-Approved Resident
+          </div>
+          <div className="renter-badge-sub">Your existing approval carries over — no new credit check needed</div>
+        </div>
+        <div style={{textAlign:'right',flexShrink:0}}>
+          <div style={{fontSize:11,opacity:.7,marginBottom:4}}>Resident since</div>
+          <div style={{fontFamily:'Raleway',fontWeight:700,fontSize:16}}>Jan 2023</div>
+        </div>
+      </div>
+
+      <div style={{marginTop:20}}>
+        <div className="persona-module-head">
+          Your application is fast-tracked
+        </div>
+        <div className="renter-steps">
+          {[
+            {n:'✓', label:'Identity verified',    sub:'On file from your current lease',    state:'done'},
+            {n:'✓', label:'Income confirmed',     sub:'Most recent verification: Apr 2025', state:'done'},
+            {n:'✓', label:'Background check',     sub:'Completed — valid for 12 months',    state:'done'},
+            {n:'→', label:'Sign new lease',       sub:'Digital signing takes under 5 min',  state:'active'},
+            {n:'4', label:'Schedule move-in',     sub:'Choose your date after signing',      state:'todo'},
+          ].map((s,i)=>(
+            <div key={i} className="renter-step">
+              <div className={"renter-step-num "+s.state}>{s.n}</div>
+              <div>
+                <div className="renter-step-label">{s.label}</div>
+                <div className="renter-step-sub">{s.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{marginTop:20}}>
+        <div className="eyebrow" style={{display:'block',marginBottom:10}}>Resident perks on your next home</div>
+        <div className="renter-perks">
+          {[
+            'Move-in fee waived for renewing residents',
+            'Loyalty discount: $50/mo off for 24-month lease',
+            'Priority maintenance scheduling',
+            'Seamless lease transfer — no gap in coverage',
+          ].map((p,i)=>(
+            <div key={i} className="renter-perk">
+              <div className="renter-perk-dot"/>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  return null;
+}
+
+function PersonaSwitcher(){
+  const persona = window.usePersona();
+  const tabs = [
+    {id:'new',       icon:'👤', label:'New'},
+    {id:'returning', icon:'🏠', label:'Returning'},
+    {id:'renter',    icon:'✓',  label:'Resident'},
+  ];
+  return (
+    <div className="persona-switcher">
+      {tabs.map(t=>(
+        <button key={t.id}
+          className={"persona-tab"+(persona===t.id?' active':'')}
+          onClick={()=>window.setUserPersona(t.id)}
+          title={t.id==='new'?'New customer':t.id==='returning'?'Returning customer — has saved homes':'Existing renter'}>
+          {t.label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function BHDetailUnits({ l }){
   const units = l.unit_types || [];
@@ -4155,9 +4651,22 @@ function BHDetailUnits({ l }){
   </>);
 }
 
-function AiWhySection({ l, query }){
+function AiWhySection({ l, query, allListings }){
   const [points, setPoints] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+  const persona = window.usePersona();
+
+  // For returning persona: compute saved home comparison insight
+  const returningInsight = React.useMemo(()=>{
+    if (persona !== 'returning' || !allListings) return null;
+    const saved = allListings.filter(h => h.id !== l.id && Math.abs(h.price - l.price) < 600).slice(0,1)[0];
+    if (!saved) return null;
+    const sqftDiff = l.sqft - saved.sqft;
+    const priceDiff = l.price - saved.price;
+    const sqftPart = sqftDiff > 0 ? `${sqftDiff.toLocaleString()} more sqft` : sqftDiff < 0 ? `${Math.abs(sqftDiff).toLocaleString()} fewer sqft` : 'similar sqft';
+    const pricePart = priceDiff > 0 ? `at $${priceDiff.toLocaleString()}/mo more` : priceDiff < 0 ? `at $${Math.abs(priceDiff).toLocaleString()}/mo less` : `at the same price`;
+    return `Based on your saved homes, this property offers ${sqftPart} ${pricePart} — worth a side-by-side look before you decide.`;
+  }, [persona, l, allListings]);
 
   React.useEffect(()=>{
     setPoints(null);
@@ -4220,9 +4729,15 @@ Write exactly 3 short, specific bullet points (1 sentence each, max 18 words) ex
             Personalizing your match…
           </div>
         )}
-        {points && (
+        {(points || returningInsight) && (
           <div className="ai-why-points">
-            {points.map((p,i)=>(
+            {returningInsight && (
+              <div className="ai-why-point" style={{fontWeight:600}}>
+                <div className="ai-why-dot"/>
+                <span>{returningInsight}</span>
+              </div>
+            )}
+            {points && points.map((p,i)=>(
               <div key={i} className="ai-why-point">
                 <div className="ai-why-dot"/>
                 <span>{p}</span>
@@ -4353,9 +4868,13 @@ function Detail({ l, query, onClose, onBack, fav, onFav, onApply }){
       <div className="detail-body">
         {/* MEDIA */}
         <div className="detail-media scroll">
-          {tab==="Photos" && l.gallery.map((src,i)=>(
-            <img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"/>
-          ))}
+          {tab==="Photos" && (()=>{
+              const BH_INTERIORS = ["progress/images/interior-photos/bh/Bedroom-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Living-Room-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Outdoor-Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Twilight-Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Fitness-Center-04-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Business-Center-01-Adley-City-Springs-Sandy-Springs.jpg"];
+              const imgs = window.isBH() ? [...l.gallery.filter(src=>!src.includes('interior-photos')), ...BH_INTERIORS] : l.gallery;
+              return imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"
+                onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}}
+                onError={e=>{e.target.style.display='none';}}/>));
+            })()}
           {tab==="Floorplans" && (
             <div className="media-empty"><Icon name="layers" size={40} sw={1.4}/><p>Floorplans for {l.beds}-bedroom layouts</p><span>Interactive floorplans appear here.</span></div>
           )}
@@ -4543,7 +5062,7 @@ For EACH home, write one short, specific "why this home works" sentence (max 18 
           favs={favs} onFav={onFav}/>
       )}
 
-      {activeScreen==="map" && showCompare && compareHomes.length>=2 && (
+      {showCompare && compareHomes.length>=2 && (
         <Compare homes={compareHomes} aiLines={aiCompare} aiLoading={aiCompareLoading}
           query={query} onClose={()=>setShowCompare(false)} onApply={onApply}
           favs={favs} onFav={onFav} onOpenDetail={onOpenDetail}/>
@@ -4582,7 +5101,7 @@ function TourModal({ l, onClose }){
     <div className="modal-overlay" onMouseDown={(e)=>{ if(e.target.classList.contains('modal-overlay')) onClose(); }}>
       <div className="modal">
         <div className="modal-head">
-          <h2 className="modal-title">Schedule a Tour</h2>
+          <h2 className="modal-title">Schedule Tour</h2>
           <button className="modal-close" onClick={onClose}><Icon name="x" size={18}/></button>
         </div>
         <div className="modal-body">
@@ -4752,7 +5271,12 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
     "Family neighborhood":["Quiet cul-de-sac","Low traffic street","Community events"],
     "Move-in this week":  ["Keys in 48 hours","Flexible start date","Utilities ready"],
   };
-  const [chips, setChips] = React.useState(["Pet-friendly","Commuter-friendly","Playgrounds","Available now"]);
+  const BH_DEFAULT_CHIPS   = ["Studio apartments","Pet-friendly","Pool & fitness","Available now"];
+  const PR_DEFAULT_CHIPS   = ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
+  const [chips, setChips] = React.useState(brand==='bh' ? BH_DEFAULT_CHIPS : PR_DEFAULT_CHIPS);
+  React.useEffect(()=>{
+    setChips(brand==='bh' ? BH_DEFAULT_CHIPS : PR_DEFAULT_CHIPS);
+  },[brand]);
   const [activeChip, setActiveChip] = React.useState(null);
 
   function handleChipClick(chip, idx) {
@@ -4771,6 +5295,33 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
   }
 
   // Inline ghost completion
+  const BH_COMPLETIONS = [
+    ["studio","studio apartment with high-end finishes, available now"],
+    ["1 bed","1-bedroom apartment with open layout and modern kitchen"],
+    ["1-bed","1-bedroom with in-unit washer/dryer, pool access"],
+    ["2 bed","2-bedroom apartment with private balcony and fitness center"],
+    ["2-bed","2-bedroom, 2-bath with granite countertops"],
+    ["3 bed","3-bedroom apartment with spacious floor plan"],
+    ["pet","pet-friendly community, no breed restrictions, dog park"],
+    ["dog","dog-friendly with on-site dog park and pet wash station"],
+    ["pool","resort-style pool, fitness center, clubhouse"],
+    ["gym","state-of-the-art fitness center, yoga studio"],
+    ["fitness","fitness center, resort pool, community lounge"],
+    ["balcon","private balcony with city or garden views"],
+    ["rooftop","rooftop deck, pool, and entertainment lounge"],
+    ["walk","walkable to dining, shops, and transit"],
+    ["commut","commuter-friendly, easy highway access"],
+    ["marta","near MARTA, walkable neighborhood"],
+    ["under","under $2,000/mo with amenities included"],
+    ["available","available now, flexible lease terms"],
+    ["move","move-in ready, flexible start date"],
+    ["furnished","furnished or unfurnished, short-term options"],
+    ["short","short-term lease options available"],
+    ["kennesaw","Kennesaw, GA — modern apartments near town center"],
+    ["sandy spring","Sandy Springs — upscale apartments near Perimeter"],
+    ["atlanta","Atlanta metro apartments with resort amenities"],
+    ["cumming","Cumming, GA — spacious apartments with garage parking"],
+  ];
   const COMPLETIONS = [
     // pets
     ["pet","pet-friendly home with a fenced yard"],
@@ -4827,12 +5378,22 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
   const ghost = React.useMemo(() => {
     if (!q || q.length < 2) return null;
     const lower = q.toLowerCase();
-    const match = COMPLETIONS.find(([prefix]) => lower.startsWith(prefix));
+    const list = brand==='bh' ? BH_COMPLETIONS : COMPLETIONS;
+    // Match on full input OR the last word typed (more consistent mid-sentence)
+    const lastWord = lower.split(' ').filter(Boolean).pop() || '';
+    const match = list.find(([prefix]) =>
+      lower.startsWith(prefix) || (lastWord.length >= 3 && prefix.startsWith(lastWord))
+    );
     if (!match) return null;
     const full = match[1];
     if (full.toLowerCase().startsWith(lower)) return full.slice(q.length);
+    // For mid-sentence match, append the completion as a suggestion
+    if (lastWord.length >= 3 && match[0].startsWith(lastWord)) {
+      const suggest = full;
+      if (!lower.includes(suggest.toLowerCase())) return ' — ' + suggest;
+    }
     return null;
-  }, [q]);
+  }, [q, brand]);
 
   // Dynamic chips — update as user types
   const KEYWORD_CHIPS = {
@@ -4854,7 +5415,9 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
     "mariett":["Marietta, GA","Near the square","Top schools","Walkable"],
     "decatur":["Decatur, GA","Near MARTA","Walkable","Restaurant row"],
   };
-  const DEFAULT_CHIPS = ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
+  const DEFAULT_CHIPS = brand==='bh'
+    ? ["Studio apartments","Pet-friendly","Pool & fitness","Available now"]
+    : ["Pet-friendly","Commuter-friendly","Playgrounds","Available now"];
   const dynamicChips = React.useMemo(() => {
     if (!q || q.length < 2) return null;
     const lower = q.toLowerCase();
@@ -4881,40 +5444,104 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
     "smart":  ["smart thermostat","keyless entry","smart lighting included"],
     "quiet":  ["quiet cul-de-sac","low traffic street","no through traffic"],
   };
-  const suggestions = React.useMemo(() => {
-    if (!q || q.length < 2) return [];
-    const lower = q.toLowerCase();
-    const key = Object.keys(SUGGESTIONS_MAP).find(k => lower.includes(k));
-    return key ? SUGGESTIONS_MAP[key].slice(0, 3) : [];
-  }, [q]);
+  const PR_POPULAR = [
+    "Pet-friendly homes with a yard",
+    "3-bedroom near good schools",
+    "Move-in ready, available now",
+    "Smart home with garage",
+    "Walkable to MARTA or shops",
+    "Under $2,300/mo, 4 bedrooms",
+  ];
+  const BH_POPULAR = [
+    "Studio apartments available now",
+    "1-bedroom with balcony, Atlanta",
+    "Pet-friendly, no breed restrictions",
+    "2-bedroom with pool and gym",
+    "Move-in ready this month",
+    "Short-term lease options",
+  ];
+  const POPULAR = brand==='bh' ? BH_POPULAR : PR_POPULAR;
 
-  // Predictive listing results
+  const suggestions = React.useMemo(() => {
+    const lower = (q || '').toLowerCase().trim();
+    // No input yet — show popular searches
+    if (!lower) return POPULAR.slice(0, 4);
+    // Scan ALL words in the phrase for keyword matches (handles natural language)
+    const words = lower.split(/\s+/);
+    const matched = new Set();
+    for (const word of words) {
+      for (const key of Object.keys(SUGGESTIONS_MAP)) {
+        if (word.includes(key) || key.includes(word) && word.length >= 3) {
+          SUGGESTIONS_MAP[key].forEach(s => matched.add(s));
+        }
+      }
+    }
+    if (matched.size > 0) return [...matched].slice(0, 4);
+    // No keyword match — show popular searches filtered by typed text
+    const filtered = POPULAR.filter(p => p.toLowerCase().includes(lower.slice(0,4)));
+    return filtered.length ? filtered.slice(0,4) : POPULAR.slice(0, 3);
+  }, [q, brand]);
+
+  // Predictive listing results — show featured when no query, matched when typing
   const resultListings = React.useMemo(() => {
-    if (!q || q.length < 2) return [];
-    const lower = q.toLowerCase();
     const L = window.getListings();
+    const lower = (q || '').toLowerCase();
+
+    // No query: show 3 featured/available listings
+    if (!lower || lower.length < 2) {
+      return L.filter(l => /available|now/i.test(l.status||'')).slice(0, 3)
+        .concat(L.slice(0, 3)).filter((v,i,a)=>a.indexOf(v)===i).slice(0,3);
+    }
+
+    const words = lower.split(/\s+/).filter(w => w.length >= 3);
     const scored = L.map(l => {
       let score = 0;
-      const text = (l.title + l.city + l.blurb + l.inhome.join(" ") + l.community.join(" ")).toLowerCase();
-      if (/pet|dog/.test(lower) && /dog|pet/.test(text)) score += 3;
-      if (/school|family/.test(lower) && /school|marietta/.test(text)) score += 3;
-      if (/walk/.test(lower) && /walk|marta/.test(text)) score += 3;
-      if (/commut|highway|marta/.test(lower) && /highway|marta|commut/.test(text)) score += 3;
-      if (/garage/.test(lower) && /garage/.test(text)) score += 2;
-      if (/yard|outdoor/.test(lower) && /yard|patio|backyard/.test(text)) score += 2;
-      if (/pool/.test(lower) && /pool/.test(text)) score += 3;
-      if (/smart/.test(lower) && /smart/.test(text)) score += 3;
-      if (/3 bed/.test(lower) && l.beds === 3) score += 3;
-      if (/4 bed/.test(lower) && l.beds === 4) score += 3;
-      const priceMatch = lower.match(/\$?(\d[\d,]+)/);
-      if (priceMatch && l.price <= parseInt(priceMatch[1].replace(',','')) + 200) score += 2;
-      if (l.city.toLowerCase().includes(lower.split(" ")[0])) score += 4;
+      const text = [l.title, l.city, l.blurb, l.name||'',
+        (l.inhome||[]).join(' '), (l.community||[]).join(' ')].join(' ').toLowerCase();
+
+      // Score every meaningful word in the query against listing content
+      for (const word of words) {
+        if (text.includes(word)) score += 2;
+      }
+      // Intent patterns — work with natural language phrases
+      if (/pet|dog|cat|animal/.test(lower) && /pet|dog/.test(text)) score += 3;
+      if (/school|kid|famil|child/.test(lower) && /school|marietta|canton/.test(text)) score += 3;
+      if (/walk|transit|marta/.test(lower) && /walk|marta|transit/.test(text)) score += 3;
+      if (/commut|highway|drive|work/.test(lower) && /highway|commut|marta/.test(text)) score += 2;
+      if (/pool|gym|fitness|amenity/.test(lower) && /pool|fitness|gym/.test(text)) score += 3;
+      if (/garage|park|car/.test(lower) && /garage|park/.test(text)) score += 2;
+      if (/yard|outdoor|backyard|garden/.test(lower) && /yard|patio|outdoor/.test(text)) score += 2;
+      if (/smart|tech|modern/.test(lower) && /smart/.test(text)) score += 2;
+      if (/studio/.test(lower) && (l.beds===0||l.bedrooms_min===0)) score += 4;
+      if (/1.bed|one.bed/.test(lower) && (l.beds===1||l.bedrooms_min===1)) score += 4;
+      if (/2.bed|two.bed/.test(lower) && (l.beds===2||l.bedrooms_min===2)) score += 4;
+      if (/3.bed|three.bed/.test(lower) && (l.beds===3||l.bedrooms_min===3)) score += 4;
+      if (/4.bed|four.bed/.test(lower) && (l.beds===4||l.bedrooms_min===4)) score += 4;
+      // Price matching
+      const priceM = lower.match(/\$?(\d[\d,]+)/);
+      if (priceM) {
+        const target = parseInt(priceM[1].replace(',',''));
+        if (l.price >= target - 200 && l.price <= target + 300) score += 3;
+      }
+      // City/neighborhood name match
+      const cityWords = l.city.toLowerCase().split(/[\s,]+/);
+      for (const cw of cityWords) {
+        if (cw.length > 3 && lower.includes(cw)) score += 4;
+      }
+      // Available Now boost
+      if (/now|available|move/.test(lower) && /available now/i.test(l.status||'')) score += 2;
       return { l, score };
     }).filter(x => x.score > 0).sort((a,b) => b.score - a.score);
-    return scored.slice(0, 3).map(x => x.l);
-  }, [q]);
 
-  const isExpanded = q.length >= 2;
+    // If nothing scored, return top 3 available listings as fallback
+    if (!scored.length) {
+      return L.filter(l => /available/i.test(l.status||'')).slice(0, 3);
+    }
+    return scored.slice(0, 3).map(x => x.l);
+  }, [q, brand]);
+
+  const [focused, setFocused] = React.useState(false);
+  const isExpanded = focused || q.length >= 1;
 
   return (
     <div className="home">
@@ -4933,6 +5560,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
         <button className="hamburger" onClick={onOpenNav} aria-label="Open menu"><Icon name="menu" size={22}/></button>
         <button className="btn btn-lime resident-btn">Current Resident{brand==='bh'?'s':''}</button>
       </header>
+      {isExpanded && <div className="search-expanded-backdrop" onClick={()=>setFocused(false)}/>}
       <div className="home-center">
         <div className={"search-glass"+(isExpanded?" expanded":"")}>
           <div className={"search-card"+(listening?" is-listening":"")}>
@@ -4944,9 +5572,12 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
                 </div>
               )}
               <input value={q} onChange={e=>setQ(e.target.value)}
+                onFocus={()=>setFocused(true)}
+                onBlur={()=>setTimeout(()=>setFocused(false),180)}
                 onKeyDown={e=>{
                   if(e.key==="Tab"&&ghost){e.preventDefault();setQ(q+ghost);}
                   if(e.key==="Enter") submit();
+                  if(e.key==="Escape"){setFocused(false);}
                 }}
                 placeholder={q?"":examples[ph]}
                 aria-label="Describe what matters to you in a home"
@@ -4981,21 +5612,23 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
 
           {isExpanded && (
             <div className="search-results">
-              {/* Always show the direct search row first */}
-              <button className="search-result-row" onClick={()=>submit()}>
-                <div className="search-result-icon"><Icon name="search" size={14} sw={2}/></div>
-                <div className="search-result-text">
-                  <div className="search-result-main">Search for &ldquo;{q}&rdquo;</div>
-                  <div className="search-result-sub">View all matching homes in Atlanta</div>
-                </div>
-                <Icon name="arrow" size={14} style={{color:'rgba(255,255,255,.5)'}}/>
-              </button>
+              {/* Direct search row — only shown when there's a query */}
+              {q.length >= 2 && (
+                <button className="search-result-row" onClick={()=>submit()}>
+                  <div className="search-result-icon"><Icon name="search" size={14} sw={2}/></div>
+                  <div className="search-result-text">
+                    <div className="search-result-main">Search for &ldquo;{q}&rdquo;</div>
+                    <div className="search-result-sub">View all matching homes in Atlanta</div>
+                  </div>
+                  <Icon name="arrow" size={14} style={{color:'rgba(255,255,255,.5)'}}/>
+                </button>
+              )}
 
-              {/* Keyword-matched suggestions */}
+              {/* Suggestions — popular when no query, keyword-matched when typing */}
               {suggestions.length > 0 && (
                 <>
-                  <div className="search-result-divider"/>
-                  <div className="search-result-section">Suggested searches</div>
+                  {q.length > 0 && <div className="search-result-divider"/>}
+                  <div className="search-result-section">{q.length < 2 ? 'Popular searches' : 'Suggested searches'}</div>
                   {suggestions.map(s=>(
                     <button key={s} className="search-result-row" onClick={()=>{ setQ(s); submit(s); }}>
                       <div className="search-result-icon"><Icon name="sparkles" size={13} sw={2}/></div>
@@ -5008,19 +5641,27 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
                 </>
               )}
 
-              {/* Matching listings */}
+              {/* Matching / featured listings */}
               {resultListings.length > 0 && (
                 <>
                   <div className="search-result-divider"/>
-                  <div className="search-result-section">Matching homes</div>
+                  <div className="search-result-section">
+                    {q.length < 2 ? 'Available now' : 'Matching homes'}
+                  </div>
                   {resultListings.map(l=>(
                     <button key={l.id} className="search-result-row" onClick={()=>onOpenDetail(l.id)}>
-                      <img className="search-result-thumb" src={l.img} alt={l.title}/>
+                      <img className="search-result-thumb" src={l.img} alt={l.title||l.name}/>
                       <div className="search-result-text">
-                        <div className="search-result-main">{l.title}</div>
-                        <div className="search-result-sub">{l.city} · {l.beds} bd / {l.baths} ba</div>
+                        <div className="search-result-main">{(l.street||l.title||l.name||'').split(',')[0].trim()}</div>
+                        <div className="search-result-sub">
+                          {l.city_state||l.city}
+                          {' · '}
+                          {(l.bedrooms_min != null && brand==='bh')
+                            ? `${l.bedrooms_min===0?'Studio':`${l.bedrooms_min} Bed`}${l.bedrooms_max&&l.bedrooms_max!==l.bedrooms_min?` – ${l.bedrooms_max} Bed`:''}`
+                            : `${l.beds} bd / ${l.baths} ba`}
+                        </div>
                       </div>
-                      <div className="search-result-price">${l.price.toLocaleString()}</div>
+                      <div className="search-result-price">${l.price.toLocaleString()}<span style={{fontSize:10,fontWeight:400}}>/mo</span></div>
                     </button>
                   ))}
                 </>
@@ -5062,6 +5703,11 @@ const FILTER_OPTIONS = {
   "Move-in date":{ type:"list",    options:["Any time","Available now","Within 30 days","Within 60 days","Coming soon"] },
   "Pets":        { type:"check",   options:["Dogs allowed","Cats allowed","No breed restrictions","Pet deposit waived"] },
   "Home type":   { type:"check",   options:["Single-Family","Townhome","Condo","Any"] },
+  /* BH apartment-centric filters */
+  "Unit Type":   { type:"check",   options:["Studio","1 Bedroom","2 Bedrooms","3 Bedrooms"] },
+  "Amenities":   { type:"check",   options:["Pool","Fitness Center","Rooftop Deck","In-Unit Laundry","Private Balcony","Concierge"] },
+  "Lease Term":  { type:"list",    options:["Any","3 months","6 months","12 months","Month-to-month"] },
+  "Pet Policy":  { type:"check",   options:["Pets allowed","Dogs welcome","Cats welcome","No breed restrictions"] },
 };
 
 /* Result counts — simulated from our listing pool */
@@ -5080,9 +5726,15 @@ const ALL_FILTER_GROUPS = [
   { label:"Home features",   items:["Garage","Smart home","Fireplace","High ceilings","Hardwood floors","Stainless appliances","Granite countertops","In-unit laundry","Balcony/patio","Fenced yard"] },
   { label:"Community",       items:["Community pool","Fitness center","Dog park","No breed restrictions"] },
 ];
+const BH_ALL_FILTER_GROUPS = [
+  { label:"Unit amenities",  items:["In-unit laundry","Private balcony","Walk-in closet","High ceilings","Stainless appliances","Granite countertops","Hardwood floors","Smart home tech","Fireplace"] },
+  { label:"Community",       items:["Swimming pool","Fitness center","Rooftop deck","Concierge","Package lockers","Dog park","EV charging","Covered parking","Clubhouse","Business center"] },
+  { label:"Lifestyle",       items:["Pet-friendly","Work from home","Near transit","Available now","Flexible lease","Short-term available"] },
+];
 
-function AllFiltersModal({ onClose, activeItems, onToggle, onApply }){
+function AllFiltersModal({ onClose, activeItems, onToggle, onApply, filterGroups }){
   const [local, setLocal] = React.useState(new Set(activeItems));
+  const groups = filterGroups || ALL_FILTER_GROUPS;
   function toggle(item){ setLocal(s=>{ const n=new Set(s); n.has(item)?n.delete(item):n.add(item); return n; }); }
   const count = [...local].reduce((t,k)=> t+(AMENITY_COUNTS[k]||0), 0);
   const resultEst = Math.min(677, Math.max(12, 677 - count*3));
@@ -5095,7 +5747,7 @@ function AllFiltersModal({ onClose, activeItems, onToggle, onApply }){
           <button className="saved-drawer-close" onClick={onClose}><Icon name="x" size={18}/></button>
         </div>
         <div className="af-body scroll">
-          {ALL_FILTER_GROUPS.map(g=>(
+          {groups.map(g=>(
             <div key={g.label} className="af-group">
               <div className="af-group-label">{g.label}</div>
               <div className="af-chips">
@@ -5377,6 +6029,26 @@ function MapScreenMobile(props){
   const [savedOpen, setSavedOpen] = React.useState(false);
   const railRef = React.useRef(null);
   const cardRefs = React.useRef({});
+  const [activeFilters, setActiveFilters] = React.useState([]);
+  React.useEffect(()=>{ setActiveFilters([]); },[props.query]);
+  const enhanceTags = React.useMemo(()=>getEnhanceTags(props.query),[props.query]);
+  const toggleFilter = id => setActiveFilters(p=>p.includes(id)?p.filter(x=>x!==id):[...p,id]);
+  const filteredListings = React.useMemo(()=>{
+    if (!activeFilters.length) return props.listings;
+    const active = ENHANCE_FILTERS.filter(f=>activeFilters.includes(f.id));
+    const hard = active.filter(f=>f.hard);
+    const soft = active.filter(f=>!f.hard);
+    let base = hard.length ? props.listings.filter(l=>hard.every(f=>f.score(l)>0)) : [...props.listings];
+    if (!base.length) base = [...props.listings];
+    if (soft.length) {
+      base = [...base].sort((a,b)=>{
+        const sa = soft.reduce((s,f)=>s+f.score(a),0);
+        const sb = soft.reduce((s,f)=>s+f.score(b),0);
+        return sb - sa;
+      });
+    }
+    return base;
+  },[props.listings, activeFilters]);
 
   const screenClass = [
     "map-screen",
@@ -5415,7 +6087,10 @@ function MapScreenMobile(props){
     }
   }
 
-  const FILTERS = ["Price","Beds & Baths","Move-in date","Pets","Home type"];
+  const brand = window.useBrand();
+  const FILTERS = brand === 'bh'
+    ? ["Price","Unit Type","Move-in date","Amenities","Lease Term","Pet Policy"]
+    : ["Price","Beds & Baths","Move-in date","Pets","Home type"];
   const [allFiltersOpen, setAllFiltersOpen] = React.useState(false);
   const [activeAmenities, setActiveAmenities] = React.useState([]);
   const [activeFilterTags, setActiveFilterTags] = React.useState({});
@@ -5444,7 +6119,7 @@ function MapScreenMobile(props){
   return (
     <>
     {savedOpen && <SavedDrawer listings={props.listings} favs={props.favs} onFav={props.onFav} onOpenDetail={props.onOpenDetail} onClose={()=>setSavedOpen(false)}/>}
-    {allFiltersOpen && <AllFiltersModal activeItems={activeAmenities} onToggle={()=>{}} onApply={setActiveAmenities} onClose={()=>setAllFiltersOpen(false)}/>}
+    {allFiltersOpen && <AllFiltersModal activeItems={activeAmenities} onToggle={()=>{}} onApply={setActiveAmenities} onClose={()=>setAllFiltersOpen(false)} filterGroups={brand==='bh' ? BH_ALL_FILTER_GROUPS : ALL_FILTER_GROUPS}/>}
     <div className={screenClass}>
       <header className="map-top">
         <button className="map-logo" onClick={props.onBack}><Logo variant="teal" height={26}/></button>
@@ -5545,7 +6220,31 @@ function MapScreenMobile(props){
               <div className="rail-ai-q"><span className="live-dot"/><span className="eyebrow" style={{color:'var(--teal)'}}>Progress AI · your search</span></div>
               <div className="rail-ai-query">&ldquo;{props.query}&rdquo;</div>
               {props.aiLoading && <div className="typing" style={{marginTop:10}}><span/><span/><span/></div>}
-              {props.ai && !props.aiLoading && (<><p className="rail-ai-note">{props.ai.note}</p><div className="rail-ai-chips">{props.ai.chips.map((c,i)=><span key={i} className="ai-chip">{c}</span>)}</div></>)}
+              {props.ai && !props.aiLoading && <p className="rail-ai-note">{props.ai.note}</p>}
+              {/* Enhance your search — replaces inactive chips */}
+              {enhanceTags.length > 0 && (
+                <div style={{marginTop:12}}>
+                  <div className="enhance-label" style={{marginBottom:8}}>
+                    <AiIcon size={11} color="var(--teal)"/>
+                    Enhance your search
+                    {activeFilters.length > 0 && (
+                      <button onClick={()=>setActiveFilters([])}
+                        style={{marginLeft:'auto',fontSize:10,color:'var(--gray)',fontWeight:600,background:'none',border:'none',cursor:'pointer',padding:0}}>
+                        Clear all
+                      </button>
+                    )}
+                  </div>
+                  <div className="enhance-tags">
+                    {enhanceTags.map(f=>(
+                      <button key={f.id}
+                        className={"enhance-tag"+(activeFilters.includes(f.id)?' active':'')}
+                        onClick={()=>toggleFilter(f.id)}>
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -5559,12 +6258,12 @@ function MapScreenMobile(props){
             onToggleCompare={props.onToggleCompare}/>
 
           <div className="rail-sort">
-            <span>{props.ai?"Sorted for your search":"All results"}</span>
+            <span>{props.ai?`Sorted for your search${activeFilters.length?' · '+filteredListings.length+' homes':''}` : "All results"}</span>
             <button className="sort-btn">Best match<Icon name="chevdown" size={15}/></button>
           </div>
 
           <div className="rail-grid">
-            {props.listings.filter(l=>l.status!=='Leased').map(l=>(
+            {filteredListings.filter(l=>l.status!=='Leased').map(l=>(
               <div key={l.id} ref={el=>cardRefs.current[l.id]=el}>
                 <ListingCard l={l} ai={false}
                   fav={props.favs.includes(l.id)} onFav={props.onFav}
@@ -5584,29 +6283,55 @@ function MapScreenMobile(props){
         <Icon name={mobileView==="map"?"layers":"pin"} size={18}/> {mobileView==="map"?"List view":"Map view"}
       </button>
 
-      {props.compareIds.length>0 && (
-        <div className="compare-tray">
-          <div className="compare-tray-info">
-            <span className="cnt">{props.compareIds.length}</span>
-            {props.compareIds.length===1?"1 home selected — pick one more":props.compareIds.length+" homes selected"}
+      {props.compareIds.length>0 && (()=>{
+        const selectedHomes = props.compareIds.map(id=>props.listings.find(l=>l.id===id)).filter(Boolean);
+        const hint = props.compareIds.length===1 ? "Add up to 2 more to compare"
+          : props.compareIds.length===2 ? "Add 1 more or compare now"
+          : "Ready to compare";
+        return (
+          <div className="compare-tray">
+            <div className="tray-slots">
+              {[0,1,2].map(i=>{
+                const home = selectedHomes[i];
+                return home ? (
+                  <div key={i} className="tray-slot tray-slot-filled">
+                    <img src={home.img} alt={home.title||home.name}
+                      onError={e=>{ e.target.style.display='none'; }}/>
+                    <button className="tray-slot-remove" onClick={e=>{e.stopPropagation();props.onToggleCompare(home.id);}}>✕</button>
+                  </div>
+                ) : (
+                  <div key={i} className="tray-slot tray-slot-empty">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/>
+                    </svg>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="tray-divider"/>
+            <div className="tray-meta">
+              <div className="tray-label">Compare homes ({props.compareIds.length}/3)</div>
+              <div className="tray-hint">{hint}</div>
+            </div>
+            <div className="compare-tray-actions">
+              {props.compareIds.length>=2 && <button className="btn btn-primary" style={{padding:'10px 18px',fontSize:13}} onClick={props.onLaunchCompare}>Compare</button>}
+              <button className="tray-clear" onClick={()=>props.compareIds.forEach(props.onToggleCompare)}>Clear</button>
+            </div>
           </div>
-          <div className="compare-tray-actions">
-            {props.compareIds.length>=2 && <button className="btn btn-primary" onClick={props.onLaunchCompare}>Compare {props.compareIds.length} homes</button>}
-            <button className="tray-clear" onClick={()=>props.compareIds.forEach(props.onToggleCompare)}>Clear</button>
-          </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
     </>
   );
 }
 
 /* ============================================================
-   DETAIL — add Schedule a Tour CTA
+   DETAIL — add Schedule Tour CTA
    ============================================================ */
 const _OrigDetail = window.Detail;
-function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allListings }){
+function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allListings, onToggleCompare, compareIds, onLaunchCompare }){
   const brand = window.useBrand();
+  const persona = window.usePersona();
   const [tab, setTab] = React.useState("Photos");
   const [showTour, setShowTour] = React.useState(false);
   const mediaTabs = ["Photos","Floorplans","3D Tour"];
@@ -5669,7 +6394,11 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
 
         <div className="detail-body">
           <div className="detail-media scroll">
-            {tab==="Photos" && l.gallery.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"/>))}
+            {tab==="Photos" && (()=>{
+              const BH_INTERIORS = ["progress/images/interior-photos/bh/Bedroom-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Living-Room-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Outdoor-Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Twilight-Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Fitness-Center-04-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Business-Center-01-Adley-City-Springs-Sandy-Springs.jpg"];
+              const imgs = brand==='bh' ? [...l.gallery.filter(src=>!src.includes('interior-photos')), ...BH_INTERIORS] : l.gallery;
+              return imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo" onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}} onError={e=>{e.target.style.display='none';}}/>));
+            })()}
             {tab==="Floorplans" && (
               (l.floorplans && l.floorplans.length > 0)
               ? <div style={{padding:'16px 8px',display:'flex',flexDirection:'column',gap:16}}>
@@ -5742,7 +6471,7 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
             {(brand==='bh' && l.unit_types && l.unit_types.length > 0) ? (<>
 
               {/* 1. AI insight */}
-              <AiWhySection l={l} query={query}/>
+              <AiWhySection l={l} query={query} allListings={allListings}/>
 
               {/* 2. Highlights */}
               {l.amenities && l.amenities.length > 0 && (
@@ -5759,17 +6488,35 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
                 </div>
               )}
 
-              {/* 3. CTAs */}
-              <div className="detail-cta" style={{marginTop:28}}>
-                <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
-                <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
-                <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
-                  <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
-                </button>
+              {/* 3. Persona banner + CTAs */}
+              <PersonaModule l={l} persona={persona} allListings={allListings} onOpenDetail={null} onToggleCompare={onToggleCompare} compareIds={compareIds} onLaunchCompare={onLaunchCompare}/>
+              <div className="detail-cta" style={{marginTop:16}}>
+                {persona==='renter'
+                  ? <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)} style={{flex:2}}>
+                        <Icon name="check" size={15}/> Start Application — Pre-Approved
+                      </button>
+                      <button className="btn btn-ghost" onClick={()=>onFav(l.id)}>Transfer Inquiry</button>
+                    </>
+                  : persona==='returning'
+                  ? <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
+                      <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
+                      <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
+                        <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
+                      </button>
+                    </>
+                  : <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
+                      <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
+                      <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
+                        <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
+                      </button>
+                    </>}
               </div>
 
               {/* 4. Pricing & Floor Plans */}
-              <BHDetailUnits l={l}/>
+              <div style={{marginTop:40}}><BHDetailUnits l={l}/></div>
 
               {/* 5. About this property */}
               <div style={{marginTop:28,maxWidth:680}}>
@@ -5788,7 +6535,7 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
               {/* 6. Similar places */}
               {similar.length>0 && (
                 <div style={{marginTop:28}} className="detail-similar">
-                  <div className="eyebrow" style={{display:'block',paddingBottom:14,borderBottom:'1px solid rgba(0,0,0,.12)',marginBottom:16}}>Similar Places</div>
+                  <div style={{fontFamily:'"Playfair Display",serif',fontWeight:700,fontSize:20,color:'var(--ink)',marginBottom:18}}>Similar Places</div>
                   <div className="detail-similar-scroll">
                     {similar.map(s=>(
                       <div key={s.id} className="detail-similar-card">
@@ -5806,7 +6553,7 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
               )}
 
             </>) : (<>
-              <AiWhySection l={l} query={query}/>
+              <AiWhySection l={l} query={query} allListings={allListings}/>
               <div className="detail-highlights">
                 <div className="eyebrow">Highlights</div>
                 <div className="detail-highlights-grid">
@@ -5818,77 +6565,95 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
                   ))}
                 </div>
               </div>
-            </>)}
 
-            <div className="detail-cta">
-              <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
-              <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
-              <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
-                <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
-              </button>
-            </div>
+              <PersonaModule l={l} persona={persona} allListings={allListings} onOpenDetail={null} onToggleCompare={onToggleCompare} compareIds={compareIds} onLaunchCompare={onLaunchCompare}/>
+              <div className="detail-cta">
+                {persona==='renter'
+                  ? <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)} style={{flex:2}}>
+                        <Icon name="check" size={15}/> Start Application — Pre-Approved
+                      </button>
+                      <button className="btn btn-ghost">Transfer Inquiry</button>
+                    </>
+                  : persona==='returning'
+                  ? <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
+                      <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
+                      <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
+                        <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
+                      </button>
+                    </>
+                  : <>
+                      <button className="btn btn-primary" onClick={()=>onApply(l)}>Apply Now</button>
+                      <button className="btn btn-lime" onClick={()=>setShowTour(true)}><Icon name="home" size={15}/>Schedule Tour</button>
+                      <button className={"btn btn-ghost"+(fav?" faved":"")} onClick={()=>onFav(l.id)}>
+                        <HeartIcon filled={fav} size={16}/> {fav?"Saved":"Save"}
+                      </button>
+                    </>}
+              </div>
 
-            {/* Cost transparency — shown early per trust recommendations */}
-            <div className="detail-cost">
-              <div className="detail-cost-header">
-                <div>
-                  <div className="eyebrow" style={{marginBottom:4}}>Est. total monthly</div>
-                  <div className="detail-cost-total">${totalEst.toFixed(2)}<span> / mo</span></div>
+              {/* Cost transparency */}
+              <div className="detail-cost">
+                <div className="detail-cost-header">
+                  <div>
+                    <div className="eyebrow" style={{marginBottom:4}}>Est. total monthly</div>
+                    <div className="detail-cost-total">${totalEst.toFixed(2)}<span> / mo</span></div>
+                  </div>
+                  <div style={{fontSize:12,color:'var(--gray)',textAlign:'right',lineHeight:1.5}}>Recurring costs<br/>& fees breakdown</div>
                 </div>
-                <div style={{fontSize:12,color:'var(--gray)',textAlign:'right',lineHeight:1.5}}>Recurring costs<br/>& fees breakdown</div>
+                <div className="detail-cost-row"><span className="detail-cost-key">Base rent</span><span className="detail-cost-val">${l.starting.toLocaleString()}</span></div>
+                {smartFee>0 && <div className="detail-cost-row"><span className="detail-cost-key">Smart home service</span><span className="detail-cost-val">$19.99</span></div>}
+                <div className="detail-cost-row"><span className="detail-cost-key">Utility service bundle</span><span className="detail-cost-val">$9.99</span></div>
+                <div className="detail-cost-row"><span className="detail-cost-key">Valet waste service</span><span className="detail-cost-val">$25.00</span></div>
+                <div className="detail-cost-note">Base rent reflects the lowest available 12-month lease price. Additional optional add-ons and one-time move-in fees may apply. Pricing subject to change.</div>
               </div>
-              <div className="detail-cost-row"><span className="detail-cost-key">Base rent</span><span className="detail-cost-val">${l.starting.toLocaleString()}</span></div>
-              {smartFee>0 && <div className="detail-cost-row"><span className="detail-cost-key">Smart home service</span><span className="detail-cost-val">$19.99</span></div>}
-              <div className="detail-cost-row"><span className="detail-cost-key">Utility service bundle</span><span className="detail-cost-val">$9.99</span></div>
-              <div className="detail-cost-row"><span className="detail-cost-key">Valet waste service</span><span className="detail-cost-val">$25.00</span></div>
-              <div className="detail-cost-note">Base rent reflects the lowest available 12-month lease price. Additional optional add-ons and one-time move-in fees may apply. Pricing subject to change.</div>
-            </div>
 
-            {/* About */}
-            <div className="detail-about">
-              <div className="eyebrow about-h">About This Home</div>
-              <p>
-                This {l.beds}-bedroom, {l.baths}-bath single-family home in {communityName} offers {l.sqft.toLocaleString()} sq ft of open, move-in-ready living space designed for everyday comfort.
-                The main level features an open-concept kitchen and living area with hard surface flooring, granite countertops, and stainless steel appliances.
-                Upstairs, a generous primary suite includes a walk-in closet and private en-suite bath, with additional bedrooms ideal for family, guests, or a dedicated home office.
-                Step outside to a private patio and fully fenced backyard — perfect for pets, entertaining, or simply unwinding after a long day.
-                Smart home technology, in-unit laundry hookups, and a 2-car attached garage round out the features that make this home stand out in the {communityName} area.
-                Progress Residential residents enjoy 24/7 emergency maintenance, an online resident portal, and flexible lease options starting at 12 months.
-              </p>
-            </div>
-
-            {/* Qualification Requirements callout */}
-            <div className="detail-qual-callout">
-              <div className="detail-qual-callout-left">
-                <div className="head detail-qual-callout-title">Qualification<br/>Requirements</div>
-                <div className="detail-qual-callout-sub">Before applying, review our requirements to get qualified</div>
-                <button className="btn btn-primary detail-qual-callout-btn">Learn More</button>
+              {/* About */}
+              <div className="detail-about">
+                <div className="eyebrow about-h">About This Home</div>
+                <p>
+                  This {l.beds}-bedroom, {l.baths}-bath single-family home in {communityName} offers {l.sqft.toLocaleString()} sq ft of open, move-in-ready living space designed for everyday comfort.
+                  The main level features an open-concept kitchen and living area with hard surface flooring, granite countertops, and stainless steel appliances.
+                  Upstairs, a generous primary suite includes a walk-in closet and private en-suite bath, with additional bedrooms ideal for family, guests, or a dedicated home office.
+                  Step outside to a private patio and fully fenced backyard — perfect for pets, entertaining, or simply unwinding after a long day.
+                  Smart home technology, in-unit laundry hookups, and a 2-car attached garage round out the features that make this home stand out in the {communityName} area.
+                  Progress Residential residents enjoy 24/7 emergency maintenance, an online resident portal, and flexible lease options starting at 12 months.
+                </p>
               </div>
-              <div className="detail-qual-callout-img">
-                <img src="progress/images/qual-laptop.jpg" alt="Reviewing qualification requirements"
-                  onError={e=>{ e.target.style.display='none'; }}/>
-              </div>
-            </div>
 
-            {/* Similar homes */}
-            {similar.length>0 && (
-              <div className="detail-similar">
-                <div className="detail-similar-title">Similar Homes</div>
-                <div className="detail-similar-scroll">
-                  {similar.map(s=>(
-                    <div key={s.id} className="detail-similar-card">
-                      <img src={s.img} alt={s.title}/>
-                      <div className="detail-similar-body">
-                        <div className="detail-similar-status">{s.status==='Available'||s.status==='Move-in Ready'?'Available Now':s.status}</div>
-                        <div className="detail-similar-price">${s.price.toLocaleString()}<span style={{fontSize:12,fontWeight:400,color:'var(--gray)',fontFamily:'Open Sans'}}>/mo</span></div>
-                        <div className="detail-similar-addr">{s.street},<br/>{s.city}</div>
-                        <div className="detail-similar-stats">{s.beds} bd · {s.baths} ba · {s.sqft.toLocaleString()} sqft</div>
+              {/* Qualification Requirements callout */}
+              <div className="detail-qual-callout">
+                <div className="detail-qual-callout-left">
+                  <div className="head detail-qual-callout-title">Qualification<br/>Requirements</div>
+                  <div className="detail-qual-callout-sub">Before applying, review our requirements to get qualified</div>
+                  <button className="btn btn-primary detail-qual-callout-btn">Learn More</button>
+                </div>
+                <div className="detail-qual-callout-img">
+                  <img src="progress/images/qual-laptop.jpg" alt="Reviewing qualification requirements"
+                    onError={e=>{ e.target.style.display='none'; }}/>
+                </div>
+              </div>
+
+              {/* Similar homes */}
+              {similar.length>0 && (
+                <div className="detail-similar">
+                  <div className="detail-similar-title">Similar Homes</div>
+                  <div className="detail-similar-scroll">
+                    {similar.map(s=>(
+                      <div key={s.id} className="detail-similar-card">
+                        <img src={s.img} alt={s.title}/>
+                        <div className="detail-similar-body">
+                          <div className="detail-similar-status">{s.status==='Available'||s.status==='Move-in Ready'?'Available Now':s.status}</div>
+                          <div className="detail-similar-price">${s.price.toLocaleString()}<span style={{fontSize:12,fontWeight:400,color:'var(--gray)',fontFamily:'Open Sans'}}>/mo</span></div>
+                          <div className="detail-similar-addr">{s.street},<br/>{s.city}</div>
+                          <div className="detail-similar-stats">{s.beds} bd · {s.baths} ba · {s.sqft.toLocaleString()} sqft</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </>)}
             </div>{/* end detail-content-scroll */}
 
             {/* AI Q&A — sticky at bottom */}
@@ -5898,6 +6663,8 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
           </div>
         </div>
       </div>
+      {/* Persona switcher — only visible on detail page */}
+      <PersonaSwitcher/>
     </>
   );
 }
@@ -6021,7 +6788,8 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
         {activeScreen==="detail" && detail && (
           <DetailWithTour l={detail} query={query}
             onClose={onOpenMap} onBack={onOpenMap}
-            fav={favs.includes(detail.id)} onFav={onFav} onApply={onApply} allListings={L}/>
+            fav={favs.includes(detail.id)} onFav={onFav} onApply={onApply} allListings={L}
+            onToggleCompare={onToggleCompare} compareIds={compareIds} onLaunchCompare={launchCompare}/>
         )}
         {toast && <Toast msg={toast} onDone={()=>setToast(null)}/>}
       </>
@@ -6063,6 +6831,8 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
   switcherRoot.id = 'brand-switcher-root';
   document.body.appendChild(switcherRoot);
   ReactDOM.createRoot(switcherRoot).render(<BrandSwitcher/>);
+
+  // PersonaSwitcher is rendered inline inside DetailWithTour only
 })();
 </script>
 </body>
