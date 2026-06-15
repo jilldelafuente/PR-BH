@@ -273,6 +273,9 @@ img{display:block}
 
 .search-glass{background:rgba(0,0,0,.18);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);border-radius:14px;border:1px solid rgba(255,255,255,.15);padding:25px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 32px rgba(0,0,0,.22);transition:border-color .2s}
 .search-glass.expanded{border-color:rgba(255,255,255,.3)}
+.home-center.search-active{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5}
+.home-center.search-active .search-glass{max-height:80vh;overflow-y:auto}
+.home-center.search-active .search-results{max-height:55vh;overflow-y:auto}
 .search-expanded-backdrop{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,.35);pointer-events:none;animation:fadeIn .2s ease}
 
 /* results panel */
@@ -3682,7 +3685,7 @@ function Home({ onSearch, onOpenMap, onOpenDetail }){
       </header>
 
       {isExpanded && <div className="search-expanded-backdrop" onClick={()=>setFocused(false)}/>}
-      <div className="home-center">
+      <div className={"home-center"+(isExpanded?" search-active":"")}>
         <div className="ai-eyebrow">
           <span className="live-dot" />
           <span>{brand==='bh'?'BH':'Progress'}&nbsp;AI Search</span>
@@ -5561,7 +5564,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
         <button className="btn btn-lime resident-btn">Current Resident{brand==='bh'?'s':''}</button>
       </header>
       {isExpanded && <div className="search-expanded-backdrop" onClick={()=>setFocused(false)}/>}
-      <div className="home-center">
+      <div className={"home-center"+(isExpanded?" search-active":"")}>
         <div className={"search-glass"+(isExpanded?" expanded":"")}>
           <div className={"search-card"+(listening?" is-listening":"")}>
             <div className="search-input-wrap">
