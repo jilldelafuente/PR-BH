@@ -55,8 +55,8 @@
   --lime-bg:#F8F4ED;
   --green:#84CBA1;
   --green-soft:#f4f4f3;
-  --ai-grad:linear-gradient(84deg,rgba(200,169,110,.30) 0%,rgba(184,145,60,.30) 100%);
-  --ai-grad-strong:linear-gradient(84deg,rgba(200,169,110,.85) 0%,rgba(184,145,60,.85) 100%);
+  --ai-grad:linear-gradient(84deg,rgba(139,205,161,.35) 0%,rgba(218,225,76,.35) 100%);
+  --ai-grad-strong:linear-gradient(84deg,rgba(139,205,161,.85) 0%,rgba(218,225,76,.85) 100%);
   /* zero out all border radii */
   --r-btn:0px;
   --r-card:0px;
@@ -3992,15 +3992,14 @@ function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBac
     const active = ENHANCE_FILTERS.filter(f=>activeFilters.includes(f.id));
     const hard = active.filter(f=>f.hard);
     const soft = active.filter(f=>!f.hard);
-    // Hard filters exclude non-matching; soft filters sort matching to top
+    // Hard filters: strict exclude
     let base = hard.length ? listings.filter(l=>hard.every(f=>f.score(l)>0)) : [...listings];
-    if (!base.length) base = [...listings]; // fallback: never show empty
+    if (!base.length) base = [...listings];
+    // Soft filters: keep only listings that match at least one, sorted by score
     if (soft.length) {
-      base = [...base].sort((a,b)=>{
-        const sa = soft.reduce((s,f)=>s+f.score(a),0);
-        const sb = soft.reduce((s,f)=>s+f.score(b),0);
-        return sb - sa;
-      });
+      const scored = base.map(l=>({ l, s: soft.reduce((s,f)=>s+f.score(l),0) }));
+      const matching = scored.filter(x=>x.s>0).sort((a,b)=>b.s-a.s).map(x=>x.l);
+      base = matching.length ? matching : base;
     }
     return base;
   },[listings, activeFilters]);
@@ -4069,7 +4068,7 @@ function MapScreen({ listings, market, query, ai, aiLoading, onOpenDetail, onBac
           <div className="rail-head">
             <div>
               <h2 className="head rail-title">Homes in {market.label}</h2>
-              <div className="rail-count">Showing {fmt(market.results)} results</div>
+              <div className="rail-count">{activeFilters.length ? `Showing ${fmt(filteredListings.length)} filtered results` : `Showing ${fmt(market.results)} results`}</div>
             </div>
             <div className="rail-tools">
               <button title="Compare view" className={compareIds.length?"on":""} onClick={onLaunchCompare}><Icon name="expand" size={18}/></button>
@@ -5198,7 +5197,7 @@ function LocationPicker(){
           top: dropPos.top,
           left: Math.min(dropPos.left, window.innerWidth - dropPos.width - 16),
           width: dropPos.width,
-          maxHeight: 280,
+          maxHeight: Math.min(220, window.innerHeight - dropPos.top - 16),
           overflowY: 'auto',
           zIndex: 9999
         }}>
@@ -5430,7 +5429,7 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
   const displayChips = dynamicChips || chips;
 
   // Inline suggestion pills
-  const SUGGESTIONS_MAP = {
+  const PR_SUGGESTIONS_MAP = {
     "pet":    ["pet-friendly with a yard","dog park in the community","no breed restrictions"],
     "dog":    ["dog park on-site","fenced backyard","pet deposit included"],
     "school": ["near top-rated elementary","zoned for great schools","family neighborhood"],
@@ -5447,6 +5446,35 @@ function HomeInner({ onSearch, onOpenMap, onOpenDetail, onOpenNav }){
     "smart":  ["smart thermostat","keyless entry","smart lighting included"],
     "quiet":  ["quiet cul-de-sac","low traffic street","no through traffic"],
   };
+  const BH_SUGGESTIONS_MAP = {
+    "studio": ["studio with city views","studio available now","studio under $1,500/mo"],
+    "1 bed":  ["1-bedroom with balcony","1-bed near Midtown","1-bed available this month"],
+    "2 bed":  ["2-bedroom with den","2-bed with in-unit laundry","2-bed corner unit"],
+    "3 bed":  ["3-bedroom penthouse","3-bed with private terrace","3-bed move-in ready"],
+    "pet":    ["pet-friendly, no breed restrictions","dog-friendly with dog run","cats welcome"],
+    "dog":    ["dog-friendly building","dog park on-site","no breed restrictions"],
+    "pool":   ["resort-style pool","rooftop pool access","pool + fitness center"],
+    "gym":    ["state-of-the-art fitness center","yoga studio included","24-hour gym access"],
+    "fitnes": ["fitness center + pool","on-site gym","yoga and spin classes"],
+    "balcon": ["private balcony views","wrap-around balcony","outdoor living space"],
+    "amenit": ["full amenity package","resort amenities included","rooftop deck + pool"],
+    "rooftop":["rooftop deck access","rooftop lounge with views","rooftop + concierge"],
+    "concier":["concierge service","full-service building","doorman + concierge"],
+    "laund":  ["in-unit washer/dryer","full-size laundry in unit","washer/dryer included"],
+    "park":   ["covered parking included","EV charging stations","valet parking available"],
+    "short":  ["short-term lease available","3-month lease option","flexible lease terms"],
+    "flex":   ["flexible lease terms","month-to-month available","no long-term commitment"],
+    "move":   ["available now","move-in ready this month","flexible move-in date"],
+    "under":  ["under $1,800/mo","under $2,200/mo","best value in Atlanta"],
+    "work":   ["work-from-home friendly","co-working lounge","business center on-site"],
+    "transit":["near MARTA station","walkable to transit","close to BeltLine"],
+    "marta":  ["near MARTA station","walkable to rail","transit-friendly location"],
+    "belt":   ["near BeltLine trail","walkable neighborhood","close to parks and shops"],
+    "midtown":["Midtown Atlanta views","near Piedmont Park","walkable to Midtown"],
+    "smart":  ["smart home tech included","keyless entry","smart thermostat"],
+    "view":   ["skyline views","floor-to-ceiling windows","high-floor city views"],
+  };
+  const SUGGESTIONS_MAP = brand === 'bh' ? BH_SUGGESTIONS_MAP : PR_SUGGESTIONS_MAP;
   const PR_POPULAR = [
     "Pet-friendly homes with a yard",
     "3-bedroom near good schools",
@@ -6044,11 +6072,9 @@ function MapScreenMobile(props){
     let base = hard.length ? props.listings.filter(l=>hard.every(f=>f.score(l)>0)) : [...props.listings];
     if (!base.length) base = [...props.listings];
     if (soft.length) {
-      base = [...base].sort((a,b)=>{
-        const sa = soft.reduce((s,f)=>s+f.score(a),0);
-        const sb = soft.reduce((s,f)=>s+f.score(b),0);
-        return sb - sa;
-      });
+      const scored = base.map(l=>({ l, s: soft.reduce((s,f)=>s+f.score(l),0) }));
+      const matching = scored.filter(x=>x.s>0).sort((a,b)=>b.s-a.s).map(x=>x.l);
+      base = matching.length ? matching : base;
     }
     return base;
   },[props.listings, activeFilters]);
@@ -6209,7 +6235,7 @@ function MapScreenMobile(props){
           <div className="rail-head">
             <div>
               <h2 className="head rail-title">Homes in {props.market.label}</h2>
-              <div className="rail-count">Showing {props.market.results.toLocaleString()} results</div>
+              <div className="rail-count">{activeFilters.length ? `Showing ${filteredListings.length.toLocaleString()} filtered results` : `Showing ${props.market.results.toLocaleString()} results`}</div>
             </div>
             <div className="rail-tools">
               <button className="rail-collapse-btn" title="Collapse panel" onClick={()=>setRailOpen(false)}>
