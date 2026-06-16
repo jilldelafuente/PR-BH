@@ -895,23 +895,85 @@ img{display:block}
   .search-card input{ font-size:15px }
   .home-chips .home-chip:nth-child(n+4){ display:none }
 
-  /* Detail */
+  /* Detail — layout */
   .detail-body{ flex-direction:column;overflow-y:auto }
-  .detail-media{ width:100%;padding:16px 16px 0 }
+  .detail-media{ width:100%;padding:0 }
   .detail-content{ padding:0 }
-  .detail-content-scroll{ padding:24px 20px 16px }
-  .detail-chat-sticky{ padding:0 20px 20px;background:transparent }
-  .detail-top{ padding:14px 16px;gap:10px }
-  .media-tabs{ gap:6px }
-  .mtab{ padding:0 14px;font-size:13px }
-  .detail-headrow{ flex-direction:column;gap:8px }
+  .detail-content-scroll{ padding:20px 18px 120px }
+  .detail-content::after{ display:none }
+  .detail-chat-sticky{ display:none }
+  .detail-top{ padding:12px 14px;gap:8px }
+  .detail-back span{ display:none }
+  .detail-close{ width:36px;height:36px }
+
+  /* Detail — gallery & tabs */
+  .detail-photo{ border-radius:0;height:52vw;object-fit:cover;width:100% }
+  .media-tabs{ gap:0;border-radius:0;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 4px }
+  .media-tabs::-webkit-scrollbar{ display:none }
+  .mtab{ padding:0 16px;font-size:12px;height:42px;flex-shrink:0 }
+  .detail-gallery-grid{ grid-template-columns:1fr 1fr;gap:3px }
+  .detail-gallery-grid img{ height:28vw }
+
+  /* Detail — content */
+  .detail-headrow{ flex-direction:column;gap:6px }
+  .detail-title{ font-size:22px }
+  .detail-addr{ font-size:13px }
   .detail-price{ text-align:left }
-  .amenity-row{ flex-wrap:wrap;gap:20px }
+  .detail-price-num{ font-size:26px }
+
+  /* Detail — grids to single column */
+  .detail-highlights-grid{ grid-template-columns:1fr }
+  .detail-community{ grid-template-columns:1fr }
+  .detail-cta{ position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;box-shadow:0 -1px 0 var(--line),var(--sh-lg);z-index:10;border-radius:0;max-width:none;gap:8px }
+  .detail-cta .btn{ height:46px;font-size:14px }
+  .detail-cost{ max-width:none }
+  .detail-about{ max-width:none }
+  .detail-similar{ max-width:none }
+  .detail-qual-callout{ max-width:none }
+  .detail-highlights{ max-width:none }
+
+  /* Detail — BH unit cards: stack floorplan above info */
+  .bh-unit-head{ flex-direction:column }
+  .bh-unit-fp{ width:100%;min-height:140px;border-right:none;border-bottom:1px solid var(--line) }
+  .bh-tabs{ overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none }
+  .bh-tabs::-webkit-scrollbar{ display:none }
+
+  /* Detail — persona & misc */
+  .persona-module{ max-width:none }
+  .shortlist-card{ flex:0 0 140px }
+  .amenity-row{ flex-wrap:wrap;gap:16px }
   .feat-list{ grid-template-columns:1fr }
-  .detail-cta{ position:fixed;bottom:0;left:0;right:0;background:#fff;padding:14px 20px;box-shadow:0 -1px 0 var(--line),var(--sh-lg);z-index:10;border-radius:0;max-width:none }
-  .detail-cta .btn{ height:48px }
-  .pchat{ margin-bottom:100px }
+  .pchat{ margin-bottom:80px }
 }
+
+/* Photo carousel (mobile gallery) */
+.photo-carousel{position:relative;width:100%;overflow:hidden;background:#111;user-select:none;touch-action:pan-y}
+.photo-carousel-img{width:100%;height:62vw;object-fit:cover;display:block;pointer-events:none}
+.photo-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;backdrop-filter:blur(6px);transition:var(--tr)}
+.photo-carousel-btn:hover{background:rgba(0,0,0,.7)}
+.photo-carousel-prev{left:10px}
+.photo-carousel-next{right:10px}
+.photo-carousel-counter{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.5);color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);letter-spacing:.02em}
+.photo-carousel-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+.photo-carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:var(--tr);padding:0;flex-shrink:0}
+.photo-carousel-dot.active{background:#fff;transform:scale(1.25)}
+/* Show/hide carousel vs stacked photos */
+.detail-photos-mobile{display:none}
+.detail-photos-desktop{display:contents}
+@media(max-width:900px){
+  .detail-photos-mobile{display:block}
+  .detail-photos-desktop{display:none}
+}
+
+/* Mobile map — bottom sheet elements (hidden on desktop) */
+.rail-handle-bar{display:none;align-items:center;justify-content:center;padding:10px 0 6px;cursor:pointer;flex-shrink:0}
+.rail-handle-pill{width:36px;height:4px;background:rgba(0,0,0,.15);border-radius:2px}
+.mobile-view-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:50;background:#fff;border-top:1px solid var(--line);padding:0;height:56px;box-shadow:0 -2px 12px rgba(9,26,39,.10)}
+.mobile-view-bar-inner{display:flex;width:100%;height:100%}
+.mobile-view-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gray);transition:var(--tr);border-top:2px solid transparent}
+.mobile-view-tab.active{color:var(--teal);border-top-color:var(--teal)}
+.mobile-view-tab svg{flex-shrink:0}
+[data-brand="bh"] .mobile-view-tab.active{color:var(--navy);border-top-color:#84CBA1}
 
 @media (max-width:768px){
   /* Home footer */
@@ -921,12 +983,13 @@ img{display:block}
   .home-h1{ font-size:clamp(38px,9vw,56px) }
 
   /* Map — switch to stacked mobile layout */
-  .map-top{ padding:10px 14px;gap:10px }
+  .map-top{ padding:10px 14px;gap:8px;flex-wrap:nowrap }
   .map-search{ flex:1;width:auto }
   .map-save{ display:none }
+  .map-saved-btn{ flex-shrink:0 }
   .map-body{ flex-direction:column }
-  .map-pane{ flex:none;height:50vh }
-  .map-rail{ width:100%;border-left:none;border-top:1px solid var(--line);padding:16px 16px 80px }
+  .map-pane{ flex:none;height:52vh }
+  .map-rail{ width:100%;border-left:none;padding:0 16px 100px }
   .rail-grid{ grid-template-columns:1fr }
   .map-view-toggle{ display:flex }
   /* map-only mode */
@@ -936,6 +999,22 @@ img{display:block}
   .map-screen.list-mode .map-pane{ display:none }
   .map-screen.list-mode .map-rail{ height:100%;overflow-y:auto }
   .compare-tray{ bottom:80px;left:16px;right:16px;transform:none;flex-wrap:wrap }
+  /* Bottom sheet rail */
+  .map-rail{border-radius:16px 16px 0 0;border-top:none;box-shadow:0 -6px 24px rgba(9,26,39,.12);padding-top:0;padding-bottom:100px}
+  [data-brand="bh"] .map-rail{border-radius:0}
+  .rail-handle-bar{display:flex}
+  .rail-head{padding-top:4px}
+  /* Filter chips — horizontal scroll */
+  .map-filters{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;mask-image:linear-gradient(to right,transparent 0,black 8px,black calc(100% - 24px),transparent 100%)}
+  .map-filters::-webkit-scrollbar{display:none}
+  /* Active tags row scroll */
+  .active-tags-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .active-tags-row::-webkit-scrollbar{display:none}
+  /* Bottom nav */
+  .mobile-view-bar{display:flex}
+  .map-view-toggle{display:none}
+  /* Compare tray bottom — clear of nav bar */
+  .compare-tray{bottom:68px}
 
   /* Compare — horizontal scroll with fixed-width cols */
   .cmp-panel{ width:100%;border-radius:16px 16px 0 0;position:fixed;bottom:0;height:92dvh }
@@ -4850,6 +4929,48 @@ About: ${l.blurb}${query?`\nThe renter's original search: "${query}".`:""}`;
   );
 }
 
+/* Mobile photo carousel — swipe + dots + counter */
+function PhotoCarousel({ imgs }){
+  const [idx, setIdx] = React.useState(0);
+  const touchX = React.useRef(null);
+  const valid = (imgs||[]).filter(Boolean);
+  if(!valid.length) return null;
+  const total = valid.length;
+  const clamp = i => ((i % total) + total) % total;
+  const prev = () => setIdx(i => clamp(i-1));
+  const next = () => setIdx(i => clamp(i+1));
+  const onTouchStart = e => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = e => {
+    if(touchX.current===null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if(Math.abs(dx)>36) dx<0 ? next() : prev();
+    touchX.current = null;
+  };
+  const maxDots = 8;
+  const dotCount = Math.min(total, maxDots);
+  return (
+    <div className="photo-carousel" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <img key={idx} src={valid[idx]} alt={"Photo "+(idx+1)} className="photo-carousel-img"
+        onError={()=>next()}/>
+      {total>1 && <>
+        <button className="photo-carousel-btn photo-carousel-prev" onClick={prev}>
+          <Icon name="chevleft" size={18}/>
+        </button>
+        <button className="photo-carousel-btn photo-carousel-next" onClick={next}>
+          <Icon name="chevright" size={18}/>
+        </button>
+        <div className="photo-carousel-counter">{idx+1} / {total}</div>
+        <div className="photo-carousel-dots">
+          {Array.from({length:dotCount},(_,i)=>(
+            <button key={i} className={"photo-carousel-dot"+(i===idx%dotCount?' active':'')}
+              onClick={()=>setIdx(i)}/>
+          ))}
+        </div>
+      </>}
+    </div>
+  );
+}
+
 function Detail({ l, query, onClose, onBack, fav, onFav, onApply }){
   const [tab, setTab] = React.useState("Photos");
   const [ftab, setFtab] = React.useState("Community");
@@ -4873,9 +4994,14 @@ function Detail({ l, query, onClose, onBack, fav, onFav, onApply }){
           {tab==="Photos" && (()=>{
               const BH_INTERIORS = ["progress/images/interior-photos/bh/Bedroom-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Living-Room-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Outdoor-Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Twilight-Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Fitness-Center-04-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Business-Center-01-Adley-City-Springs-Sandy-Springs.jpg"];
               const imgs = window.isBH() ? [...l.gallery.filter(src=>!src.includes('interior-photos')), ...BH_INTERIORS] : l.gallery;
-              return imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"
-                onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}}
-                onError={e=>{e.target.style.display='none';}}/>));
+              return (<>
+                <div className="detail-photos-mobile"><PhotoCarousel imgs={imgs}/></div>
+                <div className="detail-photos-desktop">
+                  {imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo"
+                    onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}}
+                    onError={e=>{e.target.style.display='none';}}/>))}
+                </div>
+              </>);
             })()}
           {tab==="Floorplans" && (
             <div className="media-empty"><Icon name="layers" size={40} sw={1.4}/><p>Floorplans for {l.beds}-bedroom layouts</p><span>Interactive floorplans appear here.</span></div>
@@ -6232,6 +6358,9 @@ function MapScreenMobile(props){
         </div>
 
         <aside className="map-rail scroll" ref={railRef}>
+          <div className="rail-handle-bar" onClick={()=>setMobileView(v=>v==='list'?'split':'list')}>
+            <div className="rail-handle-pill"/>
+          </div>
           <div className="rail-head">
             <div>
               <h2 className="head rail-title">Homes in {props.market.label}</h2>
@@ -6311,6 +6440,18 @@ function MapScreenMobile(props){
       <button className="map-view-toggle" onClick={()=>setMobileView(v=>v==="map"?"list":"map")}>
         <Icon name={mobileView==="map"?"layers":"pin"} size={18}/> {mobileView==="map"?"List view":"Map view"}
       </button>
+      <div className="mobile-view-bar">
+        <div className="mobile-view-bar-inner">
+          <button className={"mobile-view-tab"+(mobileView!=='list'?' active':'')} onClick={()=>setMobileView(v=>v==='map'?'split':'map')}>
+            <Icon name="pin" size={17}/>
+            Map
+          </button>
+          <button className={"mobile-view-tab"+(mobileView==='list'?' active':'')} onClick={()=>setMobileView('list')}>
+            <Icon name="layers" size={17}/>
+            List
+          </button>
+        </div>
+      </div>
 
       {props.compareIds.length>0 && (()=>{
         const selectedHomes = props.compareIds.map(id=>props.listings.find(l=>l.id===id)).filter(Boolean);
@@ -6426,7 +6567,12 @@ function DetailWithTour({ l, query, onClose, onBack, fav, onFav, onApply, allLis
             {tab==="Photos" && (()=>{
               const BH_INTERIORS = ["progress/images/interior-photos/bh/Bedroom-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Living-Room-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Outdoor-Kitchen-01-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Twilight-Swimming-Pool-02-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Fitness-Center-04-Adley-City-Springs-Sandy-Springs.jpg","progress/images/interior-photos/bh/Business-Center-01-Adley-City-Springs-Sandy-Springs.jpg"];
               const imgs = brand==='bh' ? [...l.gallery.filter(src=>!src.includes('interior-photos')), ...BH_INTERIORS] : l.gallery;
-              return imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo" onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}} onError={e=>{e.target.style.display='none';}}/>));
+              return (<>
+                <div className="detail-photos-mobile"><PhotoCarousel imgs={imgs}/></div>
+                <div className="detail-photos-desktop">
+                  {imgs.map((src,i)=>(<img key={i} src={src} alt={l.title+" photo "+(i+1)} className="detail-photo" onLoad={e=>{const img=e.target;if(img.naturalWidth<300||img.naturalHeight<200){img.style.display='none';}}} onError={e=>{e.target.style.display='none';}}/>))}
+                </div>
+              </>);
             })()}
             {tab==="Floorplans" && (
               (l.floorplans && l.floorplans.length > 0)
