@@ -994,7 +994,9 @@ img{display:block}
   .map-view-toggle{ display:flex }
   /* map-only mode */
   .map-screen.map-mode .map-rail{ display:none }
-  .map-screen.map-mode .map-pane{ flex:1 }
+  .map-screen.map-mode .map-body{ flex:1;min-height:0 }
+  .map-screen.map-mode .map-pane{ flex:1;height:auto;min-height:0 }
+  .map-screen.map-mode .mobile-view-bar{ display:flex }
   /* list-only mode */
   .map-screen.list-mode .map-pane{ display:none }
   .map-screen.list-mode .map-rail{ height:100%;overflow-y:auto }
@@ -6186,6 +6188,40 @@ function MapScreenMobile(props){
   const [savedOpen, setSavedOpen] = React.useState(false);
   const railRef = React.useRef(null);
   const cardRefs = React.useRef({});
+
+  // Drag-to-expand bottom sheet
+  const dragStartY = React.useRef(null);
+  const dragDeltaY = React.useRef(0);
+  const [railDragOffset, setRailDragOffset] = React.useState(0);
+  const [isDragging, setIsDragging] = React.useState(false);
+
+  function onHandleTouchStart(e){
+    dragStartY.current = e.touches[0].clientY;
+    dragDeltaY.current = 0;
+    setIsDragging(true);
+  }
+  function onHandleTouchMove(e){
+    if(dragStartY.current===null) return;
+    const dy = e.touches[0].clientY - dragStartY.current;
+    dragDeltaY.current = dy;
+    // Only allow dragging in valid directions
+    if(mobileView==='list' && dy < 0) return; // already full, can't go up more
+    if(mobileView==='split' && dy > 0) return; // collapse only
+    setRailDragOffset(Math.max(-300, Math.min(300, dy)));
+    e.preventDefault();
+  }
+  function onHandleTouchEnd(){
+    const dy = dragDeltaY.current;
+    setRailDragOffset(0);
+    setIsDragging(false);
+    dragStartY.current = null;
+    if(dy < -60) setMobileView('list');         // dragged up → expand
+    else if(dy > 60) setMobileView('split');     // dragged down → collapse
+    // else snap back (no change)
+  }
+  function onHandleTap(){
+    if(!isDragging) setMobileView(v=>v==='list'?'split':'list');
+  }
   const [activeFilters, setActiveFilters] = React.useState([]);
   React.useEffect(()=>{ setActiveFilters([]); },[props.query]);
   const enhanceTags = React.useMemo(()=>getEnhanceTags(props.query),[props.query]);
@@ -6357,8 +6393,13 @@ function MapScreenMobile(props){
           </button>
         </div>
 
-        <aside className="map-rail scroll" ref={railRef}>
-          <div className="rail-handle-bar" onClick={()=>setMobileView(v=>v==='list'?'split':'list')}>
+        <aside className="map-rail scroll" ref={railRef}
+          style={railDragOffset ? {transform:`translateY(${railDragOffset}px)`,transition:'none'} : {transition:'transform .25s cubic-bezier(.4,0,.2,1)'}}>
+          <div className="rail-handle-bar"
+            onTouchStart={onHandleTouchStart}
+            onTouchMove={onHandleTouchMove}
+            onTouchEnd={onHandleTouchEnd}
+            onClick={onHandleTap}>
             <div className="rail-handle-pill"/>
           </div>
           <div className="rail-head">
